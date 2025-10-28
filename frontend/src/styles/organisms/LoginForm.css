@@ -1,0 +1,81 @@
+/* Styles for Login component */
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+.user-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(253, 253, 253);
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: clamp(280px, 70vw, 900px);
+  margin: 4vw auto;
+  padding: 2vw;
+}
+
+.user-form > h1 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 4px;
+  font-size: clamp(20px, 3vw, 36px);
+}
+
+.user-form > h2 {
+  font-size: clamp(16px, 4vw, 22px);
+  color: rgb(79, 214, 117);
+}
+
+.user-form label {
+  display: flex;
+  flex-direction: column;
+  width: clamp(250px, 20vw, 500px);
+  font-size: clamp(14px, 2vw, 18px);
+  margin-top: 40px;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 200;
+  font-size: clamp(14px, 2vw, 16px);
+  color: rgb(187, 184, 184);
+  font-family: "Times New Roman", Times, serif;
+}
+.user-btn {
+  width: clamp(140px, 40vw, 200px) !important;
+  background-color: rgb(79, 214, 117);
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px !important;
+  margin-top: 50px;
+  cursor: pointer;
+}
+.user-form > strong {
+  margin-top: 2vw;
+}
+
+.register-icon {
+  color: rgb(79, 214, 117);
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.register-icon:hover {
+  transform: scale(1.1);
+}
+
+.error {
+  color: rgb(235, 63, 6);
+  font-size: 15px;
+  font-family: monospace;
+}
+
+.error-message {
+  color: rgb(235, 63, 6);
+  font-size: 15px;
+  font-family: monospace;
+  margin: 20px;
+}

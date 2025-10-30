@@ -23,9 +23,14 @@ func SetupRouter() http.Handler {
 	r.Post("/refresh-token", controllers.RefreshToken)
 
 	// ----- ROUTES PROTEGEES ------ par le middleware d'authentification
+
+	// Deconnexion, Profil
 	r.With(middleware.AuthMiddleware).Get("/me", controllers.Me)
 	r.With(middleware.AuthMiddleware).Post("/logout", controllers.Logout)
 	r.With(middleware.AuthMiddleware).Get("/get-profile", controllers.GetProfile)
+
+	// Base des données
+	r.With(middleware.AuthMiddleware).Post("/databases/add", controllers.AddDatabase)
 
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r

@@ -5,7 +5,7 @@ import useAuthStore from "../store/AuthStore";
 import Register from "../components/pages/Register";
 import Login from "../components/pages/Login";
 import Profile from "../components/pages/Profile";
-import Home from "../components/pages/Home";
+import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
 
@@ -47,7 +47,7 @@ const Router = () => {
           path="/"
           element={
             <PrivateRoute>
-              <Home />
+              <Dashboard />
             </PrivateRoute>
           }
         />

@@ -38,7 +38,8 @@ controllers.Register()
 
 3. Base de données :
    Les identifiants actuels sont configurés avec mes propres paramètres.
-   On peut les mettre aussi dans .env et ca pourras marcher
+   On peut les mettre aussi dans .env et ca pourras marcher.
+   La base des données est dans le main il faut le decommenter, demarrer le serveur sur back et commenter a nouveau.
 
 4. Le projet utilise le fichier .env pour stocker les variables d’environnement.
    Un exemple est fourni dans .env.example.

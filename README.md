@@ -1,5 +1,9 @@
 🧩 Description générale
 
+⚠️ IMPORTANT
+La branche feature/configuration contient l’architecture prsque complète du projet(manque de styles et tests dans le front).
+Après avoir cloné le projet, basculez sur cette branche — elle contient également le script de migration pour la création de la base de données.
+
 1. Le projet est développé en Go, React (Vite.js) et PostgreSQL.
 
 2. Le serveur backend utilise Chi, un framework HTTP léger (équivalent à Express.js en Node).
@@ -8,22 +12,43 @@
 
 🚀 Lancement du projet
 
-1. Installer Go et configurer les variables d’environnement (PATH).
+1.  Installer Go et configurer les variables d’environnement (PATH).
 
-2. Démarrer les serveurs :
+2.  Préparation de la base de données
 
-Backend → go run main.go
+Ouvrez pgAdmin4 et connectez-vous à votre serveur PostgreSQL.
 
+Créez la base de données : CREATE DATABASE safebase;
+
+2.  Ouvrez le fichier main.go (dans le dossier backend) et décommentez temporairement la section suivante pour exécuter
+    la migration initiale :
+    // Migration: création de la base des données, Commentez après avoir utiliser
+    // sqlBytes, err := os.ReadFile("db/migrations/001_init.sql")
+    // if err != nil {
+    // log.Fatal("Impossible de lire le fichier de migration:", err)
+    // }
+
+        // _, err = db.DB.Exec(string(sqlBytes))
+        // if err != nil {
+        // 	log.Fatal("Erreur lors de l'exécution de la migration", err)
+        // }
+
+        // log.Println("Migration exécutée avec succès")
+
+3.  Démarrer les serveurs :
+
+Backend → go run main.go Si dans le terminal: ( Connexion à la base des donnès réussie, Migration exécutée avec succès et Demarrage du serveur sur :8080...) c'est ok.
+Si vous rencontrez une erreur de connexion à la base, vérifiez les identifiants dans le fichier db/db.go
+connStr := "user=postgres password=root dbname=safebase sslmode=disable" db/db.go
+
+ensuite:
+Frontend → npm i package et
 Frontend → npm run dev
 
-3. Toutes les dépendances Go se trouvent dans le fichier go.mod.
-   Après un git pull, exécutez simplement :
+4. Toutes les dépendances Go se trouvent dans le fichier go.mod.
+   executer s'il faut :
 
 go mod tidy
-
-pour installer automatiquement les dépendances nécessaires.
-
---------Informations importantes-------
 
 1. La gestion des réponses d’erreur et de succès se trouve dans utils/response.go.
    → Utilisez ces fonctions dans tout le projet afin d’unifier le format des réponses et d’éviter les répétitions de code.
@@ -38,8 +63,7 @@ controllers.Register()
 
 3. Base de données :
    Les identifiants actuels sont configurés avec mes propres paramètres.
-   On peut les mettre aussi dans .env et ca pourras marcher.
-   La base des données est dans le main il faut le decommenter, demarrer le serveur sur back et commenter a nouveau.
+   On peut les mettre aussi dans .env et ca pourras marcher
 
 4. Le projet utilise le fichier .env pour stocker les variables d’environnement.
    Un exemple est fourni dans .env.example.

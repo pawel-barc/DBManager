@@ -5,6 +5,7 @@ import useAuthStore from "../store/AuthStore";
 import Register from "../components/pages/Register";
 import Login from "../components/pages/Login";
 import Profile from "../components/pages/Profile";
+import Backups from "../components/pages/Backups";
 import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
@@ -48,6 +49,14 @@ const Router = () => {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/backups"
+          element={
+            <PrivateRoute>
+              <Backups view="backups" />
             </PrivateRoute>
           }
         />

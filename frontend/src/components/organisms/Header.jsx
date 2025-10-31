@@ -17,8 +17,14 @@ const Header = () => {
       <h1 style={styles.title}>SafeBase</h1>
       {isAuthenticated && (
         <nav>
+          <Link to="/" style={styles.link}>
+            Dashboard
+          </Link>
           <Link to="/profile" style={styles.link}>
             Profile
+          </Link>
+          <Link to="/backups" style={styles.link}>
+            Backups
           </Link>
           <button onClick={handleLogout} style={styles.button}>
             <Logout />

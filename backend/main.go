@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	// "os"
 	"safebase/db"
 	"safebase/routes"
 )
@@ -13,7 +14,7 @@ func main() {
 	db.ConnectDB()
 	// Configuration du routeur (définition des routes de l'application)
 
-	// Migration: création de la base des données, Commentez après avoir utiliser
+	// MIGRATION: création de la base des données, Commentez après avoir utiliser
 	// sqlBytes, err := os.ReadFile("db/migrations/001_init.sql")
 	// if err != nil {
 	// 	log.Fatal("Impossible de lire le fichier de migration:", err)

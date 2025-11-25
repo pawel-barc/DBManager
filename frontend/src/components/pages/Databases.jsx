@@ -1,8 +1,5 @@
 import { useState } from "react";
-import addDatabase from "../../api/databaseApi";
-import { toast } from "react-toastify";
-
-const AddDatabase = () => {
+const AddDatabase = ({ onClose }) => {
   const [form, setForm] = useState({
     name: "",
     type: "postgres",
@@ -13,6 +10,7 @@ const AddDatabase = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState(null);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -21,6 +19,7 @@ const AddDatabase = () => {
     e.preventDefault();
     try {
       const apiResponse = await addDatabase(form);
+
       if (apiResponse.success) {
         toast.success("La base ajoutée avec succès");
         setForm({
@@ -31,6 +30,8 @@ const AddDatabase = () => {
           db_username: "",
           db_password: "",
         });
+
+        onClose?.();
       } else if (apiResponse.error) {
         setErrorMessage(apiResponse.error);
       }
@@ -42,6 +43,8 @@ const AddDatabase = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Add Database</h2>
+
       <input
         name="name"
         placeholder="Nom de la base"
@@ -49,10 +52,12 @@ const AddDatabase = () => {
         onChange={handleChange}
         required
       />
+
       <select name="type" value={form.type} onChange={handleChange}>
         <option value="postgres">PostgreSQL</option>
         <option value="mysql">MySQL</option>
       </select>
+
       <input
         name="host"
         placeholder="Host"
@@ -60,6 +65,7 @@ const AddDatabase = () => {
         onChange={handleChange}
         required
       />
+
       <input
         type="number"
         name="port"
@@ -68,6 +74,7 @@ const AddDatabase = () => {
         onChange={handleChange}
         required
       />
+
       <input
         name="db_username"
         placeholder="Nom d'utilisateur"
@@ -75,6 +82,7 @@ const AddDatabase = () => {
         onChange={handleChange}
         required
       />
+
       <input
         name="db_password"
         placeholder="Mot de passe"
@@ -82,8 +90,15 @@ const AddDatabase = () => {
         onChange={handleChange}
         required
       />
-      <button type="submit">Ajouter la base</button>
+
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
+      <button type="submit">Add</button>
+      <button type="button" onClick={onClose}>
+        Cancel
+      </button>
     </form>
   );
 };
+
 export default AddDatabase;

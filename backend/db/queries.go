@@ -12,5 +12,7 @@ var (
 // ---- Récupérer les bases d'un utilisateur -----
 	QuerySelectDatabases = 
 		`SELECT id, name, type, host, port, db_username FROM databases WHERE user_id = $1 ORDER BY id DESC`	
+		QueryDeleteDatabase = 
+		`DELETE FROM databases WHERE id=$1 AND user_id = $2`
 )
 

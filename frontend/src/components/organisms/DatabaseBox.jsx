@@ -11,10 +11,12 @@ const DatabaseBox = () => {
       try {
         const res = await getDatabases();
         if (res.success) {
-          setCount(res.data.length);
+          const databasesArray = Array.isArray(res.data) ? res.data : [];
+          setCount(databasesArray.length);
         }
       } catch (err) {
         console.error("Erreur lors du chargement des bases", err);
+        setCount(0);
       }
     };
     fetchDatabases();

@@ -16,7 +16,7 @@ type JsonResponse struct {
 
 // SendSuccess - envoie une réponse JSON pour une action réussie contenant des informations utilisateur
 func SendSuccess(w http.ResponseWriter, status int, message string) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(JsonResponse{
 		Success: true,
@@ -26,7 +26,7 @@ func SendSuccess(w http.ResponseWriter, status int, message string) {
 
 // SendUserSuccess - envoie une réponse JSON pour une action réussie simple(sans données spécifiques)
 func SendUserSuccess(w http.ResponseWriter, status int, user interface{}, message string) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(JsonResponse{
 		Success: true,
@@ -37,7 +37,7 @@ func SendUserSuccess(w http.ResponseWriter, status int, user interface{}, messag
 
 // SendError - envoie une reponse JSON en cas d'erreur
 func SendError(w http.ResponseWriter, status int, message string) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(JsonResponse{
 		Success: false,
@@ -48,7 +48,7 @@ func SendError(w http.ResponseWriter, status int, message string) {
 
 // SendSuccessWithData - envoie une réponse JSON pour une action réussie contenant des données
 func SendSuccessWithData(w http.ResponseWriter, status int, message string, data interface{}) {
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
 	json.NewEncoder(w).Encode(JsonResponse{
 		Success: true,

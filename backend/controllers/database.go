@@ -5,10 +5,13 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"safebase/db"
 	"safebase/middleware"
 	"safebase/utils"
+
+	"github.com/go-chi/chi/v5"
 )
 
 // Structure représentant les données envoyées par le frontend
@@ -44,10 +47,27 @@ func AddDatabase(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Vérification des doublons
+	var exists bool
+	checkQuerry := `SELECT EXISTS(
+	SELECT 1 FROM databases WHERE user_id = $1 AND name = $2 AND type = $3 AND host = $4 AND port = $5 AND db_username = $6)`
+
+	err := db.DB.QueryRow(checkQuerry, UserID, req.Name, req.Type, req.Host, req.Port, req.DBUsername).Scan(&exists)
+
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur interne de vérification")
+		return
+	}
+
+	if exists {
+		utils.SendError(w, http.StatusBadRequest, "Cette base est déjà enregistrée")
+		return
+	}
+
 	// Variable pour récupérer l'ID de la base nouvellement créée
 	var dbID int
 	// Exécution de la requête SQL d'insertion (définie dans db/queries.go)
-	err := db.DB.QueryRow(
+	err = db.DB.QueryRow(
 		db.QueryInsertDatabase, UserID, req.Name, req.Type, req.Host, req.Port, req.DBUsername, req.DBPassword, 
 	).Scan(&dbID)
 	if err != nil {
@@ -88,4 +108,28 @@ func GetDatabases(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.SendSuccessWithData(w, http.StatusOK, "Liste des bases récupérée", databases)
+}
+
+func DeleteDatabase(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+
+	dbIDStr := chi.URLParam(r, "id")
+	dbID, err := strconv.Atoi(dbIDStr)
+	if err != nil {
+		utils.SendError(w, http.StatusBadRequest, "ID invalide")
+		return
+	}
+
+	result, err := db.DB.Exec(db.QueryDeleteDatabase, dbID, userID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression")
+		return
+	}
+
+	rowsAffected, _ :=result.RowsAffected()
+	if rowsAffected == 0 {
+		utils.SendError(w, http.StatusNotFound, "Base non trouvée")
+		return
+	}
+	utils.SendSuccess(w, http.StatusOK, "Base supprimée")
 }

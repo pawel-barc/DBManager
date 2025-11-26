@@ -32,4 +32,19 @@ const getDatabases = async () => {
   return response;
 };
 
-export { addDatabase, getDatabases };
+const deleteDatabase = async (id) => {
+  const request = await fetchWithRefresh(
+    `http://localhost:8080/databases/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+
+export { addDatabase, getDatabases, deleteDatabase };

@@ -8,7 +8,8 @@ import Profile from "../components/pages/Profile";
 import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
-import DatabasesList from "../components/organisms/DatabasesList";
+import Databases from "../components/pages/Databases";
+import DatabaseDetailsPage from "../components/organisms/DatabaseDetailsPage";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -64,10 +65,19 @@ const Router = () => {
           path="/databases"
           element={
             <PrivateRoute>
-              <DatabasesList />
+              <Databases />
             </PrivateRoute>
           }
         />
+        <Route
+          path="/databases/:id"
+          element={
+            <PrivateRoute>
+              <DatabaseDetailsPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/logout"
           element={

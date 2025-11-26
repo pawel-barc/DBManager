@@ -2,6 +2,7 @@ import { useState } from "react";
 import testConnectionApi from "../../api/testConnection";
 import { toast } from "react-toastify";
 import "../../styles/organisms/AddDatabase.css";
+import { addDatabase } from "../../api/databaseApi";
 
 const AddDatabase = ({ onClose }) => {
   const [form, setForm] = useState({
@@ -13,38 +14,47 @@ const AddDatabase = ({ onClose }) => {
     db_password: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [connectionOk, setConnectionOk] = useState(false);
+  const [loadingTest, setLoadingTest] = useState(false);
+  const [loadingAdd, setLoadingAdd] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setConnectionOk(false);
+  };
+
+  const handleTest = async () => {
+    setLoadingTest(true);
+    const response = await testConnectionApi(form);
+    setLoadingTest(false);
+
+    if (response.success) {
+      toast.success("Connexion testée avec succès !");
+      setConnectionOk(true);
+    } else {
+      toast.error(response.message || "Test échoué");
+      setConnectionOk(false);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const apiResponse = await addDatabase(form);
+    if (!connectionOk) {
+      toast.error("Veuillez tester la connexion avant d'ajouter !");
+      return;
+    }
 
-      if (apiResponse.success) {
-        toast.success("La base ajoutée avec succès");
-        setForm({
-          name: "",
-          type: "postgres",
-          host: "",
-          port: 5432,
-          db_username: "",
-          db_password: "",
-        });
+    setLoadingAdd(true);
+    const apiResponse = await addDatabase(form);
+    setLoadingAdd(false);
 
-        onClose?.();
-      } else if (apiResponse.error) {
-        setErrorMessage(apiResponse.error);
-      }
-    } catch (error) {
-      console.error("Erreur capturée: ", error);
-      setErrorMessage(error.message || "Une erreur est survenue");
+    if (apiResponse.success) {
+      toast.success("Base ajoutée avec succès");
+      onClose?.();
+    } else {
+      toast.error(apiResponse.message || "Erreur");
     }
   };
-
   return (
     <div className="modal-overlay">
       <div className="modal">
@@ -100,19 +110,14 @@ const AddDatabase = ({ onClose }) => {
             required
           />
 
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-          <button
-            type="button"
-            onClick={async () => {
-              const res = await testConnectionApi(form);
-              if (res.success) toast.success("Connection OK");
-              else toast.error(res.error || "Error");
-            }}
-          >
-            Test Connection
+          <button type="button" onClick={handleTest} disabled={loadingTest}>
+            {loadingTest ? "Testing..." : "Test Connection"}
           </button>
 
-          <button type="submit">Add</button>
+          <button type="submit" disabled={!connectionOk || loadingAdd}>
+            {loadingAdd ? "Adding..." : "Add Database"}
+          </button>
+
           <button type="button" onClick={onClose}>
             Cancel
           </button>

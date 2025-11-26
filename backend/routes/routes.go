@@ -33,6 +33,7 @@ func SetupRouter() http.Handler {
 	r.With(middleware.AuthMiddleware).Post("/databases/add", controllers.AddDatabase)
 	r.With(middleware.AuthMiddleware).Get("/databases/list", controllers.GetDatabases)
 	r.With(middleware.AuthMiddleware).Post("/databases/test", controllers.TestConnection)
+	r.With(middleware.AuthMiddleware).Delete("/databases/{id}", controllers.DeleteDatabase)
 
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r

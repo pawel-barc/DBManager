@@ -45,3 +45,14 @@ func SendError(w http.ResponseWriter, status int, message string) {
 		Message: message,
 	})
 }
+
+// SendSuccessWithData - envoie une réponse JSON pour une action réussie contenant des données
+func SendSuccessWithData(w http.ResponseWriter, status int, message string, data interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(JsonResponse{
+		Success: true,
+		Data: data,
+		Message: message,
+	})
+}

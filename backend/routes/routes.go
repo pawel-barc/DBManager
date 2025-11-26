@@ -31,6 +31,8 @@ func SetupRouter() http.Handler {
 
 	// Base des données
 	r.With(middleware.AuthMiddleware).Post("/databases/add", controllers.AddDatabase)
+	r.With(middleware.AuthMiddleware).Get("/databases/list", controllers.GetDatabases)
+	r.With(middleware.AuthMiddleware).Post("/databases/test", controllers.TestConnection)
 
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r

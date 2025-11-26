@@ -16,4 +16,20 @@ const addDatabase = async (values) => {
   return response;
 };
 
-export default addDatabase;
+// Récupérer les bases des données d'un utilisateur
+const getDatabases = async () => {
+  const request = await fetchWithRefresh(
+    "http://localhost:8080/databases/list",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+
+export { addDatabase, getDatabases };

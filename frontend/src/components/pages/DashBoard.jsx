@@ -1,5 +1,6 @@
 import { useState } from "react";
-import AddDatabase from "./Databases";
+import AddDatabase from "../organisms/AddDatabase";
+import DatabaseBox from "../organisms/DatabaseBox";
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
@@ -7,7 +8,7 @@ const Home = () => {
   return (
     <>
       <h1>Welcome Home</h1>
-
+      <DatabaseBox />
       {!showForm && (
         <button onClick={() => setShowForm(true)}>+ Add Database</button>
       )}

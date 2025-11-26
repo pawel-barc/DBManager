@@ -8,6 +8,7 @@ import Profile from "../components/pages/Profile";
 import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
+import DatabasesList from "../components/organisms/DatabasesList";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -56,6 +57,14 @@ const Router = () => {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/databases"
+          element={
+            <PrivateRoute>
+              <DatabasesList />
             </PrivateRoute>
           }
         />

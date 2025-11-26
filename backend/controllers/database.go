@@ -21,6 +21,16 @@ type AddDatabaseRequest struct {
 	DBPassword string `json:"db_password"`
 }
 
+// Structure représentant les données existant dans la base des données
+type DatabasesItem struct {
+	ID int `json:"id"`
+	Name string `json:"name"`
+	Type string `json:"type"`
+	Host string `json:"host"`
+	Port int `json:"port"`
+	DBUsername string `json:"db_username"`
+}
+
 // Fonction pour ajouter une nouvelle base des données
 func AddDatabase(w http.ResponseWriter, r *http.Request) {
 	// Récupère l'ID de l'utilisateur connecté
@@ -46,4 +56,36 @@ func AddDatabase(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.SendSuccess(w, http.StatusCreated, "La base ajouté avec succès !")
+}
+
+// Récupération des bases existantes
+func GetDatabases(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+
+	rows, err := db.DB.Query(db.QuerySelectDatabases, userID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la récupération des bases")
+		return
+	}
+	defer rows.Close()
+
+	var databases []DatabasesItem
+
+	for rows.Next() {
+		var d DatabasesItem
+		if err := rows.Scan(
+			&d.ID,
+			&d.Name,
+			&d.Type,
+			&d.Host,
+			&d.Port,
+			&d.DBUsername,
+		); err != nil {
+			utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la lecture des données")
+			return
+		}
+	databases = append(databases, d)	
+	}
+
+	utils.SendSuccessWithData(w, http.StatusOK, "Liste des bases récupérée", databases)
 }

@@ -4,6 +4,8 @@ package db
 
 
 var (
+				// ====DATABASES====//
+
 // ---- L'ajout d'une base des données -----
 	QueryInsertDatabase =
 		`INSERT INTO databases (user_id, name, type, host, port, db_username, db_password, created_at) 
@@ -14,5 +16,33 @@ var (
 		`SELECT id, name, type, host, port, db_username FROM databases WHERE user_id = $1 ORDER BY id DESC`	
 		QueryDeleteDatabase = 
 		`DELETE FROM databases WHERE id=$1 AND user_id = $2`
+
+
+					//====BACKUPS====//
+// ---- Nouveau sauvegarde
+	QueryInsertBackup =
+	`INSERT INTO backups (database_id, name, status, version, backup_date)
+	VALUES ($1, $2, 'pending', $4, NOW())
+	RETURNING id `
+	
+// ---- Mis à jour comme completé
+	QueryUpdateBackupSuccess = 
+	`UPDATE backups SET status = 'success', file_path = $1, file_size = $2, log = $3, backup_date = NOW() WHERE id = $4`
+
+// ---- Mis à jour en cas d'erreur 
+	QueryUpdateBackupFail =
+	`UPDATE backups SET status = 'error', log = $1, backup_date = NOW() WHERE id = $2`
+
+	// ---- Récupération du backup et l'atacher au propriéteur 
+	QuerySelectBackupWithOwnership =
+	`SELECT b.id, b.status FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND d.user_id = $2 LIMIT 1`
+
+// ---- Liste des backups d'une seule base de données 
+	QuerySelectBackupsByDatabase =
+	`SELECT id, database_id, name, file_path, file_size, backup_date, status, version, log FROM backups WHERE database_id = $1 ORDER BY backup_date DESC`
+
+// ---- Vérification de la propriété d'une base
+QueryCheckDatabaseOwnership =
+`SELECT COUNT(1) FROM database WHERE id = $1 AND user_id = $2`
 )
 

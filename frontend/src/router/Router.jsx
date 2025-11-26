@@ -9,7 +9,7 @@ import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
 import Databases from "../components/pages/Databases";
-import DatabaseDetailsPage from "../components/organisms/DatabaseDetailsPage";
+import DatabaseDetailsPage from "../components/pages/DatabaseDetailsPage";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);

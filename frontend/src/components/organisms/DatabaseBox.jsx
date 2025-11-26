@@ -9,9 +9,11 @@ const DatabaseBox = () => {
   useEffect(() => {
     const fetchDatabases = async () => {
       try {
-        const res = await getDatabases();
-        if (res.success) {
-          const databasesArray = Array.isArray(res.data) ? res.data : [];
+        const response = await getDatabases();
+        if (response.success) {
+          const databasesArray = Array.isArray(response.data)
+            ? response.data
+            : [];
           setCount(databasesArray.length);
         }
       } catch (err) {

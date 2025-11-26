@@ -10,9 +10,9 @@ const DatabaseDetailsPage = () => {
 
   useEffect(() => {
     const load = async () => {
-      const res = await getDatabases();
-      if (res.success) {
-        const found = res.data.find((item) => item.id === Number(id));
+      const response = await getDatabases();
+      if (response.success) {
+        const found = response.data.find((item) => item.id === Number(id));
         if (found) setDb(found);
         else navigate("/databases");
       }

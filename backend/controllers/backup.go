@@ -3,6 +3,7 @@ package controllers
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -51,18 +52,21 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	var req CreateBackupRequest
 	// Décodage du JSON reçu
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		utils.LogError("Format JSON invalide lors de la création du backup", err)
 		utils.SendError(w, http.StatusBadRequest, "Format JSON invalide")
 		return
 	}
 
 	// Vérification des champs obligatoires
 	if req.DatabaseID == 0 || req.Name == "" {
+		utils.LogError("Champs obligatoires manquants pour la création du backup", nil)
 		utils.SendError(w, http.StatusBadRequest, "database_id et le name sont obligatoires")
 		return
 	}
 
 	// Vérification de la possession de la base
 	if err := assertDatabaseOwnership(userID, req.DatabaseID); err != nil {
+		utils.LogError("Echec de la vérification de possession de la base", err)
 		if err == sql.ErrNoRows {
 			utils.SendError(w, http.StatusForbidden, "Accès refusé à cette base")
 			return
@@ -75,6 +79,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	// Création du dossier de backup s'il n'existe pas
 	backupDir := "./backups"
 	if err := os.MkdirAll(backupDir, os.ModePerm); err != nil {
+		utils.LogError("Impossible de créer le dossier de backup", err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de créer le dossier de backup")
 		return
 	}
@@ -86,6 +91,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	// Création du fichier de backup
 	f, err := os.Create(filePath)
 	if err != nil {
+		utils.LogError("Impossible de créer le fichier backup", err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de créeer le fichier backup")
 		return
 	}
@@ -95,9 +101,11 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	var backupID int
 	err = db.DB.QueryRow(db.QueryInsertBackup, req.DatabaseID, req.Name, req.Version, filePath).Scan(&backupID)
 	if err != nil {
+		utils.LogError("Impossible de créer l'entrée backup dans la base", err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de créer le backup")
 		return
 	}
+	utils.LogInfo(fmt.Sprintf("Backup #%d crée pour database_id=%d, fichier=%s", backupID, req.DatabaseID, filePath))
 
 	// Réponse réussie avec l'ID du backup
 	utils.SendSuccessWithData(w, http.StatusCreated, "Backup crée avec succès", CreateBackupResponse {
@@ -138,6 +146,7 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 	// Exécution de la requête SQL pour récupérer les backups
 	rows, err := db.DB.Query(db.QuerySelectBackupsByDatabase, databaseID )
 	if err != nil {
+		utils.LogError(fmt.Sprintf("Impossible de charger les backups pour database_id=%d", databaseID), err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de charger les backups")
 		return
 	}
@@ -157,6 +166,7 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 		backups = append(backups, b)
 	}
 	// Envoi de la réponse avec la liste complète
+	utils.LogInfo(fmt.Sprintf("Liste des backups récupérée pour la database_id=%d, %d items", databaseID, len(backups)))
 	utils.SendSuccessWithData(w, http.StatusOK, "Liste des backups", backups)
 
 }
@@ -181,6 +191,7 @@ func DownloadBackup(w http.ResponseWriter, r *http.Request) {
 			utils.SendError(w, http.StatusNotFound, "Fichier introuvable ou backup non terminé")
 			return
 		}
+		utils.LogError(fmt.Sprintf("Impossible de récupérer le chemin du backup_id=%d", backupID), err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de récupérer le fichier")
 		return
 	}
@@ -188,6 +199,7 @@ func DownloadBackup(w http.ResponseWriter, r *http.Request) {
 	// Ouverture du fichier physique sur le disque
 	f, err := os.Open(filePath)
 	if err != nil {
+		utils.LogError(fmt.Sprintf("Impossible d'ouvrir le fichier backup_id=%d", backupID), err)
 		utils.SendError(w, http.StatusInternalServerError, "Erreur ouverture du fichier")
 		return
 	}
@@ -198,6 +210,7 @@ func DownloadBackup(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	// Envoi du fichier au client
 	http.ServeContent(w, r, name, time.Now(), f)
+	utils.LogInfo(fmt.Sprintf("Backup_id=%d téléchargé par user_id=%d, fichier=%s", backupID, userID, filePath))
 
 }
 
@@ -221,6 +234,7 @@ func DeleteBackup(w http.ResponseWriter, r *http.Request) {
 			utils.SendError(w, http.StatusNotFound, "Le backup n'existe pas ou vous n'y avez pas d'accès")
 			return
 		}
+		utils.LogError(fmt.Sprintf("Impossible de récupérer le backup_id=%d pour suppression", backupID), err)
 		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la récupération du backup")
 		return
 	}
@@ -235,10 +249,12 @@ func DeleteBackup(w http.ResponseWriter, r *http.Request) {
 	// Suppression du fichier physique si le chemin existe
 	if filePath != "" {
 		if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
-			utils.LogError("Impossible de supprimer le fichier: " +err.Error())
+			utils.LogError(fmt.Sprintf("Impossible de supprimer le fichier backup_id=%d, path=%s", backupID, filePath), err)
 		}
 	}
 
 	// Réponse de succès
+	utils.LogInfo(fmt.Sprintf("Backup_id=%d supprimé par user_id=%d", backupID, userID))
 	utils.SendSuccess(w, http.StatusOK, "Le backup a été supprimé avec succès")
+	
 }

@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"safebase/config"
 	"safebase/db"
 	"safebase/routes"
 )
@@ -34,4 +35,5 @@ func main() {
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatal(err)
 	}
+	config.InitLogger()
 }

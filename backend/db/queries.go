@@ -18,12 +18,16 @@ var (
 	QueryDeleteDatabase = 
 	`DELETE FROM databases WHERE id=$1 AND user_id = $2`
 
+// ---- Récupération informations database
+	QuerySelectDatabaseInfo =
+	`SELECT type, host, port, db_username, db_password, name FROM databases WHERE id = $1 AND user_id = $2`
+
 
 					//====BACKUPS====//
 // ---- Nouveau sauvegarde
 	QueryInsertBackup =
-	`INSERT INTO backups (database_id, name, status, version, backup_date)
-	VALUES ($1, $2, 'pending', $4, NOW())
+	`INSERT INTO backups (database_id, name, status, version, file_path, backup_date)
+	VALUES ($1, $2, 'pending', $3, $4, NOW())
 	RETURNING id `
 	
 // ---- Mis à jour comme completé
@@ -53,5 +57,7 @@ var (
 // ---- Récupération du chemin d'accès du fichier backup
 	QueryFindBackupPathFile =
 	`SELECT b.file_path FROM backups b JOIN databases d ON database_id = d.id WHERE b.id = $1 AND d.user_id = $2`
+
+
 )
 

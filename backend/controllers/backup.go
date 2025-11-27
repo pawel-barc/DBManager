@@ -13,6 +13,7 @@ import (
 	"safebase/db"
 	"safebase/middleware"
 	"safebase/models"
+	"safebase/services"
 	"safebase/utils"
 
 	"github.com/go-chi/chi/v5"
@@ -76,6 +77,18 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Récupération informations database
+	var (
+		dbType, host, username, password, dbName string
+		port string
+	)
+	err := db.DB.QueryRow(db.QuerySelectDatabaseInfo, req.DatabaseID, userID).Scan(&dbType, &host, &port, &username, &password, &dbName)
+	if err != nil {
+		utils.LogError("Impossible de récupérer les infos de la database", err)
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de lire la base")
+		return
+	}
+
 	// Création du dossier de backup s'il n'existe pas
 	backupDir := "./backups"
 	if err := os.MkdirAll(backupDir, os.ModePerm); err != nil {
@@ -88,15 +101,6 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	filename := req.Name + "_" + time.Now().Format("20060102_150405") + ".sql"
 	filePath := filepath.Join(backupDir, filename)
 
-	// Création du fichier de backup
-	f, err := os.Create(filePath)
-	if err != nil {
-		utils.LogError("Impossible de créer le fichier backup", err)
-		utils.SendError(w, http.StatusInternalServerError, "Impossible de créeer le fichier backup")
-		return
-	}
-	defer f.Close() // Fermeture automatique du fichier à la fin de la fonction
-
 	// Insertion du backup dans la base de récupération de l'ID
 	var backupID int
 	err = db.DB.QueryRow(db.QueryInsertBackup, req.DatabaseID, req.Name, req.Version, filePath).Scan(&backupID)
@@ -105,7 +109,26 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de créer le backup")
 		return
 	}
-	utils.LogInfo(fmt.Sprintf("Backup #%d crée pour database_id=%d, fichier=%s", backupID, req.DatabaseID, filePath))
+	utils.LogInfo(fmt.Sprintf("Backup #%d crée (PENDING)", backupID))
+
+	// Exécution du backup réel
+
+	var backupErr error
+
+	switch dbType {
+	case "postgres":
+		backupErr = services.RunBackupPostgres(backupID, dbName, host, port, username, password, filePath)
+	case "mysql":
+		backupErr = services.RunBackupMySQL(backupID, dbName, host, port, username, password, filePath)
+	default:
+		utils.LogError("Type de base non supporté: " +dbType, nil)
+		utils.SendError(w, http.StatusBadRequest, "Type de base non supporté")	
+		return
+	}
+	if backupErr != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Echec du backup")
+		return
+	}
 
 	// Réponse réussie avec l'ID du backup
 	utils.SendSuccessWithData(w, http.StatusCreated, "Backup crée avec succès", CreateBackupResponse {

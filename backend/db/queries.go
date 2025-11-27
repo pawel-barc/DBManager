@@ -14,8 +14,9 @@ var (
 // ---- Récupérer les bases d'un utilisateur -----
 	QuerySelectDatabases = 
 		`SELECT id, name, type, host, port, db_username FROM databases WHERE user_id = $1 ORDER BY id DESC`	
-		QueryDeleteDatabase = 
-		`DELETE FROM databases WHERE id=$1 AND user_id = $2`
+// ---- Suppression d'une database		
+	QueryDeleteDatabase = 
+	`DELETE FROM databases WHERE id=$1 AND user_id = $2`
 
 
 					//====BACKUPS====//
@@ -33,7 +34,7 @@ var (
 	QueryUpdateBackupFail =
 	`UPDATE backups SET status = 'error', log = $1, backup_date = NOW() WHERE id = $2`
 
-	// ---- Récupération du backup et l'atacher au propriéteur 
+	// ---- Récupération du backup et l'atacher au propriétaire 
 	QuerySelectBackupWithOwnership =
 	`SELECT b.id, b.status FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND d.user_id = $2 LIMIT 1`
 
@@ -42,7 +43,15 @@ var (
 	`SELECT id, database_id, name, file_path, file_size, backup_date, status, version, log FROM backups WHERE database_id = $1 ORDER BY backup_date DESC`
 
 // ---- Vérification de la propriété d'une base
-QueryCheckDatabaseOwnership =
-`SELECT COUNT(1) FROM database WHERE id = $1 AND user_id = $2`
+	QueryCheckDatabaseOwnership =
+	`SELECT COUNT(1) FROM databases WHERE id = $1 AND user_id = $2`
+
+// ---- Récupérer le chemin du backup avec vérification propriétaire
+	QueryGetBackupPathWithOwnership = 
+	`SELECT b.file_path, b.name FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND d.user_id = $2 LIMIT 1 `
+
+// ---- Récupération du chemin d'accès du fichier backup
+	QueryFindBackupPathFile =
+	`SELECT b.file_path FROM backups b JOIN databases d ON database_id = d.id WHERE b.id = $1 AND d.user_id = $2`
 )
 

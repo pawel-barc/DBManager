@@ -160,4 +160,85 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 	utils.SendSuccessWithData(w, http.StatusOK, "Liste des backups", backups)
 
 }
+// Télécharger un backup 
+func DownloadBackup(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+	// Extraction de l'ID du backup depuis l'URL 
+	backupIDStr := chi.URLParam(r, "id")
+	// Conversion en entier et validation
+	backupID, err := strconv.Atoi(backupIDStr)
+	if err != nil || backupID <= 0 {
+		utils.SendError(w, http.StatusBadRequest, "id invalide")
+		return
+	}
 
+	// Variables qui recevrons le chemin du fichier et le nom du backup 
+	var filePath, name string
+	// Vérifier que le backup appartient bien à l'utilisateur et récupérer file_path et name depuis la base
+	err = db.DB.QueryRow(db.QueryGetBackupPathWithOwnership, backupID, userID).Scan(&filePath, &name)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			utils.SendError(w, http.StatusNotFound, "Fichier introuvable ou backup non terminé")
+			return
+		}
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de récupérer le fichier")
+		return
+	}
+
+	// Ouverture du fichier physique sur le disque
+	f, err := os.Open(filePath)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur ouverture du fichier")
+		return
+	}
+	defer f.Close()
+
+	// Configuration des en-têtes HTTP pour forcer le téléchargement 
+	w.Header().Set("Content-Disposition", `attachment; filename="`+name+`"`)
+	w.Header().Set("Content-Type", "application/octet-stream")
+	// Envoi du fichier au client
+	http.ServeContent(w, r, name, time.Now(), f)
+
+}
+
+// Suppression d'un backup 
+func DeleteBackup(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+
+	// Extraction de l'ID du backup depuis l'URL
+	backupIDStr := chi.URLParam(r, "backup_id")
+	backupID, err := strconv.Atoi(backupIDStr)
+	if err != nil || backupID <= 0 {
+		utils.SendError(w, http.StatusBadRequest, "Backup ID invalide")
+		return
+	}
+	// Variable qui recevra le chemin du fichier 
+	var filePath string
+	// Vérification que le backup appartient bien à l'utilisateur
+	err = db.DB.QueryRow(db.QueryFindBackupPathFile, backupID, userID).Scan(&filePath)
+	if err != nil {
+		if err == sql.ErrNoRows{
+			utils.SendError(w, http.StatusNotFound, "Le backup n'existe pas ou vous n'y avez pas d'accès")
+			return
+		}
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la récupération du backup")
+		return
+	}
+
+	// Suppression de l'enregistrement du backup dans la base de données
+	_, err = db.DB.Exec(`DELETE FROM backups WHERE id = $1`, backupID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de supprimer ce backup")
+		return
+	}
+
+	// Suppression du fichier physique si le chemin existe
+	if filePath != "" {
+		if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
+			utils.LogError("Impossible de supprimer le fichier: " +err.Error())
+		}
+	}
+
+	// Réponse de succès
+	utils.SendSuccess(w, http.StatusOK, "Le backup a été supprimé avec succès")
+}

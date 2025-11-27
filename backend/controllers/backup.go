@@ -11,6 +11,7 @@ import (
 
 	"safebase/db"
 	"safebase/middleware"
+	"safebase/models"
 	"safebase/utils"
 
 	"github.com/go-chi/chi/v5"
@@ -105,3 +106,58 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		Message: "Backup créé et enregistré",
 	})
 }
+
+// Récupération de la liste des backups d'une base de données
+func ListBackups(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+
+	// Récupération du paramètre database_id depuis l'URL
+	dbIDStr := r.URL.Query().Get("database_id")
+	if dbIDStr == "" {
+		utils.SendError(w, http.StatusBadRequest, "Paramètre database_id requis")
+		return
+	}
+
+	// Convertion du paramètre en entier
+	databaseID, err := strconv.Atoi(dbIDStr)
+	if err != nil || databaseID <= 0 {
+		utils.SendError(w, http.StatusBadRequest, "database_id invalide")
+		return
+	}
+
+	// Vérification que l'utilisateur est bien le propriétaire de la base 
+	if err := assertDatabaseOwnership(userID, databaseID); err != nil {
+		if err == sql.ErrNoRows {
+			utils.SendError(w, http.StatusForbidden, "Accès refusé à cette base")
+			return
+		}
+		utils.SendError(w, http.StatusInternalServerError, "Vérification d'accès impossible")
+		return
+	}
+
+	// Exécution de la requête SQL pour récupérer les backups
+	rows, err := db.DB.Query(db.QuerySelectBackupsByDatabase, databaseID )
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de charger les backups")
+		return
+	}
+
+	// Fermeture automatique du curseur de résultats
+	defer rows.Close()
+
+	// Lecture des résultats ligne par ligne
+	var backups []models.Backup
+	for rows.Next() {
+		var b models.Backup
+		// Remplissage de la structure Backup avec les colonnes SQL
+		if err := rows.Scan(&b.ID, &b.DatabaseID, &b.Name, &b.FilePath, &b.FileSize, &b.BackupDate, &b.Status, &b.Version, &b.Log); err != nil {
+			utils.SendError(w, http.StatusInternalServerError, "Erreur de lecture des backups")
+			return
+		}
+		backups = append(backups, b)
+	}
+	// Envoi de la réponse avec la liste complète
+	utils.SendSuccessWithData(w, http.StatusOK, "Liste des backups", backups)
+
+}
+

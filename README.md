@@ -98,3 +98,14 @@ Refresh token → stocké dans la base de données, valide pendant 7 jours
 
 Le frontend est copier/coller et un peut modifier, et est a corriger s'il faut
 Chez moi tout marche comme il faut jusquau la
+
+===================IMPORTANT===========================
+pgAdmin 4 Querrytool rights for user!!!!
+GRANT USAGE ON SCHEMA public TO safebase_user;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO safebase_user;
+
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO safebase_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO safebase_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON SEQUENCES TO safebase_user;

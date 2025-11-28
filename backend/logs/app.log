@@ -1,0 +1,32 @@
+2025/11/28 16:08:41 logs.go:16: ERROR: Champs obligatoires manquants pour la création du backup
+2025/11/28 16:12:26 logs.go:16: ERROR: Champs obligatoires manquants pour la création du backup
+2025/11/28 16:26:56 logs.go:9: INFO: Backup #1 crée (PENDING)
+2025/11/28 16:26:56 logs.go:14: ERROR: pg_dump failed: exec: "pg_dump": executable file not found in %PATH%
+Output:  | exec: "pg_dump": executable file not found in %PATH%
+2025/11/28 17:19:45 logs.go:9: INFO: Backup #2 crée (PENDING)
+2025/11/28 17:19:46 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: query failed: ERREUR:  droit refusé pour la table users
+pg_dump: detail: Query was: LOCK TABLE public.users, public.projects, public.logs IN ACCESS SHARE MODE
+ | exit status 1
+2025/11/28 17:32:23 logs.go:9: INFO: Backup #3 crée (PENDING)
+2025/11/28 17:32:23 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: query failed: ERREUR:  droit refusé pour la table users
+pg_dump: detail: Query was: LOCK TABLE public.users, public.projects, public.logs IN ACCESS SHARE MODE
+ | exit status 1
+2025/11/28 17:33:26 logs.go:9: INFO: Backup #4 crée (PENDING)
+2025/11/28 17:33:27 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: query failed: ERREUR:  droit refusé pour la table users
+pg_dump: detail: Query was: LOCK TABLE public.users, public.projects, public.logs IN ACCESS SHARE MODE
+ | exit status 1
+2025/11/28 17:36:56 logs.go:9: INFO: Backup #5 crée (PENDING)
+2025/11/28 17:36:56 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: query failed: ERREUR:  droit refusé pour la séquence logs_id_seq
+pg_dump: detail: Query was: SELECT last_value, is_called FROM public.logs_id_seq
+ | exit status 1
+2025/11/28 17:37:10 logs.go:9: INFO: Backup #6 crée (PENDING)
+2025/11/28 17:37:10 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: query failed: ERREUR:  droit refusé pour la séquence logs_id_seq
+pg_dump: detail: Query was: SELECT last_value, is_called FROM public.logs_id_seq
+ | exit status 1
+2025/11/28 17:43:22 logs.go:9: INFO: Backup #7 crée (PENDING)
+2025/11/28 17:43:22 logs.go:9: INFO: Backup postgres réussi: backups\sixthOne_20251128_174322.sql, size=9.33 KB

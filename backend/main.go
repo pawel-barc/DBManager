@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	config.InitLogger()
 	// Connexiona à la base des données
 	db.ConnectDB()
 	// Configuration du routeur (définition des routes de l'application)
@@ -35,5 +36,5 @@ func main() {
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatal(err)
 	}
-	config.InitLogger()
+
 }

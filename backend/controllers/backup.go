@@ -21,7 +21,6 @@ import (
 
 // Request / response structure
 type CreateBackupRequest struct {
-	DatabaseID int `json:"database_id"`
 	Name string `json:"name"`
 	Version string `json:"version,omitempty"`
 }
@@ -58,15 +57,18 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	vars := chi.URLParam(r, "database_id")
+	databaseID, _ := strconv.Atoi(vars)
+
 	// Vérification des champs obligatoires
-	if req.DatabaseID == 0 || req.Name == "" {
+	if databaseID == 0 || req.Name == "" {
 		utils.LogError("Champs obligatoires manquants pour la création du backup", nil)
 		utils.SendError(w, http.StatusBadRequest, "database_id et le name sont obligatoires")
 		return
 	}
 
 	// Vérification de la possession de la base
-	if err := assertDatabaseOwnership(userID, req.DatabaseID); err != nil {
+	if err := assertDatabaseOwnership(userID, databaseID); err != nil {
 		utils.LogError("Echec de la vérification de possession de la base", err)
 		if err == sql.ErrNoRows {
 			utils.SendError(w, http.StatusForbidden, "Accès refusé à cette base")
@@ -82,7 +84,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		dbType, host, username, password, dbName string
 		port string
 	)
-	err := db.DB.QueryRow(db.QuerySelectDatabaseInfo, req.DatabaseID, userID).Scan(&dbType, &host, &port, &username, &password, &dbName)
+	err := db.DB.QueryRow(db.QuerySelectDatabaseInfo, databaseID, userID).Scan(&dbType, &host, &port, &username, &password, &dbName)
 	if err != nil {
 		utils.LogError("Impossible de récupérer les infos de la database", err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de lire la base")
@@ -103,7 +105,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 
 	// Insertion du backup dans la base de récupération de l'ID
 	var backupID int
-	err = db.DB.QueryRow(db.QueryInsertBackup, req.DatabaseID, req.Name, req.Version, filePath).Scan(&backupID)
+	err = db.DB.QueryRow(db.QueryInsertBackup, databaseID, req.Name, req.Version, filePath).Scan(&backupID)
 	if err != nil {
 		utils.LogError("Impossible de créer l'entrée backup dans la base", err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de créer le backup")

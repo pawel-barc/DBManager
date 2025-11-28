@@ -140,6 +140,54 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// Récupération de tout les backups d'un utilisateur
+func ListAllBackups(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+
+	rows, err := db.DB.Query(db.QuerySelectAllBackups, userID)
+	if err != nil {
+		utils.LogError("Impossible de récupérer tout les backups", err)
+		utils.SendError(w, http.StatusInternalServerError, "Erreur du chargement du backups")
+		return
+	}
+	// Fermeture automatique du curseur de résultats
+	defer rows.Close()
+
+	var backups []models.Backup
+	for rows.Next() {
+		var b models.Backup
+		var name, version, log sql.NullString
+		var fileSize sql.NullFloat64
+		if err := rows.Scan(&b.ID, &b.DatabaseID, &name, &b.FilePath, &fileSize, &b.BackupDate, &b.Status, &version, &log); err != nil {
+			utils.SendError(w, http.StatusInternalServerError, "Erreur de lecture des backups")
+			return
+		}
+		// En cas NULL
+		if name.Valid {
+			b.Name = name.String
+		} else {
+			b.Name = ""
+		}
+		if fileSize.Valid {
+			b.FileSize = fileSize.Float64
+		} else {
+			b.FileSize = 0
+		}
+		if version.Valid {
+			b.Version = version.String
+		} else {
+			b.Version = ""
+		}
+		if log.Valid {
+			b.Log = log.String
+		} else {
+			b.Log = ""
+		}
+		backups = append(backups, b)
+	}
+	utils.SendSuccessWithData(w, http.StatusOK, "Liste complète des backups", backups)
+}
+
 // Récupération de la liste des backups d'une base de données
 func ListBackups(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)

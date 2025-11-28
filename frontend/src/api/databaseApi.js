@@ -31,7 +31,7 @@ const getDatabases = async () => {
   const response = await request.json();
   return response;
 };
-
+// Suppression d'une base de données
 const deleteDatabase = async (id) => {
   const request = await fetchWithRefresh(
     `http://localhost:8080/databases/${id}`,

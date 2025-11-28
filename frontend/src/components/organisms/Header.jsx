@@ -20,6 +20,9 @@ const Header = () => {
           <Link to="/profile" style={styles.link}>
             Profile
           </Link>
+          <Link to="/" style={styles.link}>
+            Dashboard
+          </Link>
           <button onClick={handleLogout} style={styles.button}>
             <Logout />
           </button>

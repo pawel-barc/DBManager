@@ -1,7 +1,7 @@
 import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import createBackup from "../../api/backupApi";
+import { createBackup } from "../../api/backupApi";
 
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);

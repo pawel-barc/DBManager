@@ -38,9 +38,14 @@ var (
 	QueryUpdateBackupFail =
 	`UPDATE backups SET status = 'error', log = $1, backup_date = NOW() WHERE id = $2`
 
-	// ---- Récupération du backup et l'atacher au propriétaire 
+// ---- Récupération du backup et l'atacher au propriétaire 
 	QuerySelectBackupWithOwnership =
 	`SELECT b.id, b.status FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND d.user_id = $2 LIMIT 1`
+
+// ---- Liste des backups d'un utilisateur
+	QuerySelectAllBackups =
+	`SELECT b.id, b.database_id, b.name, b.file_path, b.file_size, b.backup_date, b.status, b.version, b.log FROM backups b
+	JOIN databases d ON d.id = database_id WHERE user_id = $1 ORDER BY b.backup_date DESC`
 
 // ---- Liste des backups d'une seule base de données 
 	QuerySelectBackupsByDatabase =

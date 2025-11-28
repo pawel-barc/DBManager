@@ -30,3 +30,30 @@ pg_dump: detail: Query was: SELECT last_value, is_called FROM public.logs_id_seq
  | exit status 1
 2025/11/28 17:43:22 logs.go:9: INFO: Backup #7 cr√©e (PENDING)
 2025/11/28 17:43:22 logs.go:9: INFO: Backup postgres r√©ussi: backups\sixthOne_20251128_174322.sql, size=9.33 KB
+2025/11/28 20:23:17 logs.go:9: INFO: Backup #8 cr√©e (PENDING)
+2025/11/28 20:23:17 logs.go:9: INFO: Backup postgres r√©ussi: backups\NextOne_20251128_202317.sql, size=9.33 KB
+2025/11/28 21:54:23 logs.go:9: INFO: Backup #9 cr√©e (PENDING)
+2025/11/28 21:54:23 logs.go:9: INFO: Backup postgres r√©ussi: backups\TheRightOne_20251128_215423.sql, size=9.33 KB
+2025/11/28 22:04:44 logs.go:9: INFO: Backup #10 cr√©e (PENDING)
+2025/11/28 22:04:44 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe ÈchouÈe pour l'utilisateur  ´ pacio ª
+ | exit status 1
+2025/11/28 22:19:40 logs.go:9: INFO: Backup #11 cr√©e (PENDING)
+2025/11/28 22:19:40 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe ÈchouÈe pour l'utilisateur  ´ nic ª
+ | exit status 1
+2025/11/28 22:22:55 logs.go:9: INFO: Backup #12 cr√©e (PENDING)
+2025/11/28 22:22:55 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe ÈchouÈe pour l'utilisateur  ´ nic ª
+ | exit status 1
+2025/11/28 22:24:56 logs.go:9: INFO: Backup #13 cr√©e (PENDING)
+2025/11/28 22:24:56 logs.go:9: INFO: Backup postgres r√©ussi: backups\nineOne_20251128_222456.sql, size=9.33 KB
+2025/11/28 22:46:02 logs.go:9: INFO: Backup #14 cr√©e (PENDING)
+2025/11/28 22:46:02 logs.go:9: INFO: Backup postgres r√©ussi: backups\Test_20251128_224602.sql, size=9.33 KB
+2025/11/28 22:57:28 logs.go:9: INFO: Backup_id=12 supprim√© par user_id=1
+2025/11/28 22:58:24 logs.go:9: INFO: Backup_id=10 supprim√© par user_id=1
+2025/11/28 22:58:28 logs.go:9: INFO: Backup_id=11 supprim√© par user_id=1
+2025/11/28 22:58:30 logs.go:9: INFO: Backup_id=13 supprim√© par user_id=1
+2025/11/28 22:58:34 logs.go:9: INFO: Backup_id=14 supprim√© par user_id=1
+2025/11/28 23:01:38 logs.go:9: INFO: Backup #15 cr√©e (PENDING)
+2025/11/28 23:01:39 logs.go:9: INFO: Backup postgres r√©ussi: backups\myBackup_20251128_230138.sql, size=9.33 KB

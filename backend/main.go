@@ -5,12 +5,14 @@ import (
 	"net/http"
 
 	"safebase/config"
+	"safebase/cron"
 	"safebase/db"
 	"safebase/routes"
 )
 
 func main() {
 	config.InitLogger()
+	cron.StartBackupCron()
 	// Connexiona à la base des données
 	db.ConnectDB()
 	// Configuration du routeur (définition des routes de l'application)

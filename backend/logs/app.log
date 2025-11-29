@@ -61,3 +61,84 @@ Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 fai
 2025/11/28 23:34:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
 2025/11/28 23:38:05 logs.go:9: INFO: Backup_id=15 supprimé par user_id=1
 2025/11/28 23:38:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/28 23:48:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/28 23:48:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/28 23:48:30 logs.go:9: INFO: Backup_id=9 téléchargé par user_id=1, fichier=backups\TheRightOne_20251128_215423.sql
+2025/11/29 10:21:01 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:21:01 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:21:24 logs.go:9: INFO: Backup #16 crée (PENDING)
+2025/11/29 10:21:24 logs.go:9: INFO: Backup postgres réussi: backups\TheLAstOne_20251129_102124.sql, size=9.33 KB
+2025/11/29 10:21:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:21:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:25:30 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:25:30 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:25:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:25:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:25:52 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:25:52 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:26:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:26:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:30:52 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:30:52 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:30:56 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:30:56 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/29 10:31:09 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:31:09 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:32:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:32:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:32:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:32:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:33:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:33:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:34:16 logs.go:9: INFO: Backup_id=16 supprimé par user_id=1
+2025/11/29 10:34:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:34:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:34:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:34:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:34:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:34:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:35:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:35:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:35:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:35:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:35:20 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:35:20 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:35:29 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:35:29 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:36:04 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:36:04 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:36:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:36:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:37:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:37:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:37:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:37:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:55 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:42:55 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:43:09 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:43:09 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:45:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:45:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:45:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:45:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:45:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:45:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:46:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:46:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/11/29 10:46:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:46:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:47:04 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:47:04 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 10:47:08 logs.go:9: INFO: Backup_id=9 téléchargé par user_id=1, fichier=backups\TheRightOne_20251128_215423.sql
+2025/11/29 11:43:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 11:43:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items
+2025/11/29 15:21:41 logs.go:14: ERROR: Impossible d'ajouter la fonction au CRON | expected exactly 6 fields, found 5: [23 15 * * *]
+2025/11/29 15:21:41 logs.go:9: INFO: CRON - Le programme des backups démarré

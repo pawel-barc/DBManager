@@ -140,6 +140,54 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func CreateBackupForDb(databaseID int, backupName, version string) error {
+	var dbType, host, username, password, dbName string
+	var port string
+	err := db.DB.QueryRow(db.QuerySelectDatabaseInfo, databaseID).Scan(&dbType, &host, &port, &username, &password, &dbName)
+	if err != nil {
+		utils.LogError("Impossible de récupérer les infos de la database", err)
+		return err
+	}
+
+	// Création du dossier de backup s'il n'existe pas
+	backupDir := "./backups"
+	if err := os.MkdirAll(backupDir, os.ModePerm); err != nil {
+		utils.LogError("Impossible de créer le dossier de backup", err)
+		return err
+	}
+
+	// Création du nom de fichier unique avec date et heure
+	filename := backupName + "_" + time.Now().Format("20060102_150405") + ".sql"
+	filePath := filepath.Join(backupDir, filename)
+
+	// Insertion du backup dans la base de récupération de l'ID
+	var backupID int
+	err = db.DB.QueryRow(db.QueryInsertBackup, databaseID, backupName, version, filePath).Scan(&backupID)
+	if err != nil {
+		utils.LogError("Impossible de créer l'entrée backup dans la base", err)
+		return err
+	}
+	utils.LogInfo(fmt.Sprintf("Backup #%d crée (PENDING)", backupID))
+
+	// Exécution du backup réel
+
+	var backupErr error
+
+	switch dbType {
+	case "postgres":
+		backupErr = services.RunBackupPostgres(backupID, dbName, host, port, username, password, filePath)
+	case "mysql":
+		backupErr = services.RunBackupMySQL(backupID, dbName, host, port, username, password, filePath)
+	default:
+		utils.LogError("Type de base non supporté: " +dbType, nil)
+		return err
+	}
+	if backupErr != nil {
+		return err
+	}
+return nil
+}
+
 // Récupération de tout les backups d'un utilisateur
 func ListAllBackups(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)
@@ -331,4 +379,29 @@ func DeleteBackup(w http.ResponseWriter, r *http.Request) {
 	utils.LogInfo(fmt.Sprintf("Backup_id=%d supprimé par user_id=%d", backupID, userID))
 	utils.SendSuccess(w, http.StatusOK, "Le backup a été supprimé avec succès")
 	
+}
+
+// Backups pour toutes les bases de données (CRON)
+func RunAllBackups() error {
+	rows, err := db.DB.Query("SELECT id FROM databases")
+	if err != nil {
+		utils.LogError("Erreur lors de la récupération des bases", err)
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var dbID int
+		if err := rows.Scan(&dbID); err != nil {
+			utils.LogError("Erreur lors de la récupération de l'ID de la base", err)
+			continue
+		}
+		backupName := fmt.Sprintf("auto-%s", time.Now().Format("2006-01-02"))
+		if err := CreateBackupForDb(dbID, backupName, "v1"); err != nil {
+			utils.LogError("Impossible de créer un backup", err)
+		} else {
+			utils.LogInfo("Le backup de la base créé avec succès")
+		}
+	}
+	return nil
 }

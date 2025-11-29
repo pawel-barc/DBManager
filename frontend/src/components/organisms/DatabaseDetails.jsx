@@ -1,7 +1,9 @@
+// Ce composant affiche les détails d'une base de données, permet de créer des backups et de supprimer la base sélectionnée
 import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { createBackup } from "../../api/backupApi";
+import DatabaseBackups from "./DatabaseBackups";
 
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -15,7 +17,6 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
     }
     setLoading(true);
     const response = await createBackup(db.id, backupName, "v1");
-    console.log("Your id number is: ", db.id);
     setLoading(false);
 
     if (response.success) {
@@ -84,6 +85,7 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
             }}
           />
         )}
+        <DatabaseBackups databaseId={db.id} />
       </div>
     </div>
   );

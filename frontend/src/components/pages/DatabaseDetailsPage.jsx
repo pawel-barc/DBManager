@@ -1,3 +1,4 @@
+// Cette page récupère l'ID depuis l'URL, cherche la base correspondante dans la liste des bases, et affiche ses détails.
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDatabases } from "../../api/databaseApi";

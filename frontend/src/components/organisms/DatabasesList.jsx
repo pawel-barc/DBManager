@@ -1,3 +1,4 @@
+// Ce composant récupère toutes les base de données depuis l'API et affiche une liste cliquable permettant d'ouvrir les détails de chaque base.
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDatabases } from "../../api/databaseApi";
@@ -20,7 +21,6 @@ const DatabasesList = () => {
     };
     load();
   }, []);
-
   const goToDetails = (id) => {
     navigate(`/databases/${id}`);
   };

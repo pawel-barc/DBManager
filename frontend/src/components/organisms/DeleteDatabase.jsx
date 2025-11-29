@@ -1,3 +1,4 @@
+// Ce composant affiche une fenêtre modale permettant de supprimer une base de données existante.
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { deleteDatabase } from "../../api/databaseApi";

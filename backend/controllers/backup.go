@@ -193,7 +193,8 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)
 
 	// Récupération du paramètre database_id depuis l'URL
-	dbIDStr := r.URL.Query().Get("database_id")
+	dbIDStr := chi.URLParam(r, "database_id")
+
 	if dbIDStr == "" {
 		utils.SendError(w, http.StatusBadRequest, "Paramètre database_id requis")
 		return
@@ -247,7 +248,7 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 func DownloadBackup(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)
 	// Extraction de l'ID du backup depuis l'URL 
-	backupIDStr := chi.URLParam(r, "id")
+	backupIDStr := chi.URLParam(r, "backup_id")
 	// Conversion en entier et validation
 	backupID, err := strconv.Atoi(backupIDStr)
 	if err != nil || backupID <= 0 {

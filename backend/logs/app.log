@@ -57,3 +57,7 @@ Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 fai
 2025/11/28 22:58:34 logs.go:9: INFO: Backup_id=14 supprimé par user_id=1
 2025/11/28 23:01:38 logs.go:9: INFO: Backup #15 crée (PENDING)
 2025/11/28 23:01:39 logs.go:9: INFO: Backup postgres réussi: backups\myBackup_20251128_230138.sql, size=9.33 KB
+2025/11/28 23:34:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/28 23:34:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 3 items
+2025/11/28 23:38:05 logs.go:9: INFO: Backup_id=15 supprimé par user_id=1
+2025/11/28 23:38:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 2 items

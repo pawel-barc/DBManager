@@ -1,3 +1,4 @@
+// Ce composant affiche le tableau de bord principal et gère l'ouverture du formulaire d'ajout de base de données
 import { useState } from "react";
 import AddDatabase from "../organisms/AddDatabase";
 import DatabaseBox from "../organisms/DatabaseBox";

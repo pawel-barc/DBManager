@@ -1,3 +1,4 @@
+// Ce composant affiche un formulaire permettant de tester une connexion à une base de données puis de l'enregistrer si le test réussit.
 import { useState } from "react";
 import testConnectionApi from "../../api/testConnection";
 import { toast } from "react-toastify";

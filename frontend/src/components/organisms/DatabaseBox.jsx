@@ -1,3 +1,4 @@
+// Ce composant récupère le nombre total de base de données via l'API et redirige vers la liste lorsqu'on clique dessus.
 import { useEffect, useState } from "react";
 import { getDatabases } from "../../api/databaseApi";
 import { useNavigate } from "react-router-dom";

@@ -1,3 +1,4 @@
+// Ce composant récupère le nombre total des backups via l'API et redirige vers la liste lorsqu'on clique dessus.
 import { useEffect, useState } from "react";
 import { getAllBackups } from "../../api/backupApi";
 import { useNavigate } from "react-router-dom";

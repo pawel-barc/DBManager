@@ -27,7 +27,7 @@ const getAllBackups = async () => {
 // API pour récupérer les sauvegardes existantes
 const getDatabaseBackups = async (databaseId) => {
   const request = await fetchWithRefresh(
-    `http://localhost:8080/backups/${databaseId}/list`,
+    `http://localhost:8080/backups/${databaseId}`,
     {
       method: "GET",
       headers: { "Content-Type": "application/json" },

@@ -1,20 +1,19 @@
-// Cette page récupère et affiche la liste des backups pour une base de donnée et permet de supprimer un backup.
+// Ce composant affiche la liste des backups d'une base de données, et permet de les télécharger ou les supprimer
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getAllBackups, deleteBackup } from "../../api/backupApi";
+import { getDatabaseBackups, deleteBackup } from "../../api/backupApi";
 import { toast } from "react-toastify";
 
-const BackupsListPage = () => {
-  const { databaseId } = useParams();
+const DatabaseBackups = ({ databaseId }) => {
   const [backups, setBackups] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchBackups = async () => {
     setLoading(true);
-    const response = await getAllBackups(databaseId);
+    const response = await getDatabaseBackups(databaseId);
     setLoading(false);
+
     if (response.success) {
-      setBackups(response.data);
+      setBackups(Array.isArray(response.data) ? response.data : []);
     } else {
       toast.error(response.message || "Erreur lors du chargement des backups");
     }
@@ -31,17 +30,21 @@ const BackupsListPage = () => {
     }
   };
 
+  const handleDownload = (backupId) => {
+    window.open(`http://localhost:8080/backups/${backupId}/download`, "_blank");
+  };
+
   useEffect(() => {
     fetchBackups();
   }, [databaseId]);
 
-  if (loading) return <p>Chargement...</p>;
+  if (loading) return <p>Chargement des backups...</p>;
 
   return (
-    <div>
-      <h2>Backups de la base {databaseId}</h2>
+    <div style={{ marginTop: "20px" }}>
+      <h3>Backups</h3>
       {backups.length === 0 ? (
-        <p>Aucun backup</p>
+        <p>Aucun backup disponible</p>
       ) : (
         <ul>
           {backups.map((b) => (
@@ -53,6 +56,12 @@ const BackupsListPage = () => {
               >
                 Supprimer
               </button>
+              <button
+                style={{ marginLeft: "5px", color: "green" }}
+                onClick={() => handleDownload(b.id)}
+              >
+                Télécharger
+              </button>
             </li>
           ))}
         </ul>
@@ -61,4 +70,4 @@ const BackupsListPage = () => {
   );
 };
 
-export default BackupsListPage;
+export default DatabaseBackups;

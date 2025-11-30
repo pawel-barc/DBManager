@@ -49,9 +49,9 @@ const BackupBox = () => {
         (e.currentTarget.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)")
       }
     >
-      <h3>Backups</h3>
+      <h3>Sauvegardes</h3>
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>{count}</p>
-      <small>Cliquer pour voir les backups</small>
+      <small>Cliquer pour voir les Sauvegardes</small>
     </div>
   );
 };

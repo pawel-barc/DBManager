@@ -440,3 +440,106 @@ pg_dump: detail: Query was: SELECT last_value, is_called FROM public.payments_id
 2025/11/30 20:17:09 logs.go:9: INFO: Backup postgres réussi: backups\ttttttttttttttttttttttttttttttttttttttttttt_20251130_201709.sql, size=1.00 KB
 2025/11/30 20:17:14 logs.go:9: INFO: La base supprimée avec suucès
 2025/11/30 21:03:26 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/11/30 21:16:23 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/11/30 21:28:32 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 21:28:32 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 21:28:42 logs.go:9: INFO: Backup #46 crée (PENDING)
+2025/11/30 21:28:42 logs.go:9: INFO: Backup mysql réussi: backups\CouCou_20251130_212842.sql, size=2.75 KB
+2025/11/30 21:28:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:28:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:28:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:28:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:29:11 logs.go:9: INFO: Backup #47 crée (PENDING)
+2025/11/30 21:29:11 logs.go:9: INFO: Backup mysql réussi: backups\Backup_20251130_212911.sql, size=2.75 KB
+2025/11/30 21:29:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 2 items
+2025/11/30 21:29:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 2 items
+2025/11/30 21:30:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:30:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:32:37 logs.go:9: INFO: Backup_id=8 supprimé par user_id=1
+2025/11/30 21:36:46 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:36:46 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:48:24 logs.go:9: INFO: Backup_id=46 supprimé par user_id=1
+2025/11/30 21:50:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:50:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:50:38 logs.go:9: INFO: Backup #48 crée (PENDING)
+2025/11/30 21:50:39 logs.go:9: INFO: Backup postgres réussi: backups\lllllllllllllllllllllllllllllllllllllllllll_20251130_215038.sql, size=6.03 KB
+2025/11/30 21:50:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 2 items
+2025/11/30 21:50:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 2 items
+2025/11/30 21:50:50 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/11/30 21:50:50 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/11/30 21:50:54 logs.go:9: INFO: Backup_id=35 supprimé par user_id=1
+2025/11/30 21:50:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:50:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:50:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:51:06 logs.go:9: INFO: Backup_id=48 supprimé par user_id=1
+2025/11/30 21:51:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:51:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:51:42 logs.go:9: INFO: Backup #49 crée (PENDING)
+2025/11/30 21:51:42 logs.go:9: INFO: Backup mysql réussi: backups\gggggggggggggggggggggggggggggggggggg_20251130_215142.sql, size=2.75 KB
+2025/11/30 21:51:55 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 2 items
+2025/11/30 21:51:55 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 2 items
+2025/11/30 21:51:59 logs.go:9: INFO: Backup_id=49 supprimé par user_id=1
+2025/11/30 21:52:00 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:52:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:52:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:52:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:52:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:52:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:52:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:52:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:52:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:52:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:52:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:52:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:52:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:52:32 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:52:32 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:52:35 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:52:35 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:52:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:52:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:52:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:52:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:53:00 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:53:00 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/11/30 21:53:03 logs.go:9: INFO: Backup_id=47 supprimé par user_id=1
+2025/11/30 21:53:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 21:53:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:53:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:53:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:53:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 21:53:10 logs.go:9: INFO: Backup_id=39 supprimé par user_id=1
+2025/11/30 21:53:10 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 0 items
+2025/11/30 21:53:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:53:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/11/30 21:53:16 logs.go:9: INFO: Backup_id=34 supprimé par user_id=1
+2025/11/30 21:53:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/11/30 21:53:18 logs.go:9: INFO: Backup_id=31 supprimé par user_id=1
+2025/11/30 21:53:18 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/11/30 21:53:20 logs.go:9: INFO: Backup_id=30 supprimé par user_id=1
+2025/11/30 21:53:20 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/11/30 21:53:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:53:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/11/30 21:53:23 logs.go:9: INFO: Backup_id=33 supprimé par user_id=1
+2025/11/30 21:53:23 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/11/30 21:54:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 21:54:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 21:54:24 logs.go:9: INFO: Backup #50 crée (PENDING)
+2025/11/30 21:54:24 logs.go:9: INFO: Backup mysql réussi: backups\manual_20251130_215424.sql, size=2.75 KB
+2025/11/30 21:54:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:54:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 0 items
+2025/11/30 21:54:34 logs.go:9: INFO: Backup #51 crée (PENDING)
+2025/11/30 21:54:35 logs.go:9: INFO: Backup postgres réussi: backups\weekly_20251130_215434.sql, size=1.00 KB
+2025/11/30 21:54:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 0 items
+2025/11/30 21:54:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 0 items
+2025/11/30 21:54:44 logs.go:9: INFO: Backup #52 crée (PENDING)
+2025/11/30 21:54:44 logs.go:9: INFO: Backup postgres réussi: backups\daily_20251130_215444.sql, size=6.03 KB
+2025/11/30 21:54:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/11/30 21:54:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/11/30 21:54:57 logs.go:9: INFO: Backup #53 crée (PENDING)
+2025/11/30 21:54:57 logs.go:9: INFO: Backup postgres réussi: backups\daily_20251130_215457.sql, size=7.43 KB
+2025/11/30 21:54:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/11/30 21:54:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/11/30 21:55:04 logs.go:9: INFO: Backup #54 crée (PENDING)
+2025/11/30 21:55:04 logs.go:9: INFO: Backup postgres réussi: backups\daily_20251130_215504.sql, size=9.33 KB
+2025/11/30 21:55:59 logs.go:9: INFO: Backup_id=50 supprimé par user_id=1

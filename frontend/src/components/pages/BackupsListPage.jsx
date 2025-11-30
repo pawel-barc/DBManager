@@ -37,9 +37,9 @@ const BackupsListPage = () => {
 
   return (
     <div>
-      <h2>Backups</h2>
+      <h2>Sauvegardes</h2>
       {backups.length === 0 ? (
-        <p>Aucun backup</p>
+        <p>Aucun Sauvegarde</p>
       ) : (
         <ul>
           {backups.map((b) => (

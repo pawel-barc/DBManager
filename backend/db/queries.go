@@ -4,7 +4,7 @@ package db
 
 
 var (
-				// ====DATABASES====//
+				//  =============     DATABASES     =============  //
 
 // ---- L'ajout d'une base des données -----
 	QueryInsertDatabase =
@@ -27,7 +27,7 @@ var (
 	`SELECT type, host, port, db_username, db_password, name FROM databases WHERE id =$1`	
 
 	
-					//====BACKUPS====//
+					//   =============    BACKUPS    =============    //
 // ---- Nouveau sauvegarde
 	QueryInsertBackup =
 	`INSERT INTO backups (database_id, name, status, version, file_path, backup_date)
@@ -67,6 +67,32 @@ var (
 	QueryFindBackupPathFile =
 	`SELECT b.file_path FROM backups b JOIN databases d ON database_id = d.id WHERE b.id = $1 AND d.user_id = $2`
 
+
+					//     =============    CRON    =============    //
+
+// Ajouter une nouvelle tâche planifiée
+	QueryCreateScheduledTask = 
+	`INSERT INTO scheduled_tasks (user_id, database_id, cron_expression, is_active) VALUES ($1, $2, $3, true) RETURNING id;`		
+
+// Récupérer toutes les tâches d'un utilisateur	donné
+	QueryGetUserScheduledTasks =
+	`SELECT id, user_id, database_id, cron_expression, is_active, last_run_at FROM scheduled_tasks WHERE user_id = $1;`
+
+// Mettre à jour l'expression CRON d'une tâche
+	QueryUpdateCronExpression =
+	`UPDATE scheduled_tasks SET cron_expression = $1 WHERE id = $2;`
+
+// Activer ou désactiver une tâche planifiée
+	QueryToggleTaskActive =
+	`UPDATE scheduled_tasks SET is_active = $1 WHERE id = $2;`
+	
+// Mettre à jour la date d'exécution d'une tâche
+	QueryUpdateLastTaskRun =
+	`UPDATE scheduled_tasks SET last_run_at = NOW() WHERE id = $1;`
+	
+// Récupèrer toutes les tâches actives
+	QueryGetAllActiveTasks =
+	`SELECT id, user_id, database_id, cron_expression FROM scheduled_tasks WHERE is_active = true;`	
 
 )
 

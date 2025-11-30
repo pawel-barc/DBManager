@@ -38,13 +38,13 @@ const DatabaseBackups = ({ databaseId }) => {
     fetchBackups();
   }, [databaseId]);
 
-  if (loading) return <p>Chargement des backups...</p>;
+  if (loading) return <p>Chargement des Sauvegardes...</p>;
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <h3>Backups</h3>
+      <h3>Sauvegardes</h3>
       {backups.length === 0 ? (
-        <p>Aucun backup disponible</p>
+        <p>Aucun Sauvegarde disponible</p>
       ) : (
         <ul>
           {backups.map((b) => (

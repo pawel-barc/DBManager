@@ -11,11 +11,11 @@ func WriteBackupLog(backupID int, content string) (string, error) {
 	os.MkdirAll("logs/backups", 0755)
 
 	filename := fmt.Sprintf("logs/backups/backup_%d_%s.log",
-backupID, time.Now().Format("20060102_150405"),)
+	backupID, time.Now().Format("20060102_150405"),)
 
-err := os.WriteFile(filename, []byte(content), 0644)
-if err != nil {
+	err := os.WriteFile(filename, []byte(content), 0644)
+	if err != nil {
 	return "", err
-}
-return filename, nil
+	}
+	return filename, nil
 }

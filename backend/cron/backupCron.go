@@ -1,8 +1,10 @@
 package cron
 
 import (
+	"fmt"
 	"safebase/controllers"
 	"safebase/utils"
+	"time"
 
 	"github.com/robfig/cron/v3"
 )
@@ -10,8 +12,8 @@ import (
 // Fonction démarre le CRON pour exécuter automatiquement les backups
 func StartBackupCron() {
 	c := cron.New(cron.WithSeconds())
-
-	_, err := c.AddFunc("23 15 * * *", func()  {
+fmt.Println(time.Now())
+	_, err := c.AddFunc("0 20 13 * * *", func()  {
 		utils.LogInfo("CRON - Je commence le backup automatique pour toutes les bases")
 		// Appel de la fonction qui exécute les backups automatique pour toutes les bases
 		if err := controllers.RunAllBackups(); err != nil {

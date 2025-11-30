@@ -143,7 +143,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 func CreateBackupForDb(databaseID int, backupName, version string) error {
 	var dbType, host, username, password, dbName string
 	var port string
-	err := db.DB.QueryRow(db.QuerySelectDatabaseInfo, databaseID).Scan(&dbType, &host, &port, &username, &password, &dbName)
+	err := db.DB.QueryRow(db.QuerySelectDatabaseInfoNoUser, databaseID).Scan(&dbType, &host, &port, &username, &password, &dbName)
 	if err != nil {
 		utils.LogError("Impossible de récupérer les infos de la database", err)
 		return err
@@ -278,12 +278,19 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 
 	// Lecture des résultats ligne par ligne
 	var backups []models.Backup
+
 	for rows.Next() {
 		var b models.Backup
+			var filePath sql.NullString
 		// Remplissage de la structure Backup avec les colonnes SQL
-		if err := rows.Scan(&b.ID, &b.DatabaseID, &b.Name, &b.FilePath, &b.FileSize, &b.BackupDate, &b.Status, &b.Version, &b.Log); err != nil {
+		if err := rows.Scan(&b.ID, &b.DatabaseID, &b.Name, &filePath, &b.FileSize, &b.BackupDate, &b.Status, &b.Version, &b.Log); err != nil {
 			utils.SendError(w, http.StatusInternalServerError, "Erreur de lecture des backups")
 			return
+		}
+		if filePath.Valid {
+			b.FilePath = filePath.String
+		} else {
+			b.FilePath = ""
 		}
 		backups = append(backups, b)
 	}

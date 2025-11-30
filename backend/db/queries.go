@@ -22,6 +22,9 @@ var (
 	QuerySelectDatabaseInfo =
 	`SELECT type, host, port, db_username, db_password, name FROM databases WHERE id = $1 AND user_id = $2`
 
+// ---- Récupération des bases sans user_id pour CRON
+	QuerySelectDatabaseInfoNoUser =
+	`SELECT type, host, port, db_username, db_password, name FROM databases WHERE id =$1`	
 
 					//====BACKUPS====//
 // ---- Nouveau sauvegarde

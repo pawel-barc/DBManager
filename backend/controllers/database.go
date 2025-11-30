@@ -5,6 +5,7 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"strconv"
 
 	"safebase/db"
@@ -43,7 +44,7 @@ func AddDatabase(w http.ResponseWriter, r *http.Request) {
 	var req AddDatabaseRequest
 	// Décodage du JSON envoyé par le frontend
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		utils.SendError(w,http.StatusBadRequest, "Format JSON invalide")
+		utils.SendError(w, http.StatusBadRequest, "Format JSON invalide")
 		return
 	}
 
@@ -110,9 +111,11 @@ func GetDatabases(w http.ResponseWriter, r *http.Request) {
 	utils.SendSuccessWithData(w, http.StatusOK, "Liste des bases récupérée", databases)
 }
 
+// Suppression d'une base uniquement dans l'application
 func DeleteDatabase(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)
 
+	// Récupération de l'ID de la base
 	dbIDStr := chi.URLParam(r, "id")
 	dbID, err := strconv.Atoi(dbIDStr)
 	if err != nil {
@@ -120,16 +123,50 @@ func DeleteDatabase(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result, err := db.DB.Exec(db.QueryDeleteDatabase, dbID, userID)
+	// Vérification que la base appartient bien à l'utilisateur
+	var exists bool
+
+	err = db.DB.QueryRow("SELECT EXISTS(SELECT 1 FROM databases WHERE id = $1 AND user_id = $2)", dbID, userID).Scan(&exists)
+	
 	if err != nil {
-		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression")
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la vérification")
 		return
 	}
 
-	rowsAffected, _ :=result.RowsAffected()
-	if rowsAffected == 0 {
+	if !exists {
 		utils.SendError(w, http.StatusNotFound, "Base non trouvée")
 		return
 	}
-	utils.SendSuccess(w, http.StatusOK, "Base supprimée")
+
+	// Suppression des fichiers de backup associés
+	rows, err := db.DB.Query("SELECT file_path FROM backups WHERE database_id = $1", dbID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la récupération des backups")
+		return
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var filePath string
+		if err := rows.Scan(&filePath); err == nil && filePath != "" {
+			if removeErr := os.Remove(filePath); removeErr != nil && !os.IsNotExist(removeErr) {
+				utils.LogError("Impossible de supprimer un fichier backup "+filePath, removeErr)
+			}
+		}
+	}
+	// Suppression des backups liés
+	_, err = db.DB.Exec("DELETE FROM backups WHERE database_id = $1", dbID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression des backups associés")
+		return
+	}
+	// Suppression de la base dans l'application
+	_, err = db.DB.Exec("DELETE FROM databases WHERE id=$1 AND user_id=$2", dbID, userID)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur interne lors de la suppression de la base")
+		return
+	}
+
+	utils.SendSuccess(w, http.StatusOK, "Base supprimée de l'application")
+	utils.LogInfo("La base supprimée avec suucès")
 }

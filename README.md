@@ -101,11 +101,37 @@ Chez moi tout marche comme il faut jusquau la
 
 ===================IMPORTANT===========================
 pgAdmin 4 Querrytool rights for user!!!!
-GRANT USAGE ON SCHEMA public TO safebase_user;
 
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO safebase_user;
+1.  psql -U postgres
+2.  CREATE DATABASE exampledb;
+3.  \c exampledb
+4.  -- users
+    CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
 
-GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO safebase_user;
+-- payments
+CREATE TABLE payments (
+id SERIAL PRIMARY KEY,
+user_id INT REFERENCES users(id) ON DELETE CASCADE,
+amount NUMERIC(10,2) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO safebase_user;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON SEQUENCES TO safebase_user;
+5.  CREATE USER example_user WITH PASSWORD 'securepass';
+6.  ALTER TABLE users OWNER TO example_user;
+    ALTER TABLE payments OWNER TO example_user;
+7.  GRANT ALL PRIVILEGES ON DATABASE exampledb TO example_user;
+
+GRANT USAGE ON SCHEMA public TO example_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO example_user;
+GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO example_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO example_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT USAGE, SELECT, UPDATE ON SEQUENCES TO example_user;

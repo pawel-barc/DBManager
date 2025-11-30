@@ -20,7 +20,9 @@ const AddDatabase = ({ onClose }) => {
   const [loadingAdd, setLoadingAdd] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const value =
+      e.target.name === "port" ? parseInt(e.target.value, 10) : e.target.value;
+    setForm({ ...form, [e.target.name]: value });
     setConnectionOk(false);
   };
 

@@ -4,7 +4,7 @@ import { getAllBackups } from "../../api/backupApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const BackupBox = ({ databaseId }) => {
+const BackupBox = () => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const BackupBox = ({ databaseId }) => {
   }, []);
 
   const handleClick = () => {
-    navigate(`/databases/${databaseId}/backups`);
+    navigate("/backups");
   };
   return (
     <div

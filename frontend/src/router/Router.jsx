@@ -71,7 +71,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/databases/:databaseId/backups"
+          path="/backups"
           element={
             <PrivateRoute>
               <BackupsListPage />

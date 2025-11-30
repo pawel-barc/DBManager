@@ -363,7 +363,7 @@ func DeleteBackup(w http.ResponseWriter, r *http.Request) {
 			utils.SendError(w, http.StatusNotFound, "Le backup n'existe pas ou vous n'y avez pas d'accès")
 			return
 		}
-		utils.LogError(fmt.Sprintf("Impossible de récupérer le backup_id=%d pour suppression", backupID), err)
+		utils.LogError("Erreur lors de la récupération du backup ", err)
 		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la récupération du backup")
 		return
 	}

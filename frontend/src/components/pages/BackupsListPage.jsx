@@ -1,17 +1,15 @@
 // Cette page récupère et affiche la liste des backups pour une base de donnée et permet de supprimer un backup.
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { getAllBackups, deleteBackup } from "../../api/backupApi";
 import { toast } from "react-toastify";
 
 const BackupsListPage = () => {
-  const { databaseId } = useParams();
   const [backups, setBackups] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchBackups = async () => {
     setLoading(true);
-    const response = await getAllBackups(databaseId);
+    const response = await getAllBackups();
     setLoading(false);
     if (response.success) {
       setBackups(response.data);
@@ -33,13 +31,13 @@ const BackupsListPage = () => {
 
   useEffect(() => {
     fetchBackups();
-  }, [databaseId]);
+  }, []);
 
   if (loading) return <p>Chargement...</p>;
 
   return (
     <div>
-      <h2>Backups de la base {databaseId}</h2>
+      <h2>Backups</h2>
       {backups.length === 0 ? (
         <p>Aucun backup</p>
       ) : (

@@ -26,6 +26,7 @@ var (
 	QuerySelectDatabaseInfoNoUser =
 	`SELECT type, host, port, db_username, db_password, name FROM databases WHERE id =$1`	
 
+	
 					//====BACKUPS====//
 // ---- Nouveau sauvegarde
 	QueryInsertBackup =

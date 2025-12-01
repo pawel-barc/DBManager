@@ -543,3 +543,72 @@ pg_dump: detail: Query was: SELECT last_value, is_called FROM public.payments_id
 2025/11/30 21:55:04 logs.go:9: INFO: Backup #54 crée (PENDING)
 2025/11/30 21:55:04 logs.go:9: INFO: Backup postgres réussi: backups\daily_20251130_215504.sql, size=9.33 KB
 2025/11/30 21:55:59 logs.go:9: INFO: Backup_id=50 supprimé par user_id=1
+2025/11/30 22:21:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 22:21:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/11/30 22:40:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/11/30 22:40:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/12/01 10:29:47 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/12/01 10:33:22 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/01 10:33:22 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/01 10:33:37 logs.go:9: INFO: Backup #55 crée (PENDING)
+2025/12/01 10:33:41 logs.go:14: ERROR: mysqldump failed | exit status 2
+2025/12/01 10:34:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 1 items
+2025/12/01 10:34:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 1 items
+2025/12/01 10:34:06 logs.go:9: INFO: Backup #56 crée (PENDING)
+2025/12/01 10:34:06 logs.go:9: INFO: Backup postgres réussi: backups\ffffffffffff_20251201_103406.sql, size=1.00 KB
+2025/12/01 10:37:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 10:37:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 10:37:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 2 items
+2025/12/01 10:37:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=12, 2 items
+2025/12/01 10:37:35 logs.go:9: INFO: La base supprimée avec suucès
+2025/12/01 10:38:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/01 10:38:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/01 10:41:05 logs.go:9: INFO: Backup_id=53 téléchargé par user_id=1, fichier=backups\daily_20251130_215457.sql
+2025/12/01 10:51:34 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/12/01 10:51:34 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/12/01 10:51:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 10:51:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 10:51:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/01 10:51:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/01 10:51:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/01 10:51:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/01 10:51:46 logs.go:9: INFO: Backup #57 crée (PENDING)
+2025/12/01 10:51:47 logs.go:9: INFO: Backup postgres réussi: backups\dddddsdd_20251201_105146.sql, size=1.00 KB
+2025/12/01 10:51:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 10:51:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 10:51:59 logs.go:9: INFO: Backup #58 crée (PENDING)
+2025/12/01 10:52:03 logs.go:14: ERROR: mysqldump failed | exit status 2
+2025/12/01 10:56:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 10:56:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 10:58:11 logs.go:9: INFO: Backup #59 crée (PENDING)
+2025/12/01 10:58:11 logs.go:9: INFO: Backup postgres réussi: backups\cccccccccccccc_20251201_105811.sql, size=1.00 KB
+2025/12/01 10:58:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 2 items
+2025/12/01 10:58:16 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 2 items
+2025/12/01 11:01:45 logs.go:9: INFO: Backup_id=55 supprimé par user_id=1
+2025/12/01 11:46:57 logs.go:9: INFO: Backup_id=59 supprimé par user_id=1
+2025/12/01 11:46:59 logs.go:9: INFO: Backup_id=58 supprimé par user_id=1
+2025/12/01 11:47:00 logs.go:9: INFO: Backup_id=57 supprimé par user_id=1
+2025/12/01 11:47:02 logs.go:9: INFO: Backup_id=54 supprimé par user_id=1
+2025/12/01 11:47:03 logs.go:9: INFO: Backup_id=53 supprimé par user_id=1
+2025/12/01 11:47:04 logs.go:9: INFO: Backup_id=52 supprimé par user_id=1
+2025/12/01 13:20:00 logs.go:9: INFO: CRON - Je commence le backup automatique pour toutes les bases
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #60 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=9.33 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #61 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=7.43 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #62 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=6.03 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #63 crée (PENDING)
+2025/12/01 13:20:04 logs.go:14: ERROR: mysqldump failed | exit status 2
+2025/12/01 13:20:04 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:04 logs.go:9: INFO: Backup #64 crée (PENDING)
+2025/12/01 13:20:04 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132004.sql, size=1.00 KB
+2025/12/01 13:20:04 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:04 logs.go:9: INFO: CRON - Backup crée avec succès
+2025/12/01 14:11:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 14:11:13 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/01 14:11:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items
+2025/12/01 14:11:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 1 items

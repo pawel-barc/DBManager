@@ -1,0 +1,31 @@
+#root{
+  display: flex;
+  flex-direction: row;
+  width: 100svw;
+}
+
+.nav-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34;
+  color: white;
+  height: 100%;
+}
+
+.title {
+  margin: 0;
+}
+
+.link {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.buton {
+  padding: 5px 10px;
+  cursor: pointer;
+}

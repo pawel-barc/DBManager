@@ -1,7 +1,17 @@
-// src/components/organisms/Header.jsx
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuthStore from "../../store/AuthStore";
 import Logout from "./Logout";
+import "../../../public/styles/header.css";
+
+const iconSrc = (base, isActive) =>
+  `../../../public/icons/${base}_${isActive ? "active" : "inactive"}.svg`;
+
+const navItems = [
+  { to: "/", base: "logo", alt: "logo" },
+  { to: "/backups", base: "manage_db", alt: "manage database" },
+  { to: "/alerts", base: "alerts", alt: "alerts" },
+  { to: "/profile", base: "profile", alt: "profile" },
+];
 
 const Header = () => {
   const { isAuthenticated, logout } = useAuthStore();
@@ -14,19 +24,17 @@ const Header = () => {
 
   return (
     <header style={styles.header}>
-      <h1 style={styles.title}>SafeBase</h1>
       {isAuthenticated && (
-        <nav>
-          <Link to="/" style={styles.link}>
-            Dashboard
-          </Link>
-          <Link to="/profile" style={styles.link}>
-            Profile
-          </Link>
-          <Link to="/backups" style={styles.link}>
-            Backups
-          </Link>
-          <button onClick={handleLogout} style={styles.button}>
+        <nav className="nav-header">
+          {navItems.map(({ to, base, alt }) => (
+            <NavLink key={to} to={to} style={styles.link} aria-label={alt}>
+              {({ isActive }) => (
+                <img src={iconSrc(base, isActive)} alt={alt} />
+              )}
+            </NavLink>
+          ))}
+
+          <button onClick={handleLogout} style={styles.button} aria-label="logout">
             <Logout />
           </button>
         </nav>
@@ -36,26 +44,6 @@ const Header = () => {
 };
 
 const styles = {
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    backgroundColor: "#282c34",
-    color: "white",
-  },
-  title: {
-    margin: 0,
-  },
-  link: {
-    color: "white",
-    marginRight: "15px",
-    textDecoration: "none",
-  },
-  button: {
-    padding: "5px 10px",
-    cursor: "pointer",
-  },
 };
 
 export default Header;

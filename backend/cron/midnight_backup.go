@@ -9,11 +9,11 @@ import (
 	"github.com/robfig/cron/v3"
 )
 
-// Fonction démarre le CRON pour exécuter automatiquement les backups
+// Fonction qui démarre un CRON pour exécuter automatiquement les backups chaque jour à minuit
 func StartBackupCron() {
 	c := cron.New(cron.WithSeconds())
 fmt.Println(time.Now())
-	_, err := c.AddFunc("0 20 13 * * *", func()  {
+	_, err := c.AddFunc("0 0 0 * * *", func()  {
 		utils.LogInfo("CRON - Je commence le backup automatique pour toutes les bases")
 		// Appel de la fonction qui exécute les backups automatique pour toutes les bases
 		if err := controllers.RunAllBackups(); err != nil {

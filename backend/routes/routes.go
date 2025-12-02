@@ -42,6 +42,9 @@ func SetupRouter() http.Handler {
 	r.With(middleware.AuthMiddleware).Get("/backups/{backup_id}/download", controllers.DownloadBackup)
 	r.With(middleware.AuthMiddleware).Delete("/backups/{backup_id}", controllers.DeleteBackup)
 
+	// CRON
+	r.With(middleware.AuthMiddleware).Post("/cron/create", controllers.CreateScheduledTask)
+
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r
 }

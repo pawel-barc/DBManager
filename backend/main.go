@@ -12,9 +12,10 @@ import (
 
 func main() {
 	config.InitLogger()
-	cron.StartBackupCron()
 	// Connexiona à la base des données
 	db.ConnectDB()
+
+	cron.StartCronScheduler()
 	// Configuration du routeur (définition des routes de l'application)
 
 	// Migration: création de la base des données, Commentez après avoir utiliser

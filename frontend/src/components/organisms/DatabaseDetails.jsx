@@ -1,14 +1,15 @@
-// Ce composant affiche les détails d'une base de données, permet de créer des backups et de supprimer la base sélectionnée
 import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { createBackup } from "../../api/backupApi";
 import DatabaseBackups from "./DatabaseBackups";
+import ScheduleBackupModal from "./ScheduleBackupModal";
 
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [backupName, setBackupName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showCronModal, setShowCronModal] = useState(false);
 
   const handleCreateBackup = async () => {
     if (!backupName.trim()) {
@@ -52,14 +53,17 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
           onChange={(e) => setBackupName(e.target.value)}
           style={{ padding: "8px", width: "250px", marginRight: "10px" }}
         />
-
         <button onClick={handleCreateBackup} disabled={loading}>
           {loading ? "Création..." : "Créer le backup"}
         </button>
 
-        <br />
-        <br />
         <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+          <button
+            style={{ backgroundColor: "blue", color: "white" }}
+            onClick={() => setShowCronModal(true)}
+          >
+            Planifier un backup
+          </button>
           <button
             style={{ backgroundColor: "red", color: "white" }}
             onClick={() => setShowDeleteModal(true)}
@@ -72,8 +76,14 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
           >
             Fermer
           </button>
-          {/* Backup button pour après */}
         </div>
+
+        {showCronModal && (
+          <ScheduleBackupModal
+            databaseId={db.id}
+            onClose={() => setShowCronModal(false)}
+          />
+        )}
 
         {showDeleteModal && (
           <DeleteDatabase
@@ -85,6 +95,7 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
             }}
           />
         )}
+
         <DatabaseBackups databaseId={db.id} />
       </div>
     </div>

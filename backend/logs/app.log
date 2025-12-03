@@ -627,3 +627,82 @@
 2025/12/03 14:55:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
 2025/12/03 14:55:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
 2025/12/03 14:55:37 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=8, expr:17 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=9, expr:27 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=10, expr:33 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=11, expr:36 20 * * *
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=12, expr:38 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=14, expr:13 21 * * *
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=15, expr:17 21 * * *
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=16, expr:55 21 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:48 22 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=18, expr:6 13 * * 3
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=5, expr:0 19 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=13, expr:42 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=4, expr:32 18 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=6, expr:6 20 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=19, expr:5 7 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:0 5 * * 2
+2025/12/03 14:56:49 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/03 14:57:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/03 14:57:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/03 14:57:13 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/03 15:05:52 logs.go:9: INFO: Backup_id=70 supprimé par user_id=1
+2025/12/03 15:07:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/03 15:07:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/03 15:07:31 logs.go:9: INFO: Backup #74 crée (PENDING)
+2025/12/03 15:07:32 logs.go:9: INFO: Backup postgres réussi: backups\Test backup_20251203_150731.sql, size=7.43 KB
+2025/12/03 15:07:38 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:07:55 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/03 15:08:15 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:08:16 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:08:25 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:08:28 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:08:30 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:12:29 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/03 15:12:29 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/03 15:12:54 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/03 15:13:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/03 15:13:48 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 0 items
+2025/12/03 15:14:01 logs.go:9: INFO: Backup #75 crée (PENDING)
+2025/12/03 15:14:01 logs.go:9: INFO: Backup postgres réussi: backups\Test backup Library_20251203_151401.sql, size=1.00 KB
+2025/12/03 15:14:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:14:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:14:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:14:36 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:14:42 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:14:43 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 15:16:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:16:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=14, 1 items
+2025/12/03 15:16:32 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/03 15:17:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 0 items
+2025/12/03 15:17:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 0 items
+2025/12/03 20:19:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/03 20:19:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/03 20:36:00 logs.go:9: INFO: CRON: exécution tâche 11 (db = 7 user = 1)
+2025/12/03 20:36:00 logs.go:9: INFO: Backup #76 crée (PENDING)
+2025/12/03 20:36:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_11_20251203_203600.sql, size=7.43 KB
+2025/12/03 20:36:00 logs.go:9: INFO: CRON: tâche 11 exécuté avec succès
+2025/12/03 21:13:00 logs.go:9: INFO: CRON: exécution tâche 14 (db = 7 user = 1)
+2025/12/03 21:13:00 logs.go:9: INFO: Backup #77 crée (PENDING)
+2025/12/03 21:13:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_14_20251203_211300.sql, size=7.43 KB
+2025/12/03 21:13:00 logs.go:9: INFO: CRON: tâche 14 exécuté avec succès
+2025/12/03 21:17:00 logs.go:9: INFO: CRON: exécution tâche 15 (db = 7 user = 1)
+2025/12/03 21:17:00 logs.go:9: INFO: Backup #78 crée (PENDING)
+2025/12/03 21:17:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_15_20251203_211700.sql, size=7.43 KB
+2025/12/03 21:17:00 logs.go:9: INFO: CRON: tâche 15 exécuté avec succès
+2025/12/03 22:47:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 22:47:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:07:59 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/03 23:09:17 logs.go:9: INFO: Backup_id=78 supprimé par user_id=1
+2025/12/03 23:09:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/03 23:09:25 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/03 23:09:25 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/03 23:09:31 logs.go:9: INFO: Backup_id=77 supprimé par user_id=1
+2025/12/03 23:09:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items

@@ -7,6 +7,9 @@ import (
 	"safebase/middleware"
 	"safebase/models"
 	"safebase/utils"
+	"strconv"
+
+	"github.com/go-chi/chi/v5"
 )
 
 // Créer une nouvelle tâche planifiée
@@ -109,4 +112,23 @@ func ToggleTaskActive(w http.ResponseWriter, r *http.Request) {
 	}
 	utils.LogInfo("L'état' à été mise à jour")
 	utils.SendSuccess(w, http.StatusOK, "Tâche mise à jour avec succès")
+}
+
+// Suupression d'une tâche planifiée
+func DeleteScheduledTask(w http.ResponseWriter, r *http.Request) {
+	// Récupération de l'ID d'URL 
+	idStr := chi.URLParam(r, "id")
+	taskId, err := strconv.Atoi(idStr)
+	if err != nil {
+		utils.SendError(w, http.StatusBadRequest, "ID invalide")
+		return
+	}
+
+	_, err = db.DB.Exec(db.QueryDeleteScheduledTask, taskId)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression")
+		return
+	}
+	utils.SendSuccess(w, http.StatusOK, "Tâche supprimée")
+
 }

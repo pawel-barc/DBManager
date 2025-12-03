@@ -7,7 +7,7 @@ import ScheduleBackupModal from "../organisms/ScheduleBackupModal";
 import {
   getUserScheduledTasks,
   toggleTaskActive,
-  updateCronExpression,
+  deleteScheduledTask,
 } from "../../api/cronApi";
 
 import { createBackup } from "../../api/backupApi";
@@ -22,31 +22,31 @@ const BackupsManagement = () => {
   const [tasks, setTasks] = useState([]);
   const [loadingTasks, setLoadingTasks] = useState(true);
 
-  const [showCronModal, setShowCronModal] = useState(false); // create new
-  const [editTask, setEditTask] = useState(null); // edit existing cron
+  const [showCronModal, setShowCronModal] = useState(false);
+  const [editTask, setEditTask] = useState(null);
 
   const [manualName, setManualName] = useState("");
   const [runningBackup, setRunningBackup] = useState(false);
 
-  // ---- FETCH CRON TASKS ----
+  // ---- RÉCUPÉRER LES TÂCHES CRON ----
   const fetchTasks = async () => {
     setLoadingTasks(true);
-    const res = await getUserScheduledTasks();
+    const response = await getUserScheduledTasks();
     setLoadingTasks(false);
 
-    if (!res.success) {
+    if (!response.success) {
       toast.error("Erreur lors du chargement des tâches planifiées");
       return;
     }
 
-    const filtered = res.data.filter((t) => t.database_id === databaseId);
+    const filtered = response.data.filter((t) => t.database_id === databaseId);
     setTasks(filtered);
   };
 
   const handleToggleActive = async (taskId, active) => {
-    const res = await toggleTaskActive(taskId, active);
+    const response = await toggleTaskActive(taskId, active);
 
-    if (res.success) {
+    if (response.success) {
       toast.success("Tâche mise à jour");
       fetchTasks();
     } else {
@@ -58,17 +58,17 @@ const BackupsManagement = () => {
     fetchTasks();
   }, [databaseId]);
 
-  // ---- BACKUP NOW ----
+  // ---- SAUVEGARDE IMMÉDIATE ----
   const handleManualBackup = async () => {
     if (runningBackup) return;
 
     setRunningBackup(true);
 
-    const res = await createBackup(databaseId, manualName || null);
+    const response = await createBackup(databaseId, manualName || null);
 
     setRunningBackup(false);
 
-    if (!res.success) {
+    if (!response.success) {
       toast.error("Erreur lors du backup manuel");
       return;
     }
@@ -77,11 +77,23 @@ const BackupsManagement = () => {
     setManualName("");
   };
 
+  const handleDeleteTask = async (taskId) => {
+    if (!window.confirm("Supprimer cette tâche planifiée ?")) return;
+
+    const response = await deleteScheduledTask(taskId);
+    if (response.success) {
+      toast.success("Tâche planifiée supprimée");
+      fetchTasks();
+    } else {
+      toast.error("Erreur lors de la suppression");
+    }
+  };
+
   return (
     <div className="page-container">
       <h2>Gestion des sauvegardes</h2>
 
-      {/* --- NEW CRON SCHEDULER --- */}
+      {/* --- NOUVEAU PLANIFICATEUR CRON --- */}
       <button
         style={{ marginBottom: "20px", background: "blue", color: "white" }}
         onClick={() => setShowCronModal(true)}
@@ -96,7 +108,7 @@ const BackupsManagement = () => {
         />
       )}
 
-      {/* ----- EDIT EXISTING CRON MODAL ----- */}
+      {/* ----- MODIFIER UNE TÂCHE CRON EXISTANTE ----- */}
       {editTask && (
         <EditCronModal
           task={editTask}
@@ -110,7 +122,7 @@ const BackupsManagement = () => {
       )}
 
       {/* ─────────────────────────── */}
-      {/*       BACKUP NOW            */}
+      {/*    SAUVEGARDE MAINTENANT    */}
       {/* ─────────────────────────── */}
       <h3>Backup manuel immédiat</h3>
 
@@ -142,10 +154,10 @@ const BackupsManagement = () => {
         </button>
       </div>
 
-      {/* --- BACKUPS LIST --- */}
+      {/* --- LISTE DES SAUVEGARDES --- */}
       <DatabaseBackups databaseId={databaseId} />
 
-      {/* --- CRON TASKS --- */}
+      {/* --- TÂCHES CRON --- */}
       <h3 style={{ marginTop: "30px" }}>Backups Automatiques (CRON)</h3>
 
       {loadingTasks ? (
@@ -159,12 +171,18 @@ const BackupsManagement = () => {
               {humanReadableCron(t.cron_expression)}— Dernier run:{" "}
               {t.last_run_at || "jamais"}
               <button
+                style={{ marginLeft: "10px", color: "red" }}
+                onClick={() => handleDeleteTask(t.id)}
+              >
+                Supprimer
+              </button>
+              <button
                 style={{ marginLeft: "10px" }}
                 onClick={() => handleToggleActive(t.id, !t.is_active)}
               >
                 {t.is_active ? "Désactiver" : "Activer"}
               </button>
-              {/* --- OPEN CRON EDIT MODAL --- */}
+              {/* --- OUVRIR LA MODIFICATION DU CRON --- */}
               <button
                 style={{ marginLeft: "10px" }}
                 onClick={() => setEditTask(t)}

@@ -55,9 +55,24 @@ const updateCronExpression = async (taskId, cronExpression) => {
   return response;
 };
 
+// API pour supprimer une tâche planifiée
+const deleteScheduledTask = async (taskId) => {
+  const request = await fetchWithRefresh(
+    `http://localhost:8080/scheduled-tasks/${taskId}`,
+    {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+
 export {
   addScheduledTask,
   getUserScheduledTasks,
   toggleTaskActive,
   updateCronExpression,
+  deleteScheduledTask,
 };

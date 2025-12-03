@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getDatabases } from "../../api/databaseApi";
 import DatabaseDetails from "../organisms/DatabaseDetails";
 
-const DatabaseDetailsPage = () => {
+const DBDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [db, setDb] = useState(null);
@@ -32,4 +32,4 @@ const DatabaseDetailsPage = () => {
   );
 };
 
-export default DatabaseDetailsPage;
+export default DBDetails;

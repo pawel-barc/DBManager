@@ -1,4 +1,6 @@
-// Sélecteur interactif permettant de construire une expression CRON et d'en visualiser l’exécution programmée.
+// Sélecteur interactif permettant de construire ou modifier une expression CRON.
+// Permet aussi de charger un CRON existant (mode édition).
+
 import { useState, useEffect } from "react";
 
 const DAYS = [
@@ -11,13 +13,47 @@ const DAYS = [
   { label: "Dimanche", value: "0" },
 ];
 
-const CronSelector = ({ onChange }) => {
+const CronSelector = ({ value, onChange }) => {
   const [mode, setMode] = useState("daily");
   const [hour, setHour] = useState("0");
   const [minute, setMinute] = useState("0");
-  const [customCron, setCustomCron] = useState("* * * * *");
   const [weekDays, setWeekDays] = useState([]);
+  const [customCron, setCustomCron] = useState("* * * * *");
 
+  const [generated, setGenerated] = useState("* * * * *");
+
+  //
+  // --- 1) CHARGEMENT D’UNE EXPRESSION CRON EXISTANTE ---
+  //
+  useEffect(() => {
+    if (!value) return;
+
+    const parts = value.split(" ");
+    if (parts.length !== 5) return;
+
+    const [m, h, , , d] = parts;
+
+    setCustomCron(value);
+    setGenerated(value);
+
+    if (d !== "*" && d !== "?" && d !== "") {
+      setMode("weekly");
+      setWeekDays(d.split(","));
+    } else if (h !== "*") {
+      setMode("daily");
+      setHour(h);
+      setMinute(m);
+    } else if (h === "*" && m !== "*") {
+      setMode("hourly");
+      setMinute(m);
+    } else {
+      setMode("custom");
+    }
+  }, [value]);
+
+  //
+  // --- 2) GÉNÉRATION DE L’EXPRESSION CRON ---
+  //
   useEffect(() => {
     let expr = "* * * * *";
 
@@ -25,22 +61,20 @@ const CronSelector = ({ onChange }) => {
       case "hourly":
         expr = `${minute} * * * *`;
         break;
-
       case "daily":
         expr = `${minute} ${hour} * * *`;
         break;
-
-      case "weekly": {
-        const days = weekDays.length > 0 ? weekDays.join(",") : "*";
-        expr = `${minute} ${hour} * * ${days}`;
+      case "weekly":
+        expr = `${minute} ${hour} * * ${
+          weekDays.length > 0 ? weekDays.join(",") : "*"
+        }`;
         break;
-      }
-
       case "custom":
         expr = customCron;
         break;
     }
 
+    setGenerated(expr);
     onChange(expr);
   }, [mode, hour, minute, weekDays, customCron]);
 
@@ -94,7 +128,6 @@ const CronSelector = ({ onChange }) => {
             <label key={d.value}>
               <input
                 type="checkbox"
-                value={d.value}
                 checked={weekDays.includes(d.value)}
                 onChange={() => toggleDay(d.value)}
               />
@@ -115,7 +148,7 @@ const CronSelector = ({ onChange }) => {
       )}
 
       <div style={{ marginTop: "10px" }}>
-        CRON généré : <strong>{customCron}</strong>
+        CRON généré : <strong>{generated}</strong>
       </div>
     </div>
   );

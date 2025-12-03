@@ -84,6 +84,7 @@ func UpdateCronExpression(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 utils.LogInfo("La tâche à été mise à jour")
+utils.SendSuccess(w, http.StatusOK, "Tâche mise à jour avec succès")
 
 }
 
@@ -107,4 +108,5 @@ func ToggleTaskActive(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	utils.LogInfo("L'état' à été mise à jour")
+	utils.SendSuccess(w, http.StatusOK, "Tâche mise à jour avec succès")
 }

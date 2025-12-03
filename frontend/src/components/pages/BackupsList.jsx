@@ -12,7 +12,7 @@ const BackupsListPage = () => {
     const response = await getAllBackups();
     setLoading(false);
     if (response.success) {
-      setBackups(response.data);
+      setBackups(response.data || []);
     } else {
       toast.error(response.message || "Erreur lors du chargement des backups");
     }

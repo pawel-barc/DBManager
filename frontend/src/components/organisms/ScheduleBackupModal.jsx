@@ -1,7 +1,7 @@
 // Composant affichant une fenêtre modale permettant à l'utilisateur de programmer un backup récurrent pour une base de données.
 import { useState } from "react";
 import CronSelector from "./CronSelector";
-import addScheduledTask from "../../api/cronApi";
+import { addScheduledTask } from "../../api/cronApi";
 import { toast } from "react-toastify";
 
 const ScheduleBackupModal = ({ databaseId, onClose }) => {

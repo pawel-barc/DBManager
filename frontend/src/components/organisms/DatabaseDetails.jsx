@@ -1,37 +1,16 @@
+// Composant modal affichant les détails d'une base de données et offrant des actions rapides :
+// gérer les sauvegardes, restaurer la base ou fermer le modal.
+import { Link } from "react-router-dom";
 import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
-import { toast } from "react-toastify";
-import { createBackup } from "../../api/backupApi";
-import DatabaseBackups from "./DatabaseBackups";
-import ScheduleBackupModal from "./ScheduleBackupModal";
 
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [backupName, setBackupName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [showCronModal, setShowCronModal] = useState(false);
-
-  const handleCreateBackup = async () => {
-    if (!backupName.trim()) {
-      toast.error("Veuillez entrer un nom pour le backup!");
-      return;
-    }
-    setLoading(true);
-    const response = await createBackup(db.id, backupName, "v1");
-    setLoading(false);
-
-    if (response.success) {
-      toast.success("Backup crée avec succès !");
-      setBackupName("");
-    } else {
-      toast.error(response.message || "Erreur lors de la création du backup");
-    }
-  };
-
   return (
     <div className="modal">
       <div className="modal-content">
         <h2>Détails de la base: {db.name}</h2>
+
         <p>
           <strong>Type:</strong> {db.type}
         </p>
@@ -45,46 +24,32 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
           <strong>Utilisateur:</strong> {db.db_username}
         </p>
 
-        <h3>Créer un backup</h3>
-        <input
-          type="text"
-          placeholder="Nom du backup (ex: daily, manual...)"
-          value={backupName}
-          onChange={(e) => setBackupName(e.target.value)}
-          style={{ padding: "8px", width: "250px", marginRight: "10px" }}
-        />
-        <button onClick={handleCreateBackup} disabled={loading}>
-          {loading ? "Création..." : "Créer le backup"}
-        </button>
-
-        <div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
-          <button
-            style={{ backgroundColor: "blue", color: "white" }}
-            onClick={() => setShowCronModal(true)}
+        <div style={{ marginTop: "20px" }}>
+          <Link to={`/databases/${db.id}/backups`} className="button-blue">
+            Gérer les sauvegardes
+          </Link>
+          <br />
+          <Link
+            to={`/databases/${db.id}/restauration`}
+            className="button-orange"
           >
-            Planifier un backup
-          </button>
+            Restaurer la base
+          </Link>
+          <br />
           <button
-            style={{ backgroundColor: "red", color: "white" }}
+            style={{ background: "red", color: "white", marginLeft: "10px" }}
             onClick={() => setShowDeleteModal(true)}
           >
-            Supprimer
+            Supprimer la base
           </button>
+
           <button
-            style={{ backgroundColor: "gray", color: "white" }}
+            style={{ background: "gray", color: "white", marginLeft: "10px" }}
             onClick={onClose}
           >
             Fermer
           </button>
         </div>
-
-        {showCronModal && (
-          <ScheduleBackupModal
-            databaseId={db.id}
-            onClose={() => setShowCronModal(false)}
-          />
-        )}
-
         {showDeleteModal && (
           <DeleteDatabase
             databaseId={db.id}
@@ -95,8 +60,6 @@ const DatabaseDetails = ({ db, onClose, onDeleted }) => {
             }}
           />
         )}
-
-        <DatabaseBackups databaseId={db.id} />
       </div>
     </div>
   );

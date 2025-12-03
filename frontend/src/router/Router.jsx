@@ -9,8 +9,9 @@ import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
 import Header from "../components/organisms/Header";
 import Databases from "../components/pages/Databases";
-import DatabaseDetailsPage from "../components/pages/DatabaseDetailsPage";
-import BackupsListPage from "../components/pages/BackupsListPage";
+import DBDetails from "../components/pages/DBDetails";
+import BackupsList from "../components/pages/BackupsList";
+import BackupsManagement from "../components/pages/BackupsManagement";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -74,7 +75,7 @@ const Router = () => {
           path="/backups"
           element={
             <PrivateRoute>
-              <BackupsListPage />
+              <BackupsList />
             </PrivateRoute>
           }
         />
@@ -82,7 +83,15 @@ const Router = () => {
           path="/databases/:id"
           element={
             <PrivateRoute>
-              <DatabaseDetailsPage />
+              <DBDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/databases/:id/backups"
+          element={
+            <PrivateRoute>
+              <BackupsManagement />
             </PrivateRoute>
           }
         />

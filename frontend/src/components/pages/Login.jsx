@@ -6,11 +6,7 @@ import LoginUser from "../../api/loginApi";
 import LoginForm from "../organisms/LoginForm";
 import useAuthStore from "../../store/AuthStore";
 // import "../../styles/organisms/Login.css";
-<<<<<<< HEAD
 import { useState } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> feature/profile
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);

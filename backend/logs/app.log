@@ -706,3 +706,24 @@
 2025/12/03 23:09:25 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
 2025/12/03 23:09:31 logs.go:9: INFO: Backup_id=77 supprimé par user_id=1
 2025/12/03 23:09:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=12, expr:38 20 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=16, expr:55 21 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=18, expr:6 13 * * 3
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=5, expr:0 19 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=13, expr:42 20 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=4, expr:32 18 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=6, expr:6 20 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=8, expr:0 5 * * 2
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=11, expr:36 20 * * *
+2025/12/03 23:10:40 logs.go:9: INFO: Tâche CRON enregistée: id=15, expr:17 21 * * *
+2025/12/03 23:10:40 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/03 23:12:07 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/03 23:13:17 logs.go:9: INFO: Backup #79 crée (PENDING)
+2025/12/03 23:13:17 logs.go:9: INFO: Backup postgres réussi: backups\SommerBackup_20251203_231317.sql, size=7.43 KB
+2025/12/03 23:13:23 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/03 23:13:23 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/03 23:19:38 logs.go:9: INFO: Backup_id=79 téléchargé par user_id=1, fichier=backups\SommerBackup_20251203_231317.sql

@@ -543,3 +543,96 @@ pg_dump: detail: Query was: SELECT last_value, is_called FROM public.payments_id
 2025/11/30 21:55:04 logs.go:9: INFO: Backup #54 crée (PENDING)
 2025/11/30 21:55:04 logs.go:9: INFO: Backup postgres réussi: backups\daily_20251130_215504.sql, size=9.33 KB
 2025/11/30 21:55:59 logs.go:9: INFO: Backup_id=50 supprimé par user_id=1
+2025/12/01 11:43:09 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/12/01 12:02:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/12/01 12:02:27 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/12/01 12:03:04 logs.go:9: INFO: Backup #1 crée (PENDING)
+2025/12/01 12:03:04 logs.go:14: ERROR: pg_dump failed: exec: "pg_dump": executable file not found in %PATH%
+Output:  | exec: "pg_dump": executable file not found in %PATH%
+2025/12/01 12:03:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/01 12:03:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/01 12:13:52 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/12/01 12:15:16 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/12/01 12:16:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=4, 0 items
+2025/12/01 12:16:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=4, 0 items
+2025/12/01 12:32:53 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/01 12:32:53 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/01 12:33:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/01 12:33:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/01 13:10:49 logs.go:9: INFO: Backup #2 crée (PENDING)
+2025/12/01 13:10:50 logs.go:9: INFO: Backup postgres réussi: backups\backup TEST 2_20251201_131049.sql, size=16.58 KB
+2025/12/01 13:10:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/01 13:10:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 0 items
+2025/12/01 13:20:00 logs.go:9: INFO: CRON - Je commence le backup automatique pour toutes les bases
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #3 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=16.64 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #4 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=16.67 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #5 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=16.68 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: Backup #6 crée (PENDING)
+2025/12/01 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-01_20251201_132000.sql, size=16.70 KB
+2025/12/01 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/01 13:20:00 logs.go:9: INFO: CRON - Backup crée avec succès
+2025/12/01 13:52:26 logs.go:9: INFO: Backup_id=6 supprimé par user_id=1
+2025/12/01 13:53:30 logs.go:9: INFO: Backup_id=5 supprimé par user_id=1
+2025/12/01 14:20:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 14:20:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 14:21:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 14:21:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=1, 1 items
+2025/12/01 14:21:51 logs.go:14: ERROR: Impossible d'ouvrir le fichier backup_id=3 | open backups\auto-2025-12-01_20251201_132000.sql: The system cannot find the file specified.
+2025/12/01 14:31:10 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/01 14:31:10 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 0 items
+2025/12/02 13:11:17 logs.go:9: INFO: CRON - Le programme des backups démarré
+2025/12/02 13:20:00 logs.go:9: INFO: CRON - Je commence le backup automatique pour toutes les bases
+2025/12/02 13:20:00 logs.go:9: INFO: Backup #7 crée (PENDING)
+2025/12/02 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-02_20251202_132000.sql, size=16.70 KB
+2025/12/02 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/02 13:20:00 logs.go:9: INFO: Backup #8 crée (PENDING)
+2025/12/02 13:20:00 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-02_20251202_132000.sql, size=16.71 KB
+2025/12/02 13:20:00 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/02 13:20:00 logs.go:9: INFO: Backup #9 crée (PENDING)
+2025/12/02 13:20:01 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-02_20251202_132000.sql, size=16.73 KB
+2025/12/02 13:20:01 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/02 13:20:01 logs.go:9: INFO: Backup #10 crée (PENDING)
+2025/12/02 13:20:01 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-02_20251202_132001.sql, size=16.74 KB
+2025/12/02 13:20:01 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/02 13:20:01 logs.go:9: INFO: CRON - Backup crée avec succès
+2025/12/02 17:55:33 logs.go:9: INFO: Backup_id=8 supprimé par user_id=1
+2025/12/02 20:26:50 logs.go:9: INFO: Backup_id=3 supprimé par user_id=1
+2025/12/03 14:21:01 logs.go:9: INFO: CRON - Je commence le backup automatique pour toutes les bases
+2025/12/03 14:21:02 logs.go:9: INFO: Backup #11 crée (PENDING)
+2025/12/03 14:21:02 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-03_20251203_142102.sql, size=16.74 KB
+2025/12/03 14:21:02 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/03 14:21:02 logs.go:9: INFO: Backup #12 crée (PENDING)
+2025/12/03 14:21:03 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-03_20251203_142102.sql, size=16.76 KB
+2025/12/03 14:21:03 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/03 14:21:03 logs.go:9: INFO: Backup #13 crée (PENDING)
+2025/12/03 14:21:03 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-03_20251203_142103.sql, size=16.78 KB
+2025/12/03 14:21:03 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/03 14:21:03 logs.go:9: INFO: Backup #14 crée (PENDING)
+2025/12/03 14:21:04 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-03_20251203_142103.sql, size=16.80 KB
+2025/12/03 14:21:04 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/03 14:21:04 logs.go:9: INFO: CRON - Backup crée avec succès
+2025/12/03 15:53:28 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 2 items
+2025/12/03 15:53:28 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 2 items
+2025/12/03 15:53:34 logs.go:9: INFO: Backup_id=13 téléchargé par user_id=1, fichier=backups\auto-2025-12-03_20251203_142103.sql
+2025/12/04 14:21:01 logs.go:9: INFO: CRON - Je commence le backup automatique pour toutes les bases
+2025/12/04 14:21:01 logs.go:9: INFO: Backup #15 crée (PENDING)
+2025/12/04 14:21:01 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-04_20251204_142101.sql, size=16.82 KB
+2025/12/04 14:21:01 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/04 14:21:01 logs.go:9: INFO: Backup #16 crée (PENDING)
+2025/12/04 14:21:02 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-04_20251204_142101.sql, size=16.84 KB
+2025/12/04 14:21:02 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/04 14:21:02 logs.go:9: INFO: Backup #17 crée (PENDING)
+2025/12/04 14:21:02 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-04_20251204_142102.sql, size=16.86 KB
+2025/12/04 14:21:02 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/04 14:21:02 logs.go:9: INFO: Backup #18 crée (PENDING)
+2025/12/04 14:21:02 logs.go:9: INFO: Backup postgres réussi: backups\auto-2025-12-04_20251204_142102.sql, size=16.88 KB
+2025/12/04 14:21:02 logs.go:9: INFO: Le backup de la base créé avec succès
+2025/12/04 14:21:02 logs.go:9: INFO: CRON - Backup crée avec succès
+2025/12/04 17:50:33 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 3 items
+2025/12/04 17:50:33 logs.go:9: INFO: Liste des backups récupérée pour la database_id=3, 3 items

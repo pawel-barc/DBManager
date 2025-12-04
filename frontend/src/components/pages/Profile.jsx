@@ -22,7 +22,7 @@ const Profile = () => {
   const [errorMessage, setErrorMessage] = useState(null); // État pour gérer les erreurs du formulaire(du backend)
   const [showDeleteModal, setShowDeleteModal] = useState(false); // État pour affficher et masquer la modal de suppression
   const logout = useAuthStore((state) => state.logout); // Fonction de déconnexion
-
+  
   // Chargement des données du profil lors du premier rendu
   useEffect(() => {
     const fetchUserProfile = async () => {

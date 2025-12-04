@@ -12,7 +12,8 @@
 }
 
 .modal {
-  background: white;
+  background: #242424;
+  border: 1px solid white;
   padding: 25px;
   border-radius: 10px;
   width: 400px;

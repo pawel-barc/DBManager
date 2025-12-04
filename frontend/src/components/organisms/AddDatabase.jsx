@@ -82,6 +82,7 @@ const AddDatabase = ({ onClose }) => {
 
           <input
             name="host"
+
             placeholder="Host"
             value={form.host}
             onChange={handleChange}
@@ -98,7 +99,7 @@ const AddDatabase = ({ onClose }) => {
           />
 
           <input
-            name="db_username"
+            name="39969"
             placeholder="Nom d'utilisateur"
             value={form.db_username}
             onChange={handleChange}

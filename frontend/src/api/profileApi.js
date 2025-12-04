@@ -18,7 +18,7 @@ const updateUserProfile = async (data) => {
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
+      credentials: "include",    //Cookies
       body: JSON.stringify(data), // data contient les nouvelles informations de l'utilisateur
     }
   );

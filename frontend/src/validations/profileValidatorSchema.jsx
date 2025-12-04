@@ -31,12 +31,18 @@ const profileValidatorSchema = () => {
       .notRequired(),
     // Pour le mot de passe répété, si modifié, il doit être le même que le mot de passe
     repeatPassword: Yup.string()
-      .oneOf(
-        [Yup.ref("password"), null],
-        "Les mots de passe doivent correspondre"
-      )
-      .notRequired(),
-  });
+  .when("password", {
+    is: (val) => val && val.length > 0,
+    then: (schema) =>
+      schema
+        .required("Merci de répéter le mot de passe")
+        .oneOf(
+          [Yup.ref("password")],
+          "Les mots de passe doivent correspondre"
+        ),
+    otherwise: (schema) => schema.notRequired(),
+  }),
+});
 };
 
 export default profileValidatorSchema;

@@ -708,3 +708,29 @@
 2025/12/03 23:09:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
 2025/12/04 10:49:20 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
 2025/12/04 10:49:20 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/04 14:32:24 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
+2025/12/04 14:32:24 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/04 14:57:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/12/04 14:57:17 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 0 items
+2025/12/04 14:57:29 logs.go:9: INFO: Backup #2 crée (PENDING)
+2025/12/04 14:57:30 logs.go:9: INFO: Backup postgres réussi: backups\Daily backup_20251204_145729.sql, size=1.72 KB
+2025/12/04 14:58:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 1 items
+2025/12/04 14:58:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 1 items
+2025/12/04 15:20:53 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
+2025/12/04 15:20:53 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:0 15 * * *
+2025/12/04 15:20:53 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/04 15:21:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 1 items
+2025/12/04 15:21:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 1 items
+2025/12/04 15:21:45 logs.go:9: INFO: Backup #3 crée (PENDING)
+2025/12/04 15:21:46 logs.go:9: INFO: Backup postgres réussi: backups\PPPPPPPPPPPPPPPPPPPPPPPP_20251204_152145.sql, size=1.72 KB
+2025/12/04 15:22:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 2 items
+2025/12/04 15:22:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=2, 2 items
+2025/12/04 15:25:38 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
+2025/12/04 15:25:38 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:0 15 * * *
+2025/12/04 15:25:38 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/04 15:29:03 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
+2025/12/04 15:29:03 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:0 15 * * *
+2025/12/04 15:29:03 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/04 15:30:04 logs.go:9: INFO: Tâche CRON enregistée: id=1, expr:0 12 * * 3
+2025/12/04 15:30:04 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:0 15 * * *
+2025/12/04 15:30:04 logs.go:9: INFO: Scheduler CRON démarré

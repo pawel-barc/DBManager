@@ -29,6 +29,7 @@ func SetupRouter() http.Handler {
 	r.With(middleware.AuthMiddleware).Post("/logout", controllers.Logout)
 	r.With(middleware.AuthMiddleware).Get("/get-profile", controllers.GetProfile)
 	r.With(middleware.AuthMiddleware).Put("/update-profile", controllers.UpdateProfile)
+	r.With(middleware.AuthMiddleware).Delete("/delete-profile", controllers.DeleteAccount)
 
 	// Base des données
 	r.With(middleware.AuthMiddleware).Post("/databases/add", controllers.AddDatabase)

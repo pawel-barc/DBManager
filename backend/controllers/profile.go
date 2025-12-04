@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"safebase/db"
 	"safebase/middleware"
@@ -100,4 +101,42 @@ func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.SendSuccess(w, http.StatusOK, "Profil mis à jour avec succès")
+}
+
+func DeleteAccount(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middleware.UserIDKey).(int)
+
+	// Supprimer toutes les scheduled_tasks liées aux databases du user
+	_, err := db.DB.Exec(`
+		DELETE FROM scheduled_tasks 
+		WHERE database_id IN (
+			SELECT id FROM databases WHERE user_id=$1
+		)
+	`, userId)
+	if err != nil {
+		fmt.Println("DELETE scheduled_tasks ERROR:", err)
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de supprimer les tâches planifiées")
+		return
+	}
+
+	// Suppression de l'utilisateur
+	_, err = db.DB.Exec("DELETE FROM users WHERE id=$1", userId)
+	if err != nil {
+		fmt.Println("DELETE user ERROR:", err)
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression du compte")
+		return
+	}
+
+	// Supprimer le cookie JWT si présent
+	http.SetCookie(w, &http.Cookie{
+		Name:     "refresh_token",
+		Value:    "",
+		Path:     "/",
+		MaxAge:   -1,
+		HttpOnly: true,
+		Secure:   true,
+		SameSite: http.SameSiteNoneMode,
+	})
+
+	utils.SendSuccess(w, http.StatusOK, "Compte supprimé avec succès")
 }

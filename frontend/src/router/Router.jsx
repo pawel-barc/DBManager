@@ -12,6 +12,7 @@ import Databases from "../components/pages/Databases";
 import DBDetails from "../components/pages/DBDetails";
 import BackupsList from "../components/pages/BackupsList";
 import BackupsManagement from "../components/pages/BackupsManagement";
+import DatabaseRestore from "../components/pages/DatabaseRestore";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -92,6 +93,14 @@ const Router = () => {
           element={
             <PrivateRoute>
               <BackupsManagement />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/databases/:id/restauration"
+          element={
+            <PrivateRoute>
+              <DatabaseRestore />
             </PrivateRoute>
           }
         />

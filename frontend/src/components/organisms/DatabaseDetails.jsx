@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
-
+// import DatabaseRestore from "../pages/DatabaseRestore"
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   return (

@@ -22,7 +22,7 @@ func RestoreBackup(backupID, userID int) (restoreID int, err error) {
 	var databaseID int
 	var dbType, host, port, username, password, dbName, backupPath string
 
-	err = db.DB.QueryRow(db.QueryGetBackupByID, backupID).Scan(
+	err = db.DB.QueryRow(db.QueryGetBackupByID, backupID, userID).Scan(
 		&backupID, &databaseID, &backupPath, &dbType, &host, &port, &username, &password, &dbName)
 		
 	if err != nil {
@@ -41,12 +41,11 @@ func RestoreBackup(backupID, userID int) (restoreID int, err error) {
 
 		// Construction de la commande pg_restore 
 		cmd = exec.Command(
-			"pg_restore",
+			"psql",
 			"-h", host,
 			"-p", port,
 			"-U", username,
 			"-d", dbName, // base ciblé
-			"-c", // supprimer les objets existants avant restauration
 			backupPath, // Destination du fichier du backup
 		)
 	case "mysql":

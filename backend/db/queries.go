@@ -114,7 +114,7 @@ var (
 
 // ---- Récupération d'informations du backup utilisé pour la restauration
 	QueryGetBackupByID =
-	`SELECT b.id, b.database_id, b.file_path, d.db_type, d.host, d.port, d.db_username, d.db_password, d.name AS database_name 
-	FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1; `	
+	`SELECT b.id, b.database_id, b.file_path, d.type, d.host, d.port, d.db_username, d.db_password, d.name AS database_name 
+	FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND user_id=$2;`	
 )
 

@@ -415,3 +415,66 @@ pg_restore: warning: errors ignored on restore: 24
 2025/12/05 14:13:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
 2025/12/05 14:16:50 logs.go:9: INFO: Backup #92 crée (PENDING)
 2025/12/05 14:16:55 logs.go:14: ERROR: mysqldump failed | exit status 2
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=19, expr:5 7 * * 2
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/05 14:45:13 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:0 5 * * 5
+2025/12/05 14:45:13 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 14:45:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:45:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:45:43 logs.go:9: INFO: Restore backup #94 terminé avec succès
+2025/12/05 14:45:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:51:00 logs.go:9: INFO: Backup_id=94 supprimé par user_id=1
+2025/12/05 14:51:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:51:07 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:51:15 logs.go:9: INFO: Backup #95 crée (PENDING)
+2025/12/05 14:51:16 logs.go:9: INFO: Backup postgres réussi: backups\Weekly_20251205_145115.sql, size=8.55 KB
+2025/12/05 14:51:18 logs.go:9: INFO: Backup_id=89 téléchargé par user_id=1, fichier=backups\Daily backup_20251205_132144.sql
+2025/12/05 14:51:26 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/05 14:51:28 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 14:51:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:51:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:51:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:51:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:51:53 logs.go:9: INFO: Backup #96 crée (PENDING)
+2025/12/05 14:51:53 logs.go:9: INFO: Backup mysql réussi: backups\Weekly_20251205_145153.sql, size=2.75 KB
+2025/12/05 14:52:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:52:05 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:52:06 logs.go:9: INFO: Restore backup #96 terminé avec succès
+2025/12/05 14:52:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:54:06 logs.go:9: INFO: Backup_id=89 supprimé par user_id=1
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 21:48:02 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/05 21:48:02 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 23:14:06 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/05 23:14:06 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 23:46:18 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/05 23:46:18 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 23:46:39 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 23:46:39 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 23:46:48 logs.go:9: INFO: Backup #97 crée (PENDING)
+2025/12/05 23:46:48 logs.go:9: INFO: Backup postgres réussi: backups\TestOne_20251205_234648.sql, size=8.55 KB
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/06 00:00:39 logs.go:9: INFO: Scheduler CRON démarré

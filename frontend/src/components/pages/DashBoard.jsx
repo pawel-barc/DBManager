@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddDatabase from "../organisms/AddDatabase";
 import DatabaseBox from "../organisms/DatabaseBox";
 import BackupBox from "../organisms/BackupBox";
+import AlertBox from "../organisms/AlertBox";
 
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
@@ -12,6 +13,7 @@ const Home = () => {
       <h1>Welcome Home</h1>
       <DatabaseBox />
       <BackupBox />
+      <AlertBox />
       {!showForm && (
         <button onClick={() => setShowForm(true)}>+ Add Database</button>
       )}

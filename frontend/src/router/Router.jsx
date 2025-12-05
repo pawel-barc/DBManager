@@ -13,6 +13,7 @@ import DBDetails from "../components/pages/DBDetails";
 import BackupsList from "../components/pages/BackupsList";
 import BackupsManagement from "../components/pages/BackupsManagement";
 import DatabaseRestore from "../components/pages/DatabaseRestore";
+import AlertListPage from "../components/pages/AlertsList";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -104,6 +105,14 @@ const Router = () => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/alerts"
+          element={
+            <PrivateRoute>
+              <AlertListPage />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/logout"
@@ -113,6 +122,7 @@ const Router = () => {
             </PrivateRoute>
           }
         />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

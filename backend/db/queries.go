@@ -115,6 +115,11 @@ var (
 // ---- Récupération d'informations du backup utilisé pour la restauration
 	QueryGetBackupByID =
 	`SELECT b.id, b.database_id, b.file_path, d.type, d.host, d.port, d.db_username, d.db_password, d.name AS database_name 
-	FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND user_id=$2;`	
-)
+	FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1 AND user_id=$2;`
+	
+					//     =============    ALERTS    =============    //
 
+// ---- Récupération des notifications
+	QueryGetAllAlerts =
+	`SELECT id, alert_type, message, created_at, is_read FROM alerts WHERE user_id = $1 ORDER BY created_at DESC;`	
+)

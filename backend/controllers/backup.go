@@ -129,6 +129,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 	}
 	if backupErr != nil {
 		utils.SendError(w, http.StatusInternalServerError, "Echec du backup")
+		utils.BackupError(userID, backupID, backupErr.Error())
 		return
 	}
 
@@ -138,6 +139,7 @@ func CreateBackup(w http.ResponseWriter, r *http.Request) {
 		Status: "completed",
 		Message: "Backup créé et enregistré",
 	})
+	utils.BackupSuccess(userID, backupID, req.Name)
 }
 
 

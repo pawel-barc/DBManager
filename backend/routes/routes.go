@@ -54,6 +54,9 @@ func SetupRouter() http.Handler {
 	// Restaurations
 	r.With(middleware.AuthMiddleware).Post("/backups/{backup_id}/restore", controllers.RestoreBackup)
 
+	// Alerts
+	r.With(middleware.AuthMiddleware).Get("/alerts", controllers.GetUserAlerts)
+
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r
 }

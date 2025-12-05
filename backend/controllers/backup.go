@@ -234,9 +234,10 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 
 	for rows.Next() {
 		var b models.Backup
-			var filePath sql.NullString
+		var filePath sql.NullString
+		var fileSize sql.NullFloat64
 		// Remplissage de la structure Backup avec les colonnes SQL
-		if err := rows.Scan(&b.ID, &b.DatabaseID, &b.Name, &filePath, &b.FileSize, &b.BackupDate, &b.Status, &b.Version, &b.Log); err != nil {
+		if err := rows.Scan(&b.ID, &b.DatabaseID, &b.Name, &filePath, &fileSize, &b.BackupDate, &b.Status, &b.Version, &b.Log); err != nil {
 			utils.SendError(w, http.StatusInternalServerError, "Erreur de lecture des backups")
 			return
 		}
@@ -244,6 +245,11 @@ func ListBackups(w http.ResponseWriter, r *http.Request) {
 			b.FilePath = filePath.String
 		} else {
 			b.FilePath = ""
+		}
+		if fileSize.Valid {
+			b.FileSize = fileSize.Float64
+		} else {
+			b.FileSize = 0
 		}
 		backups = append(backups, b)
 	}
@@ -324,6 +330,7 @@ func DeleteBackup(w http.ResponseWriter, r *http.Request) {
 	// Suppression de l'enregistrement du backup dans la base de données
 	_, err = db.DB.Exec(`DELETE FROM backups WHERE id = $1`, backupID)
 	if err != nil {
+		utils.LogError("Erreur delete backup: ",err)
 		utils.SendError(w, http.StatusInternalServerError, "Impossible de supprimer ce backup")
 		return
 	}

@@ -1,3 +1,5 @@
+// Composant permettant à l'utilisateur de visualiser et de restaurer les backups d'une base de données.
+// Affiche la liste des backups disponibles, gère l'état de chargement et indique quel backup est en cours de restauration.
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import restoreBackup from "../../api/restoreApi";
@@ -9,18 +11,18 @@ const DatabaseRestore = () => {
   const databaseId = Number(id);
 
   const [backups, setBackups] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [restoring, setRestoring] = useState(null);
 
   const fetchBackups = async () => {
     setLoading(true);
-    const res = await getDatabaseBackups(databaseId);
+    const response = await getDatabaseBackups(databaseId);
     setLoading(false);
 
-    if (res.success) {
-      setBackups(res.data);
+    if (response.success) {
+      setBackups(response.data || []);
     } else {
-      toast.error(res.message || "Erreur lors du chargement des backups");
+      toast.error(response.message || "Erreur lors du chargement des backups");
     }
   };
 
@@ -31,15 +33,16 @@ const DatabaseRestore = () => {
   const handleRestore = async (backupId) => {
     if (restoring) return;
     setRestoring(backupId);
-    const res = await restoreBackup(backupId);
+    const response = await restoreBackup(backupId);
     setRestoring(null);
 
-    if (res.success) {
+    if (response.success) {
       toast.success("Restauration en cours !");
       fetchBackups();
     } else {
-      toast.error(res.message || "Erreur lors de la restauration");
+      toast.error(response.message || "Erreur lors de la restauration");
     }
+    setRestoring(null);
   };
 
   return (
@@ -58,13 +61,13 @@ const DatabaseRestore = () => {
               {new Date(b.backup_date).toLocaleString()} —{" "}
               {b.file_size?.toFixed(2)} MB
               <button
+                onClick={() => handleRestore(b.id)}
+                disabled={restoring === b.id}
                 style={{
                   marginLeft: "10px",
                   background: restoring === b.id ? "gray" : "orange",
                   color: "white",
                 }}
-                onClick={() => handleRestore(b.id)}
-                disabled={restoring === b.id}
               >
                 {restoring === b.id ? "Restoring..." : "Restaurer"}
               </button>

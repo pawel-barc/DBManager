@@ -285,3 +285,133 @@ pg_restore: warning: errors ignored on restore: 24
 2025/12/05 02:08:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
 2025/12/05 02:10:03 logs.go:9: INFO: Restore backup #76 terminé avec succès
 2025/12/05 02:10:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/05 02:15:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/05 02:15:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/05 02:16:07 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 02:16:12 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/05 09:16:14 logs.go:9: INFO: Backup_id=75 supprimé par user_id=1
+2025/12/05 09:16:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/05 09:16:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/05 09:17:06 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 09:17:11 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 09:18:31 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/05 09:19:01 logs.go:9: INFO: Backup #83 crée (PENDING)
+2025/12/05 09:19:01 logs.go:9: INFO: Backup postgres réussi: backups\TTTTTTTTTTtttt_20251205_091901.sql, size=7.43 KB
+2025/12/05 09:19:18 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/05 09:19:18 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/05 09:19:24 logs.go:9: INFO: Restore backup #83 terminé avec succès
+2025/12/05 09:19:24 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/05 09:23:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/05 09:23:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 3 items
+2025/12/05 09:23:54 logs.go:9: INFO: Backup #84 crée (PENDING)
+2025/12/05 09:23:55 logs.go:9: INFO: Backup postgres réussi: backups\SEIZETESTBACKUP_20251205_092354.sql, size=7.43 KB
+2025/12/05 09:24:20 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/05 09:24:20 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/05 09:25:01 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/05 09:25:01 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 4 items
+2025/12/05 09:26:37 logs.go:9: INFO: Backup #85 crée (PENDING)
+2025/12/05 09:26:38 logs.go:9: INFO: Backup postgres réussi: backups\TestBeforeRestore_20251205_092637.sql, size=7.43 KB
+2025/12/05 09:28:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:28:31 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:28:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:28:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:28:58 logs.go:9: INFO: Restore backup #85 terminé avec succès
+2025/12/05 09:28:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:29:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:29:41 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 09:29:51 logs.go:9: INFO: Backup #86 crée (PENDING)
+2025/12/05 09:29:51 logs.go:9: INFO: Backup postgres réussi: backups\TestAfterRestore_20251205_092951.sql, size=12.33 KB
+2025/12/05 09:42:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 6 items
+2025/12/05 09:42:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 6 items
+2025/12/05 10:26:52 logs.go:9: INFO: Backup_id=84 supprimé par user_id=1
+2025/12/05 10:33:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 10:33:11 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 5 items
+2025/12/05 10:33:27 logs.go:9: INFO: Backup #87 crée (PENDING)
+2025/12/05 10:33:27 logs.go:9: INFO: Backup postgres réussi: backups\la_20251205_103327.sql, size=12.33 KB
+2025/12/05 10:35:27 logs.go:9: INFO: La tâche à été mise à jour
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=11, expr:36 20 * * *
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=18, expr:0 2 * * *
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=6, expr:6 20 * * 2
+2025/12/05 13:02:52 logs.go:9: INFO: Tâche CRON enregistée: id=8, expr:2 0 * * *
+2025/12/05 13:02:52 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 13:03:24 logs.go:9: INFO: Backup #88 crée (PENDING)
+2025/12/05 13:03:25 logs.go:9: INFO: Backup postgres réussi: backups\THE07ONE_20251205_130324.sql, size=8.55 KB
+2025/12/05 13:04:45 logs.go:9: INFO: Backup_id=88 supprimé par user_id=1
+2025/12/05 13:04:47 logs.go:9: INFO: Backup_id=87 supprimé par user_id=1
+2025/12/05 13:04:48 logs.go:9: INFO: Backup_id=86 supprimé par user_id=1
+2025/12/05 13:04:53 logs.go:9: INFO: Backup_id=82 supprimé par user_id=1
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=11, expr:36 20 * * *
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=18, expr:0 2 * * *
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=6, expr:6 20 * * 2
+2025/12/05 13:14:44 logs.go:9: INFO: Tâche CRON enregistée: id=8, expr:2 0 * * *
+2025/12/05 13:14:44 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/05 13:15:06 logs.go:14: ERROR: Erreur delete backup:  | pq: UPDATE ou DELETE sur la table « backups » viole la contrainte de clé étrangère « restores_backup_id_fkey » de la table « restores »
+2025/12/05 13:18:37 logs.go:9: INFO: Backup_id=74 supprimé par user_id=1
+2025/12/05 13:18:39 logs.go:9: INFO: Backup_id=76 supprimé par user_id=1
+2025/12/05 13:18:40 logs.go:9: INFO: Backup_id=83 supprimé par user_id=1
+2025/12/05 13:18:42 logs.go:9: INFO: Backup_id=85 supprimé par user_id=1
+2025/12/05 13:18:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:18:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:19:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:19:49 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:37 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:40 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:20:40 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:08 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:14 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 0 items
+2025/12/05 13:21:44 logs.go:9: INFO: Backup #89 crée (PENDING)
+2025/12/05 13:21:44 logs.go:9: INFO: Backup postgres réussi: backups\Daily backup_20251205_132144.sql, size=8.55 KB
+2025/12/05 13:22:53 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 13:22:55 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 13:22:57 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 13:23:00 logs.go:9: INFO: L'état' à été mise à jour
+2025/12/05 13:25:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:25:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:26:33 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:26:33 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:26:42 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 13:26:42 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:26:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:26:54 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:46:28 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:46:28 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:46:29 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 13:46:29 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 13:57:12 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:05:38 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 14:05:38 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:05:44 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 14:05:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:05:45 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 14:05:45 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:05:46 logs.go:9: INFO: Restore backup #89 terminé avec succès
+2025/12/05 14:05:46 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 1 items
+2025/12/05 14:06:26 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:06:26 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 0 items
+2025/12/05 14:06:37 logs.go:9: INFO: Backup #90 crée (PENDING)
+2025/12/05 14:06:42 logs.go:14: ERROR: mysqldump failed | exit status 2
+2025/12/05 14:10:54 logs.go:9: INFO: Backup #91 crée (PENDING)
+2025/12/05 14:10:54 logs.go:9: INFO: Backup mysql réussi: backups\Weekly_20251205_141054.sql, size=2.75 KB
+2025/12/05 14:12:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:12:58 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:13:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:13:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
+2025/12/05 14:16:50 logs.go:9: INFO: Backup #92 crée (PENDING)
+2025/12/05 14:16:55 logs.go:14: ERROR: mysqldump failed | exit status 2

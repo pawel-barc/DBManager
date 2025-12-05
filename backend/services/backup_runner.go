@@ -21,7 +21,7 @@ func RunBackupPostgres(backupID int, dbName, host, port, username, password, bac
 		"-h", host,
 		"-p", port,
 		"-U", username,
-		"-F", "c", // Format custom compressé
+		"-F", "p", // Format sql
 		"-f", backupPath, // Destination du fichier du backup
 		dbName, // Nom de la base à sauvegarder
 	)

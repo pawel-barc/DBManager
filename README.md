@@ -144,44 +144,52 @@ ALTER TABLE scheduled_tasks
 ADD COLUMN user_id INT NOT NULL REFERENCES users(id);
 
 ALTER TABLE databases
-    DROP CONSTRAINT IF EXISTS databases_user_id_fkey,
-    ADD CONSTRAINT fk_databases_user
-        FOREIGN KEY (user_id)
-        REFERENCES users(id)
-        ON DELETE CASCADE;
+DROP CONSTRAINT IF EXISTS databases_user_id_fkey,
+ADD CONSTRAINT fk_databases_user
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE;
 
 ALTER TABLE backups
-    DROP CONSTRAINT IF EXISTS backups_database_id_fkey,
-    ADD CONSTRAINT fk_backups_database
-        FOREIGN KEY (database_id)
-        REFERENCES databases(id)
-        ON DELETE CASCADE;
+DROP CONSTRAINT IF EXISTS backups_database_id_fkey,
+ADD CONSTRAINT fk_backups_database
+FOREIGN KEY (database_id)
+REFERENCES databases(id)
+ON DELETE CASCADE;
 
 ALTER TABLE restores
-    DROP CONSTRAINT IF EXISTS restores_backup_id_fkey,
-    ADD CONSTRAINT fk_restores_backup
-        FOREIGN KEY (backup_id)
-        REFERENCES backups(id)
-        ON DELETE CASCADE;
-
+DROP CONSTRAINT IF EXISTS restores_backup_id_fkey,
+ADD CONSTRAINT fk_restores_backup
+FOREIGN KEY (backup_id)
+REFERENCES backups(id)
+ON DELETE CASCADE;
 
 ALTER TABLE restores
-    DROP CONSTRAINT IF EXISTS restores_user_id_fkey,
-    ADD CONSTRAINT fk_restores_user
-        FOREIGN KEY (user_id)
-        REFERENCES users(id)
-        ON DELETE CASCADE;
+DROP CONSTRAINT IF EXISTS restores_user_id_fkey,
+ADD CONSTRAINT fk_restores_user
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE;
 
 ALTER TABLE scheduled_tasks
-    DROP CONSTRAINT IF EXISTS scheduled_tasks_database_id_fkey,
-    ADD CONSTRAINT fk_scheduled_tasks_database
-        FOREIGN KEY (database_id)
-        REFERENCES databases(id)
-        ON DELETE CASCADE;
+DROP CONSTRAINT IF EXISTS scheduled_tasks_database_id_fkey,
+ADD CONSTRAINT fk_scheduled_tasks_database
+FOREIGN KEY (database_id)
+REFERENCES databases(id)
+ON DELETE CASCADE;
 
 ALTER TABLE alerts
-    DROP CONSTRAINT IF EXISTS alerts_user_id_fkey,
-    ADD CONSTRAINT fk_alerts_user
-        FOREIGN KEY (user_id)
-        REFERENCES users(id)
-        ON DELETE CASCADE;
+DROP CONSTRAINT IF EXISTS alerts_user_id_fkey,
+ADD CONSTRAINT fk_alerts_user
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE;
+
+ALTER TABLE restores
+DROP CONSTRAINT restores_backup_id_fkey;
+
+ALTER TABLE restores
+ADD CONSTRAINT restores_backup_id_fkey
+FOREIGN KEY (backup_id)
+REFERENCES backups(id)
+ON DELETE CASCADE;

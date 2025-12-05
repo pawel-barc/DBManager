@@ -51,6 +51,9 @@ func SetupRouter() http.Handler {
 	r.With(middleware.AuthMiddleware).Put("/scheduled-tasks/update-cron", controllers.UpdateCronExpression)
 	r.With(middleware.AuthMiddleware).Delete("/scheduled-tasks/{id}", controllers.DeleteScheduledTask)
 
+	// Restaurations
+	r.With(middleware.AuthMiddleware).Post("/backups/{backup_id}/restore", controllers.RestoreBackup)
+
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r
 }

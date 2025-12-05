@@ -98,5 +98,23 @@ var (
 	QueryDeleteScheduledTask = 
 	`DELETE from scheduled_tasks WHERE id = $1`	
 
+					//     =============    RESTORES    =============    //
+
+// ---- Eféctuer une restauration
+	QueryInsertRestore =
+	`INSERT INTO restores (backup_id, user_id, status) VALUES ($1, $2, 'restoring') RETURNING id;`
+	
+// ---- Mettre à jour le status de la restauration => succès 
+	QueryUpdateRestoreSuccess =
+	`UPDATE restores SET status = 'success', restored_at = NOW(), log = $1 WHERE id = $2;`
+	
+// ----	Mettre à jour le status de la restauration => échec
+	QueryUpdateRestoreError = 
+	`UPDATE restores SET status = 'error', restored_at = NOW(), log = $1 WHERE id = $2;`
+
+// ---- Récupération d'informations du backup utilisé pour la restauration
+	QueryGetBackupByID =
+	`SELECT b.id, b.database_id, b.file_path, d.db_type, d.host, d.port, d.db_username, d.db_password, d.name AS database_name 
+	FROM backups b JOIN databases d ON b.database_id = d.id WHERE b.id = $1; `	
 )
 

@@ -121,5 +121,10 @@ var (
 
 // ---- Récupération des notifications
 	QueryGetAllAlerts =
-	`SELECT id, alert_type, message, created_at, is_read FROM alerts WHERE user_id = $1 ORDER BY created_at DESC;`	
+	`SELECT id, alert_type, message, created_at, is_read FROM alerts WHERE user_id = $1 ORDER BY created_at DESC;`
+	
+// ---- Récupération de la date du dernier backup pour chaque base, par utilisateur, retourne: user_id, db_name, last_backup
+	QueryGetDatabasesLastBackup =
+	`SELECT u.id AS user_id, d.name AS db_name, MAX(b.backup_date) AS last_backup FROM databases d JOIN users u ON d.user_id = u.id
+	LEFT JOIN backups b ON b.database_id = d.id GROUP BY u.id, d.name;`
 )

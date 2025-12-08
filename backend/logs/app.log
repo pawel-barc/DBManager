@@ -478,3 +478,43 @@ pg_restore: warning: errors ignored on restore: 24
 2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
 2025/12/06 00:00:39 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
 2025/12/06 00:00:39 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/06 00:17:26 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/06 00:17:26 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/06 00:17:53 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/06 00:17:53 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/06 00:17:55 logs.go:9: INFO: Restore backup #97 terminé avec succès
+2025/12/06 00:17:55 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 2 items
+2025/12/06 02:00:00 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2025/12/06 02:00:00 logs.go:9: INFO: Backup #98 crée (PENDING)
+2025/12/06 02:00:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20251206_020000.sql, size=0.51 KB
+2025/12/06 02:00:00 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2025/12/08 18:12:43 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2025/12/08 18:12:43 logs.go:9: INFO: CRON: exécution tâche 17 (db = 1 user = 1)
+2025/12/08 18:12:43 logs.go:9: INFO: Backup #99 crée (PENDING)
+2025/12/08 18:12:43 logs.go:9: INFO: Backup #100 crée (PENDING)
+2025/12/08 18:12:44 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20251208_181243.sql, size=0.51 KB
+2025/12/08 18:12:44 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2025/12/08 18:12:44 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_1_task_17_20251208_181243.sql, size=6.37 KB
+2025/12/08 18:12:44 logs.go:9: INFO: CRON: tâche 17 exécuté avec succès
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/08 19:54:44 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/08 19:54:44 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/08 19:54:44 logs.go:9: INFO: CRON des vérifications de backups démarré
+2025/12/08 19:55:00 logs.go:14: ERROR: Imopossible de récupérer les dernières sauvegardes | pq: la colonne b.created_at n'existe pas
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 2 * * *
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=21, expr:4 6 * * 4
+2025/12/08 19:58:42 logs.go:9: INFO: Tâche CRON enregistée: id=20, expr:3 12 * * 4
+2025/12/08 19:58:42 logs.go:9: INFO: Scheduler CRON démarré
+2025/12/08 19:58:42 logs.go:9: INFO: CRON des vérifications de backups démarré

@@ -16,6 +16,7 @@ func main() {
 	db.ConnectDB()
 
 	cron.StartCronScheduler()
+	cron.StartBackupHealthCron()
 	// Configuration du routeur (définition des routes de l'application)
 
 	// Migration: création de la base des données, Commentez après avoir utiliser

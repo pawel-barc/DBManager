@@ -9,7 +9,7 @@ const getAllUserAlerts = async () => {
   const response = await request.json();
   return response;
 };
-// Marque une notification comme lu
+// Marque une alerte comme lu
 const markAlertAsRead = async (alertId) => {
   const request = await fetchWithRefresh(
     `http://localhost:8080/alerts/${alertId}/read`,
@@ -21,4 +21,17 @@ const markAlertAsRead = async (alertId) => {
   const response = await request.json();
   return response;
 };
-export { getAllUserAlerts, markAlertAsRead };
+
+// Marque toutes les alertes comme lues
+const markAllAsRead = async () => {
+  const request = await fetchWithRefresh(
+    `http://localhost:8080/alerts/read-all`,
+    {
+      method: "PUT",
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+export { getAllUserAlerts, markAlertAsRead, markAllAsRead };

@@ -62,6 +62,17 @@ func MarkAlertAsRead(w http.ResponseWriter, r *http.Request) {
 	}
 	utils.SendSuccess(w, http.StatusOK, "Alerte marquée comme lue")
 
+}
 
 
+// Marquer toutes les alertes de l'utilisateur comme lues
+func MarkAllAsRead(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middleware.UserIDKey).(int)
+	
+	_, err := db.DB.Exec(`UPDATE alerts SET is_read = TRUE WHERE user_id=$1`, userId)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de marquer toutes les alertes comme lues")
+		return
+	}
+	utils.SendSuccess(w, http.StatusOK, "Toutes les alertes ont été marqueés comme lues")
 }

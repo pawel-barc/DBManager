@@ -9,4 +9,16 @@ const getAllUserAlerts = async () => {
   const response = await request.json();
   return response;
 };
-export default getAllUserAlerts;
+// Marque une notification comme lu
+const markAlertAsRead = async (alertId) => {
+  const request = await fetchWithRefresh(
+    `http://localhost:8080/alerts/${alertId}/read`,
+    {
+      method: "PUT",
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+export { getAllUserAlerts, markAlertAsRead };

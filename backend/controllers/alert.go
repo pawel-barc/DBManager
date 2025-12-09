@@ -5,6 +5,9 @@ import (
 	"safebase/db"
 	"safebase/middleware"
 	"safebase/utils"
+	"strconv"
+
+	"github.com/go-chi/chi/v5"
 )
 
 // Récupère toutes les alertes pour l'utilisateur connecté
@@ -38,4 +41,27 @@ func GetUserAlerts(w http.ResponseWriter, r *http.Request) {
 	}
 	// Réponse finale
 	utils.SendSuccessWithData(w, http.StatusOK, "Liste des alertes récupérée",result)
+}
+
+// Marque un alerte comme lu
+func MarkAlertAsRead(w http.ResponseWriter, r *http.Request) {
+	userID := r.Context().Value(middleware.UserIDKey).(int)
+	alertIDstr := chi.URLParam(r, "alert_id")
+	alertID, err := strconv.Atoi(alertIDstr)
+	if err != nil || alertID <= 0 {
+		utils.SendError(w, http.StatusBadRequest, "ID d'alerte invalide")
+		return
+	}
+
+	// Mettre à jour le statut dans la base
+	_, err = db.DB.Exec(`UPDATE alerts SET is_read = TRUE WHERE id=$1 AND user_id=$2`, alertID, userID)
+	if err != nil {
+		utils.LogError("Impossible de mettre à jour l'alerte comme lue", err)
+		utils.SendError(w, http.StatusInternalServerError, "Impossible de mettre à jour l'alerte")
+		return
+	}
+	utils.SendSuccess(w, http.StatusOK, "Alerte marquée comme lue")
+
+
+
 }

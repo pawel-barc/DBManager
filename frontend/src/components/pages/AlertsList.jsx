@@ -6,6 +6,7 @@ import {
   getAllUserAlerts,
   markAlertAsRead,
   markAllAsRead,
+  deleteAlert,
 } from "../../api/alertApi";
 import { toast } from "react-toastify";
 
@@ -61,6 +62,16 @@ const AlertListPage = () => {
     }
   };
 
+  const handleDeleteAlert = async (alertId) => {
+    const response = await deleteAlert(alertId);
+    if (response.success) {
+      setAlerts((prev) => prev.filter((a) => a.id != alertId));
+      toast.success("Alerte supprimée avec succès");
+    } else {
+      toast.error("Erreur lors de la suppression");
+    }
+  };
+
   if (loading) return <p>Chargement...</p>;
 
   return (
@@ -83,11 +94,32 @@ const AlertListPage = () => {
                 cursor: "pointer",
                 backgroundColor: a.is_read ? "#fff" : "#e9f3ff",
                 border: "1px solid #ddd",
+                position: "relative",
               }}
             >
               <strong>{a.alert_type}</strong> — {a.message}
               <br />
               <small style={{ color: "#666" }}>{a.created_at}</small>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteAlert(a.id);
+                }}
+                style={{
+                  position: "absolute",
+                  border: "2px solid black",
+                  borderRadius: "4px ",
+                  bottom: "2px",
+                  right: "-80px",
+                  background: "transparent",
+                  cursor: "pointer",
+                  fontSize: "26px",
+                  color: "#900",
+                  fontWeight: "bold",
+                }}
+              >
+                x
+              </button>
             </li>
           ))}
         </ul>

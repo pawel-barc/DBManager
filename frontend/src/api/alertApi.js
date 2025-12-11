@@ -34,4 +34,17 @@ const markAllAsRead = async () => {
   const response = await request.json();
   return response;
 };
-export { getAllUserAlerts, markAlertAsRead, markAllAsRead };
+
+// Supprime une alerte
+const deleteAlert = async (alertId) => {
+  const request = await fetchWithRefresh(
+    `http://localhost:8080/alerts/${alertId}`,
+    {
+      method: "DELETE",
+      credentials: "include",
+    }
+  );
+  const response = await request.json();
+  return response;
+};
+export { getAllUserAlerts, markAlertAsRead, markAllAsRead, deleteAlert };

@@ -58,6 +58,7 @@ func SetupRouter() http.Handler {
 	r.With(middleware.AuthMiddleware).Get("/alerts", controllers.GetUserAlerts)
 	r.With(middleware.AuthMiddleware).Put("/alerts/{alert_id}/read", controllers.MarkAlertAsRead)
 	r.With(middleware.AuthMiddleware).Put("/alerts/read-all", controllers.MarkAllAsRead)
+	r.With(middleware.AuthMiddleware).Delete("/alerts/{alert_id}", controllers.DeleteAlert)
 	// Retourne le routeur configuré comme 'http.Handler'
 	return r
 }

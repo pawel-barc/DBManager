@@ -76,3 +76,30 @@ func MarkAllAsRead(w http.ResponseWriter, r *http.Request) {
 	}
 	utils.SendSuccess(w, http.StatusOK, "Toutes les alertes ont été marqueés comme lues")
 }
+
+// Supprime une alerte par ID 
+func DeleteAlert(w http.ResponseWriter, r *http.Request) {
+	userId := r.Context().Value(middleware.UserIDKey).(int)
+
+	alertIdStr := chi.URLParam(r, "alert_id")
+	alertId, err := strconv.Atoi(alertIdStr)
+	if err != nil {
+		utils.SendError(w, http.StatusBadRequest, "ID d'alerte invalide")
+		return
+	}
+
+	res, err := db.DB.Exec(`DELETE FROM alerts WHERE id=$1 AND user_id=$2`,alertId, userId)
+	if err != nil {
+		utils.SendError(w, http.StatusInternalServerError, "Erreur lors de la suppression")
+		return
+	}
+
+	rows, _ := res.RowsAffected()
+	if rows == 0 {
+		utils.SendError(w, http.StatusNotFound, "Aucune alerte trouvée")
+		return
+	}
+
+	utils.SendSuccess(w, http.StatusOK, "Alerte supprimée avec succès")
+
+}

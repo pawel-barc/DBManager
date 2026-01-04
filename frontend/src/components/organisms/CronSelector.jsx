@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 
 const DAYS = [
+  { label: "Tous les jours", value: "*" },
   { label: "Lundi", value: "1" },
   { label: "Mardi", value: "2" },
   { label: "Mercredi", value: "3" },
@@ -17,14 +18,10 @@ const CronSelector = ({ value, onChange }) => {
   const [mode, setMode] = useState("daily");
   const [hour, setHour] = useState("0");
   const [minute, setMinute] = useState("0");
-  const [weekDays, setWeekDays] = useState([]);
+  const [weekDay, setWeekDay] = useState("*");
   const [customCron, setCustomCron] = useState("* * * * *");
-
   const [generated, setGenerated] = useState("* * * * *");
 
-  //
-  // --- 1) CHARGEMENT D’UNE EXPRESSION CRON EXISTANTE ---
-  //
   useEffect(() => {
     if (!value) return;
 
@@ -33,16 +30,18 @@ const CronSelector = ({ value, onChange }) => {
 
     const [m, h, , , d] = parts;
 
-    setCustomCron(value);
     setGenerated(value);
+    setCustomCron(value);
 
     if (d !== "*" && d !== "?" && d !== "") {
       setMode("weekly");
-      setWeekDays(d.split(","));
-    } else if (h !== "*") {
-      setMode("daily");
-      setHour(h);
       setMinute(m);
+      setHour(h);
+      setWeekDay(d); // ⚠️ un seul jour attendu
+    } else if (h !== "*" && m !== "*") {
+      setMode("daily");
+      setMinute(m);
+      setHour(h);
     } else if (h === "*" && m !== "*") {
       setMode("hourly");
       setMinute(m);
@@ -51,9 +50,6 @@ const CronSelector = ({ value, onChange }) => {
     }
   }, [value]);
 
-  //
-  // --- 2) GÉNÉRATION DE L’EXPRESSION CRON ---
-  //
   useEffect(() => {
     let expr = "* * * * *";
 
@@ -61,14 +57,15 @@ const CronSelector = ({ value, onChange }) => {
       case "hourly":
         expr = `${minute} * * * *`;
         break;
+
       case "daily":
         expr = `${minute} ${hour} * * *`;
         break;
+
       case "weekly":
-        expr = `${minute} ${hour} * * ${
-          weekDays.length > 0 ? weekDays.join(",") : "*"
-        }`;
+        expr = `${minute} ${hour} * * ${weekDay}`;
         break;
+
       case "custom":
         expr = customCron;
         break;
@@ -76,28 +73,22 @@ const CronSelector = ({ value, onChange }) => {
 
     setGenerated(expr);
     onChange(expr);
-  }, [mode, hour, minute, weekDays, customCron]);
-
-  const toggleDay = (value) => {
-    setWeekDays((prev) =>
-      prev.includes(value) ? prev.filter((d) => d !== value) : [...prev, value]
-    );
-  };
+  }, [mode, hour, minute, weekDay, customCron]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-      <label>
-        Type de planification:
+    <div className="cron-selector">
+      <div className="cron-field">
+        <label>Type de planification</label>
         <select value={mode} onChange={(e) => setMode(e.target.value)}>
           <option value="hourly">Chaque heure</option>
           <option value="daily">Chaque jour</option>
-          <option value="weekly">Jours spécifiques</option>
+          <option value="weekly">Jour spécifique</option>
           <option value="custom">Avancé (CRON)</option>
         </select>
-      </label>
+      </div>
 
-      {(mode === "daily" || mode === "hourly" || mode === "weekly") && (
-        <div style={{ display: "flex", gap: "10px" }}>
+      {(mode === "hourly" || mode === "daily" || mode === "weekly") && (
+        <div className="cron-time-row">
           <input
             type="number"
             min="0"
@@ -105,7 +96,6 @@ const CronSelector = ({ value, onChange }) => {
             value={minute}
             onChange={(e) => setMinute(e.target.value)}
             placeholder="Minute"
-            style={{ width: "60px" }}
           />
 
           {(mode === "daily" || mode === "weekly") && (
@@ -116,38 +106,40 @@ const CronSelector = ({ value, onChange }) => {
               value={hour}
               onChange={(e) => setHour(e.target.value)}
               placeholder="Heure"
-              style={{ width: "60px" }}
             />
           )}
         </div>
       )}
 
       {mode === "weekly" && (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {DAYS.map((d) => (
-            <label key={d.value}>
-              <input
-                type="checkbox"
-                checked={weekDays.includes(d.value)}
-                onChange={() => toggleDay(d.value)}
-              />
-              {d.label}
-            </label>
-          ))}
+        <div className="cron-field">
+          <label>Jour de la semaine</label>
+          <select value={weekDay} onChange={(e) => setWeekDay(e.target.value)}>
+            {DAYS.map((d) => (
+              <option key={d.value} value={d.value}>
+                {d.label}
+              </option>
+            ))}
+          </select>
+          <span className="cron-hint">
+            Une seule journée peut être sélectionnée
+          </span>
         </div>
       )}
 
       {mode === "custom" && (
-        <input
-          type="text"
-          value={customCron}
-          onChange={(e) => setCustomCron(e.target.value)}
-          placeholder="* * * * *"
-          style={{ width: "200px" }}
-        />
+        <div className="cron-field">
+          <label>Expression CRON</label>
+          <input
+            type="text"
+            value={customCron}
+            onChange={(e) => setCustomCron(e.target.value)}
+            placeholder="* * * * *"
+          />
+        </div>
       )}
 
-      <div style={{ marginTop: "10px" }}>
+      <div className="cron-hint">
         CRON généré : <strong>{generated}</strong>
       </div>
     </div>

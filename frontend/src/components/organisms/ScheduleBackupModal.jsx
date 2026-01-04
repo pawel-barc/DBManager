@@ -3,6 +3,7 @@ import { useState } from "react";
 import CronSelector from "./CronSelector";
 import { addScheduledTask } from "../../api/cronApi";
 import { toast } from "react-toastify";
+import "../../styles/organisms/ScheduleBackupModal.css";
 
 const ScheduleBackupModal = ({ databaseId, onClose }) => {
   const [cronExpr, setCronExpr] = useState("* * * * *");
@@ -31,18 +32,22 @@ const ScheduleBackupModal = ({ databaseId, onClose }) => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
         <h3>Planifier un backup automatique</h3>
+
         <CronSelector onChange={(value) => setCronExpr(value)} />
-        <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
-          <button onClick={handleSave} disabled={loading}>
+
+        <div className="modal-actions">
+          <button
+            className="modal-btn primary"
+            onClick={handleSave}
+            disabled={loading}
+          >
             {loading ? "Enregistrement..." : "Enregistrer"}
           </button>
-          <button
-            style={{ backgroundColor: "gray", color: "white" }}
-            onClick={onClose}
-          >
+
+          <button className="modal-btn secondary" onClick={onClose}>
             Annuler
           </button>
         </div>

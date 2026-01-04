@@ -1,0 +1,118 @@
+/* ===================== */
+/*        MODAL          */
+/* ===================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 520px;
+
+  background: #f0f4ff;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+
+  padding: 24px 28px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: scaleIn 0.2s ease;
+}
+
+.modal-card h3 {
+  margin-bottom: 20px;
+  font-size: clamp(18px, 3vw, 22px);
+  color: #0f172a;
+}
+
+.modal-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-btn.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.modal-btn.primary:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.modal-btn.secondary {
+  background: #64748b;
+  color: white;
+}
+
+.modal-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+.cron-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cron-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.cron-selector input,
+.cron-selector select {
+  width: 100%;
+  max-width: 360px;
+  padding: 12px 14px;
+  font-size: 16px;
+  text-align: center;
+
+  border-radius: 8px;
+  border: 2px solid #0353a4;
+  background-color: #fdfdfd;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cron-selector input:focus,
+.cron-selector select:focus {
+  outline: none;
+  border-color: #023e7d;
+  box-shadow: 0 0 0 3px rgba(3, 83, 164, 0.2);
+}
+
+.cron-time-row {
+  display: flex;
+  gap: 12px;
+}
+
+.cron-hint {
+  font-size: 12px;
+  color: #64748b;
+}

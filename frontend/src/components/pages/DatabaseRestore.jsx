@@ -57,7 +57,7 @@ const DatabaseRestore = () => {
         <ul>
           {backups.map((b) => (
             <li key={b.id} style={{ marginBottom: "10px" }}>
-              <strong>{b.name}</strong> {" "}
+              <strong>{b.name}</strong>{" "}
               {new Date(b.backup_date).toLocaleString()} {"--- "}
               {b.file_size?.toFixed(2)} MB
               <button

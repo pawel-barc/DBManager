@@ -1,0 +1,115 @@
+/* ===================== */
+/*   DATABASE BACKUPS    */
+/* ===================== */
+
+.db-backups-container {
+  margin-top: 20px;
+}
+.db-backups-container > h3 {
+  position: relative;
+  font-size: clamp(26px, 4vw, 38px);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.db-backups-list {
+  list-style: none;
+  padding: 0;
+}
+
+.db-backup-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* CARD */
+.db-backup-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background: #f0f4ff;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 14px 18px;
+
+  transition: background 0.2s ease;
+}
+
+.db-backup-card.success {
+  border-left: 6px solid #16a34a;
+}
+
+.db-backup-card.error {
+  border-left: 6px solid #dc2626;
+}
+
+.db-backup-card:hover {
+  background: #e0e8ff;
+}
+
+.db-backup-icon {
+  font-size: 26px;
+  color: #0353a4;
+}
+
+.db-backup-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+  column-gap: 40px;
+
+  width: 100%;
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+.db-backup-info .status {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* ===================== */
+/*      ACTION ICONS     */
+/* ===================== */
+
+.db-backup-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 12px;
+}
+
+.db-backup-btn {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.db-backup-btn.download {
+  background: #0353a4;
+  color: white;
+  padding: 25px;
+}
+
+.db-backup-btn.delete {
+  background: #dc2626;
+  color: white;
+  padding: 25px;
+}
+
+.db-backup-btn:hover {
+  transform: scale(1.15);
+}

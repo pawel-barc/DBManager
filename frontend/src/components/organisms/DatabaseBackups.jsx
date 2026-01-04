@@ -2,6 +2,13 @@
 import { useEffect, useState } from "react";
 import { getDatabaseBackups, deleteBackup } from "../../api/backupApi";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrash,
+  faDownload,
+  faDatabase,
+} from "@fortawesome/free-solid-svg-icons";
+import "../../styles/organisms/DatabaseBackups.css";
 
 const DatabaseBackups = ({ databaseId }) => {
   const [backups, setBackups] = useState([]);
@@ -41,27 +48,47 @@ const DatabaseBackups = ({ databaseId }) => {
   if (loading) return <p>Chargement des Sauvegardes...</p>;
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <h3>Sauvegardes</h3>
+    <div className="db-backups-container">
+      <h3>Sauvegardes manuels </h3>
+
       {backups.length === 0 ? (
-        <p>Aucun Sauvegarde disponible</p>
+        <p>Aucune sauvegarde disponible</p>
       ) : (
-        <ul>
+        <ul className="db-backups-list">
           {backups.map((b) => (
-            <li key={b.id} style={{ marginBottom: "10px" }}>
-              {b.name} - {b.status} - {b.backup_date}
-              <button
-                style={{ marginLeft: "10px", color: "red" }}
-                onClick={() => handleDelete(b.id)}
+            <li key={b.id} className="db-backup-item">
+              {/* CARD */}
+              <div
+                className={`db-backup-card ${
+                  b.status === "success" ? "success" : "error"
+                }`}
               >
-                Supprimer
-              </button>
-              <button
-                style={{ marginLeft: "5px", color: "green" }}
-                onClick={() => handleDownload(b.id)}
-              >
-                Télécharger
-              </button>
+                <FontAwesomeIcon icon={faDatabase} className="db-backup-icon" />
+
+                <div className="db-backup-info">
+                  <strong>{b.name}</strong>
+                  <span className="status">Status: {b.status}</span>
+                  <small>{new Date(b.backup_date).toLocaleString()}</small>
+                </div>
+              </div>
+
+              <div className="db-backup-actions">
+                <button
+                  className="db-backup-btn download"
+                  onClick={() => handleDownload(b.id)}
+                  aria-label="Télécharger"
+                >
+                  <FontAwesomeIcon icon={faDownload} />
+                </button>
+
+                <button
+                  className="db-backup-btn delete"
+                  onClick={() => handleDelete(b.id)}
+                  aria-label="Supprimer"
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </div>
             </li>
           ))}
         </ul>

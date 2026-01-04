@@ -3,7 +3,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DatabaseBackups from "../organisms/DatabaseBackups";
 import ScheduleBackupModal from "../organisms/ScheduleBackupModal";
-
+import "../../styles/pages/BackupsManagement.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrash,
+  faDownload,
+  faPen,
+  faPowerOff,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tooltip";
 import {
   getUserScheduledTasks,
   toggleTaskActive,
@@ -90,17 +99,8 @@ const BackupsManagement = () => {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-main-container">
       <h2>Gestion des sauvegardes</h2>
-
-      {/* --- NOUVEAU PLANIFICATEUR CRON --- */}
-      <button
-        style={{ marginBottom: "20px", background: "blue", color: "white" }}
-        onClick={() => setShowCronModal(true)}
-      >
-        Planifier un backup automatique
-      </button>
-
       {showCronModal && (
         <ScheduleBackupModal
           databaseId={databaseId}
@@ -124,75 +124,87 @@ const BackupsManagement = () => {
       {/* ─────────────────────────── */}
       {/*    SAUVEGARDE MAINTENANT    */}
       {/* ─────────────────────────── */}
-      <h3>Backup manuel immédiat</h3>
 
-      <div style={{ marginBottom: "20px" }}>
+      <div className="manual-backup">
         <input
           type="text"
           placeholder="Nom du backup (optionnel)"
           value={manualName}
           onChange={(e) => setManualName(e.target.value)}
-          style={{
-            padding: "8px",
-            marginRight: "10px",
-            borderRadius: "5px",
-            border: "1px solid #ccc",
-          }}
         />
 
-        <button
-          onClick={handleManualBackup}
-          disabled={runningBackup}
-          style={{
-            background: runningBackup ? "gray" : "green",
-            color: "white",
-            padding: "8px 12px",
-            borderRadius: "5px",
-          }}
-        >
+        <button onClick={handleManualBackup} disabled={runningBackup}>
           {runningBackup ? "En cours..." : "Exécuter un backup maintenant"}
         </button>
       </div>
+      {/* --- NOUVEAU PLANIFICATEUR CRON --- */}
+      <button
+        className="task-schedule-btn"
+        onClick={() => setShowCronModal(true)}
+      >
+        Planifier un sauvegarde automatique
+      </button>
 
       {/* --- LISTE DES SAUVEGARDES --- */}
       <DatabaseBackups databaseId={databaseId} />
 
       {/* --- TÂCHES CRON --- */}
-      <h3 style={{ marginTop: "30px" }}>Backups Automatiques (CRON)</h3>
+      <h3 style={{ marginTop: "30px" }}>Sauvegardes Automatiques (CRON)</h3>
 
       {loadingTasks ? (
         <p>Chargement...</p>
       ) : tasks.length === 0 ? (
         <p>Aucune tâche planifiée.</p>
       ) : (
-        <ul>
+        <ul className="cron-list">
           {tasks.map((t) => (
-            <li key={t.id} style={{ marginBottom: "10px" }}>
-              {humanReadableCron(t.cron_expression)}— Dernier run:{" "}
-              {t.last_run_at || "jamais"}
-              <button
-                style={{ marginLeft: "10px", color: "red" }}
-                onClick={() => handleDeleteTask(t.id)}
-              >
-                Supprimer
-              </button>
-              <button
-                style={{ marginLeft: "10px" }}
-                onClick={() => handleToggleActive(t.id, !t.is_active)}
-              >
-                {t.is_active ? "Désactiver" : "Activer"}
-              </button>
-              {/* --- OUVRIR LA MODIFICATION DU CRON --- */}
-              <button
-                style={{ marginLeft: "10px" }}
-                onClick={() => setEditTask(t)}
-              >
-                Modifier
-              </button>
+            <li key={t.id} className="cron-item">
+              {/* INFO */}
+              <div className="cron-card">
+                <FontAwesomeIcon icon={faClock} className="cron-icon" />
+
+                <div className="cron-info-grid">
+                  <strong>{humanReadableCron(t.cron_expression)}</strong>
+                  <span className="cron-status">
+                    {t.is_active ? "Actif" : "Inactif"}
+                  </span>
+                  <small>{t.last_run_at || "Jamais exécuté"}</small>
+                </div>
+              </div>
+
+              {/* ACTIONS */}
+              <div className="cron-actions">
+                <button
+                  className="cron-btn toggle"
+                  onClick={() => handleToggleActive(t.id, !t.is_active)}
+                  data-tooltip-id="cron-toggle"
+                >
+                  <FontAwesomeIcon icon={faPowerOff} />
+                </button>
+
+                <button
+                  className="cron-btn edit"
+                  onClick={() => setEditTask(t)}
+                  data-tooltip-id="cron-edit"
+                >
+                  <FontAwesomeIcon icon={faPen} />
+                </button>
+
+                <button
+                  className="cron-btn delete"
+                  onClick={() => handleDeleteTask(t.id)}
+                  data-tooltip-id="cron-delete"
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
       )}
+      <Tooltip id="cron-toggle">Activer / Désactiver</Tooltip>
+      <Tooltip id="cron-edit">Modifier</Tooltip>
+      <Tooltip id="cron-delete">Supprimer</Tooltip>
     </div>
   );
 };

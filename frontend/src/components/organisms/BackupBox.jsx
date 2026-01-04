@@ -41,6 +41,8 @@ const BackupBox = () => {
         textAlign: "center",
         boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
         transition: "all 0.2s",
+        color: "#0353a4",
+        backgroundColor: "white",
       }}
       onMouseEnter={(e) =>
         (e.currentTarget.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)")
@@ -49,7 +51,7 @@ const BackupBox = () => {
         (e.currentTarget.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)")
       }
     >
-      <h3>Sauvegardes</h3>
+      <h3 style={{ fontSize: "1.5rem" }}>Sauvegardes</h3>
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>{count}</p>
       <small>Cliquer pour voir les Sauvegardes</small>
     </div>

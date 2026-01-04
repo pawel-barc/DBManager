@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import registerUser from "../../api/registerApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import useAuthStore from "../../store/AuthStore";
+import "../../styles/pages/Register.css";
 // import "../../styles/pages/Register.css";
 import { useState } from "react";
 
@@ -39,7 +39,14 @@ const Register = () => {
     },
   });
   //Retourne le formulaire d'inscription avec le prop du formik
-  return <RegisterForm formik={formik} errorMessage={errorMessage} />;
+  return (
+    <div className="register-page">
+      <h2 className="title-text-register">
+        Bienvenu sur votre gestionnaire de base de données.
+      </h2>
+      <RegisterForm formik={formik} errorMessage={errorMessage} />;
+    </div>
+  );
 };
 
 export default Register;

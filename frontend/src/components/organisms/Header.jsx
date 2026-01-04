@@ -1,10 +1,12 @@
-// src/components/organisms/Header.jsx
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuthStore from "../../store/AuthStore";
 import Logout from "./Logout";
 
-const Header = () => {
-  const { isAuthenticated, logout } = useAuthStore();
+import logo from "../../assets/img/logos.png";
+import "../../styles/organisms/HeaderLogged.css";
+
+const HeaderLogged = () => {
+  const logout = useAuthStore((state) => state.logout);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,46 +15,56 @@ const Header = () => {
   };
 
   return (
-    <header style={styles.header}>
-      <h1 style={styles.title}>SafeBase</h1>
-      {isAuthenticated && (
-        <nav>
-          <Link to="/profile" style={styles.link}>
-            Profile
-          </Link>
-          <Link to="/" style={styles.link}>
-            Dashboard
-          </Link>
-          <button onClick={handleLogout} style={styles.button}>
-            <Logout />
-          </button>
-        </nav>
-      )}
-    </header>
+    <aside className="sidebar-logged">
+      <div className="sidebar-logged__logo">
+        <img src={logo} alt="SafeBase logo" />
+        <h1 className="sidebar-logged__title">SafeBase</h1>
+      </div>
+
+      <nav className="sidebar-logged__nav">
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `sidebar-logged__link ${isActive ? "active" : ""}`
+          }
+        >
+          Dashboard
+        </NavLink>
+
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            `sidebar-logged__link ${isActive ? "active" : ""}`
+          }
+        >
+          Profile
+        </NavLink>
+
+        <NavLink
+          to="/databases"
+          className={({ isActive }) =>
+            `sidebar-logged__link ${isActive ? "active" : ""}`
+          }
+        >
+          Databases
+        </NavLink>
+
+        <NavLink
+          to="/alerts"
+          className={({ isActive }) =>
+            `sidebar-logged__link ${isActive ? "active" : ""}`
+          }
+        >
+          Alerts
+        </NavLink>
+
+        <button className="sidebar-logged__logout" onClick={handleLogout}>
+          <Logout />
+        </button>
+      </nav>
+    </aside>
   );
 };
 
-const styles = {
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    backgroundColor: "#282c34",
-    color: "white",
-  },
-  title: {
-    margin: 0,
-  },
-  link: {
-    color: "white",
-    marginRight: "15px",
-    textDecoration: "none",
-  },
-  button: {
-    padding: "5px 10px",
-    cursor: "pointer",
-  },
-};
-
-export default Header;
+export default HeaderLogged;

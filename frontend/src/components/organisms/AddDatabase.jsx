@@ -2,8 +2,8 @@
 import { useState } from "react";
 import testConnectionApi from "../../api/testConnection";
 import { toast } from "react-toastify";
-import "../../styles/organisms/AddDatabase.css";
 import { addDatabase } from "../../api/databaseApi";
+import "../../styles/organisms/AddDatabases.css";
 
 const AddDatabase = ({ onClose }) => {
   const [form, setForm] = useState({
@@ -60,11 +60,11 @@ const AddDatabase = ({ onClose }) => {
   };
   return (
     <div className="modal-overlay">
-      <div className="modal">
+      <div className="add-db-modal">
         <button className="close-btn" onClick={onClose}>
           ×
         </button>
-        <form onSubmit={handleSubmit}>
+        <form className="add-db-form" onSubmit={handleSubmit}>
           <h2>Add Database</h2>
 
           <input

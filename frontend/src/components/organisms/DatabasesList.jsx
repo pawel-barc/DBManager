@@ -26,12 +26,11 @@ const DatabasesList = () => {
   };
 
   return (
-    <div>
-      <h2>Mes bases de données</h2>
+    <div className="db-list">
       {databases.length === 0 ? (
         <p>Aucune base enregistrée</p>
       ) : (
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
           {databases.map((db) => (
             <div
               key={db.id}
@@ -41,11 +40,15 @@ const DatabasesList = () => {
                 padding: "15px",
                 borderRadius: "10px",
                 cursor: "pointer",
-                width: "200px",
+                minWidth: "180px",
+                color: "#0353a4",
+                backgroundColor: "white",
+                textAlign: "center",
+                fontSize:"20px"
               }}
             >
               <strong>{db.name}</strong>
-              <p>{db.type}</p>
+              <p style={{fontSize:"16px"}}>{db.type}</p>
             </div>
           ))}
         </div>

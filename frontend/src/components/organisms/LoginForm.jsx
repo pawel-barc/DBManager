@@ -9,8 +9,7 @@ import { Tooltip } from "react-tooltip";
 const LoginForm = ({ formik, errorMessage }) => {
   return (
     <form onSubmit={formik.handleSubmit} className="user-form">
-      <h1>Bienvenue sur DataSafe!</h1>
-      <h2>Veuillez entrer vos identifiants</h2>
+      <h1>Se connecter</h1>
       {/* htmlFor associe un label à un champ de formulaire */}
       <label htmlFor="email">
         <h2>Email:</h2>
@@ -44,7 +43,7 @@ const LoginForm = ({ formik, errorMessage }) => {
       {formik.errors.api && <div className="error">{formik.errors.api}</div>}
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       <button className="user-btn" type="submit" disabled={formik.isSubmitting}>
-        Se connecter
+        Valider
       </button>
 
       {/* Lien de l'inscription pour un utilisateur non inscrit  */}
@@ -57,7 +56,7 @@ const LoginForm = ({ formik, errorMessage }) => {
             icon={faPenToSquare}
             className="icon"
             data-tooltip-id="register-tooltip"
-            color="rgb(79, 214, 117)"
+            color="#0353A4"
           />
         </Link>
       </div>

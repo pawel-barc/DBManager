@@ -1,0 +1,56 @@
+.sidebar-logged {
+  width: 15%;
+  min-width: 90px;
+  height: 100vh;
+  background-color: #212121;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 0;
+}
+
+.sidebar-logged__logo img {
+  width: 8vw;
+  height: 8vw;
+  border-radius: 5%;
+  margin-bottom: 18px;
+}
+
+.sidebar-logged__icons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.sidebar-logged__icon {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.sidebar-logged__icon img {
+  width: 8vw;
+  height: 8vw;
+  border-radius: 5%;
+}
+
+.sidebar-logged__icon:hover {
+  background: #1e293b;
+  transform: scale(1.05);
+}
+
+.sidebar-logged__icon.active {
+  background: #2563eb;
+}
+
+.sidebar-logged__logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 12px;
+}

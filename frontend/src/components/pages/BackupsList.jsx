@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react";
 import { getAllBackups, deleteBackup } from "../../api/backupApi";
 import { toast } from "react-toastify";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tooltip";
+import "../../styles/pages/BackupsList.css";
 const BackupsListPage = () => {
   const [backups, setBackups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,25 +39,45 @@ const BackupsListPage = () => {
   if (loading) return <p>Chargement...</p>;
 
   return (
-    <div>
-      <h2>Sauvegardes</h2>
+    <div className="backups-container">
+      <h2>Toutes les sauvegardes</h2>
+
       {backups.length === 0 ? (
-        <p>Aucun Sauvegarde</p>
+        <p>Aucune sauvegarde.</p>
       ) : (
-        <ul>
+        <ul className="backups-list">
           {backups.map((b) => (
-            <li key={b.id} style={{ marginBottom: "10px" }}>
-              {b.name} - {b.status} - {b.backup_date}
-              <button
-                style={{ marginLeft: "10px", color: "red" }}
-                onClick={() => handleDelete(b.id)}
+            <li key={b.id} className="backups-item">
+              <div
+                className={`backups-card ${
+                  b.status === "success" ? "success" : "error"
+                }`}
               >
-                Supprimer
+                <FontAwesomeIcon icon={faDatabase} className="backup-icon" />
+
+                <span className="backup-name">{b.name}</span>
+
+                <span className={`backup-status ${b.status}`}>{b.status}</span>
+
+                <span className="backup-date">{b.backup_date}</span>
+              </div>
+
+              <button
+                className="delete-backup-btn"
+                onClick={() => handleDelete(b.id)}
+                data-tooltip-id="delete-backup-tooltip"
+                aria-label="Delete backup"
+              >
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </li>
           ))}
         </ul>
       )}
+
+      <Tooltip id="delete-backup-tooltip" place="right">
+        Supprimer la sauvegarde
+      </Tooltip>
     </div>
   );
 };

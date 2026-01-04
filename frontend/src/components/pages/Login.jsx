@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import LoginUser from "../../api/loginApi";
 import LoginForm from "../organisms/LoginForm";
 import useAuthStore from "../../store/AuthStore";
-// import "../../styles/organisms/Login.css";
+import "../../styles/pages/Login.css";
 import { useState } from "react";
 
 const Login = () => {
@@ -53,9 +53,12 @@ const Login = () => {
   });
   // Retourne le formulaire de connexion avec le prop du formik
   return (
-    <>
+    <div className="login-page">
+      <h2 className="title-text">
+        Bienvenu sur votre gestionnaire de base de données.
+      </h2>
       <LoginForm formik={formik} errorMessage={errorMessage} />
-    </>
+    </div>
   );
 };
 

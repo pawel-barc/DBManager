@@ -1,0 +1,18 @@
+.sidebar-unlogged {
+  width: 12%;
+  min-width: 200px;
+  height: 100vh;
+
+  background-color: #212121;
+  color: white;
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.logo {
+  border-radius: 5%;
+  height: 8vw;
+  width: 8vw;
+}

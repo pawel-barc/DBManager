@@ -1,0 +1,152 @@
+/* MODAL CONTAINER */
+.add-db-modal {
+  background: #ffffff;
+  color: #0f172a;
+
+  width: min(90%, 520px);
+  max-height: 85vh;
+
+  padding: 32px 28px;
+  border-radius: 16px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: modalIn 0.25s ease-out;
+
+  position: relative;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+
+  background: transparent;
+  border: none;
+
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ef4444;
+}
+
+/* FORM */
+.add-db-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* TITLE */
+.add-db-form h2 {
+  margin-bottom: 12px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 2px;
+  color: #0353a4;
+}
+
+/* INPUTS & SELECT */
+.add-db-form input,
+.add-db-form select {
+  width: 100%;
+  max-width: 360px;
+
+  padding: 12px 14px;
+  font-size: 16px;
+
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #0353a4;
+  background-color: #fdfdfd;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-db-form input:focus,
+.add-db-form select:focus {
+  outline: none;
+  border-color: #023e7d;
+  box-shadow: 0 0 0 3px rgba(3, 83, 164, 0.2);
+}
+
+/* PRIMARY BUTTON */
+.add-db-form button[type="submit"] {
+  width: 100%;
+  max-width: 360px;
+
+  background-color: #0353a4;
+  color: white;
+
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-db-form button[type="submit"]:hover:not(:disabled) {
+  background-color: #023e7d;
+  transform: scale(1.02);
+}
+
+.add-db-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* SECONDARY BUTTON (TEST) */
+.add-db-form button[type="button"] {
+  width: 100%;
+  max-width: 360px;
+
+  background-color: #e5e7eb;
+  color: #0f172a;
+
+  font-weight: bold;
+  font-size: 15px;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-db-form button[type="button"]:hover {
+  background-color: #d1d5db;
+}
+
+/* OPTIONAL: cancel button (last one) */
+.add-db-form button:last-of-type {
+  background-color: transparent;
+  color: #ef4444;
+}
+
+.add-db-form button:last-of-type:hover {
+  text-decoration: underline;
+}
+
+/* ANIMATION */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

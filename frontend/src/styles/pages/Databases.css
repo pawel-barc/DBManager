@@ -1,0 +1,26 @@
+.db-list {
+  position: relative;
+  top: -10vw;
+  margin-top: 6vw;
+}
+
+.intro-text {
+  position: relative;
+  top: 6vw;
+  left: -22vw;
+  font-size: 44px;
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 100;
+}
+
+.add-db-div2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}

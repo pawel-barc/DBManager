@@ -1,0 +1,8 @@
+.title-text-register {
+  font-size: clamp(24px, 4vw, 32px);
+  color: rgb(245, 250, 246);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  margin-top: 9vw;
+}

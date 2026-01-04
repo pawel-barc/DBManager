@@ -1,55 +1,97 @@
-// Composant modal affichant les détails d'une base de données et offrant des actions rapides :
-// gérer les sauvegardes, restaurer la base ou fermer le modal.
 import { Link } from "react-router-dom";
-import DeleteDatabase from "./DeleteDatabase";
 import { useState } from "react";
-// import DatabaseRestore from "../pages/DatabaseRestore"
+import DeleteDatabase from "./DeleteDatabase";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDatabase,
+  faServer,
+  faUser,
+  faNetworkWired,
+  faTrash,
+  faXmark,
+  faRotateLeft,
+  faFolderOpen,
+} from "@fortawesome/free-solid-svg-icons";
+
+import "../../styles/organisms/DatabaseDetails.css";
+
 const DatabaseDetails = ({ db, onClose, onDeleted }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <h2>Détails de la base: {db.name}</h2>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="db-details-modal" onClick={(e) => e.stopPropagation()}>
+        {/* HEADER */}
+        {/* HEADER */}
+        <header className="db-details-header">
+          <h2>
+            <FontAwesomeIcon icon={faDatabase} /> {db.name}
+          </h2>
+          <button className="close-btn" onClick={onClose} aria-label="Close">
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </header>
 
-        <p>
-          <strong>Type:</strong> {db.type}
-        </p>
-        <p>
-          <strong>Host:</strong> {db.host}
-        </p>
-        <p>
-          <strong>Port:</strong> {db.port}
-        </p>
-        <p>
-          <strong>Utilisateur:</strong> {db.db_username}
-        </p>
+        {/* INFO */}
+        <section className="db-details-info">
+          <div>
+            <FontAwesomeIcon icon={faServer} />
+            <span>
+              <strong>Type:</strong> {db.type}
+            </span>
+          </div>
 
-        <div style={{ marginTop: "20px" }}>
-          <Link to={`/databases/${db.id}/backups`} className="button-blue">
-            Gérer les sauvegardes
+          <div>
+            <FontAwesomeIcon icon={faNetworkWired} />
+            <span>
+              <strong>Host:</strong> {db.host}
+            </span>
+          </div>
+
+          <div>
+            <FontAwesomeIcon icon={faNetworkWired} />
+            <span>
+              <strong>Port:</strong> {db.port}
+            </span>
+          </div>
+
+          <div>
+            <FontAwesomeIcon icon={faUser} />
+            <span>
+              <strong>Utilisateur:</strong> {db.db_username}
+            </span>
+          </div>
+        </section>
+
+        {/* ACTIONS */}
+        <section className="db-details-actions">
+          <Link
+            to={`/databases/${db.id}/backups`}
+            className="action-btn primary"
+          >
+            <FontAwesomeIcon icon={faFolderOpen} />
+            Sauvegardes
           </Link>
-          <br />
+
           <Link
             to={`/databases/${db.id}/restauration`}
-            className="button-orange"
+            className="action-btn warning"
           >
-            Restaurer la base
+            <FontAwesomeIcon icon={faRotateLeft} />
+            Restaurer
           </Link>
-          <br />
-          <button
-            style={{ background: "red", color: "white", marginLeft: "10px" }}
-            onClick={() => setShowDeleteModal(true)}
-          >
-            Supprimer la base
-          </button>
 
           <button
-            style={{ background: "gray", color: "white", marginLeft: "10px" }}
-            onClick={onClose}
+            className="action-btn danger"
+            onClick={() => setShowDeleteModal(true)}
           >
-            Fermer
+            <FontAwesomeIcon icon={faTrash} />
+            Supprimer
           </button>
-        </div>
+        </section>
+
+        {/* DELETE MODAL */}
         {showDeleteModal && (
           <DeleteDatabase
             databaseId={db.id}

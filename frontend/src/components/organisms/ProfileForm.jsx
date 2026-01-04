@@ -89,26 +89,31 @@ const ProfileForm = ({
               className="delete-account-parent-button" // Affiche la confirmation de suppression
               onClick={confirmDelete}
             >
-              Supprimer
+              Supprimer account
             </button>
             <button type="submit" className="update-account-parent-button">
-              Mettre à jour
+              Mettre à jour profil
             </button>
           </div>
         </div>
       </form>
       {/* Section pour supprimer le compte de l'utilisateur */}
-      <span>
-        {showDeleteModal && (
-          <div className="modal">
+      {showDeleteModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
             <h4>
               Une fois votre compte supprimé, vous ne pourrez plus vous
               connecter ni accéder à vos données personnelles.
             </h4>
+
             <h3>
               ⚠️ Veuillez noter les points suivants avant de supprimer votre
               compte
             </h3>
+
             <ul className="delete-info-list">
               <li>
                 Votre compte et vos informations personnelles seront
@@ -120,29 +125,32 @@ const ProfileForm = ({
               </li>
               <li>
                 Cette action est irréversible et vous ne pourrez pas récupérer
-                votre compte une fois supprimé.
+                votre compte.
               </li>
             </ul>
+
             <h3>Êtes-vous sûr de vouloir supprimer votre compte ?</h3>
+
             <div className="account-delete-div">
               <button
                 type="button"
                 className="delete-account-button"
-                onClick={handleDeleteAccount} // Gère la suppression du compte
+                onClick={handleDeleteAccount}
               >
                 Oui, supprimer
               </button>
+
               <button
                 type="button"
                 className="cancel-button"
-                onClick={() => setShowDeleteModal(false)} //Ferme le modal de confirmation
+                onClick={() => setShowDeleteModal(false)}
               >
                 Annuler
               </button>
             </div>
           </div>
-        )}
-      </span>
+        </div>
+      )}
     </>
   );
 };

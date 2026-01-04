@@ -6,8 +6,8 @@
   background-color: rgb(253, 253, 253);
   border-radius: 5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: clamp(280px, 70vw, 900px);
-  margin: 4vw auto;
+  width: clamp(280px, 70vw, 700px);
+  margin: 10vw auto;
   padding: 2vw;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .profile-container input {
-  border-bottom: solid 2px rgb(79, 214, 117);
+  border-bottom: solid 2px #0353a4;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -51,13 +51,13 @@
 }
 
 .profile-container label {
-  margin: 0 0 8svh 0;
-  color: rgb(70, 189, 104);
+  margin: 0 0 6svh 0;
+  color: #0353a4;
   width: clamp(250px, 20vw, 500px);
 }
 
 .profile-container input:focus {
-  border-bottom: solid 2px rgb(79, 214, 117);
+  border-bottom: solid 2px #0353a4;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -75,4 +75,97 @@
   justify-content: space-between;
   gap: 4%;
   font-size: clamp(14px, 2vw, 16px);
+}
+
+.update-account-parent-button {
+  width: clamp(240px, 40vw, 280px);
+  background-color: #0353a4;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.delete-account-parent-button {
+  width: clamp(240px, 40vw, 280px);
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+.profile-modal {
+  background: white;
+  color: #0f172a;
+
+  width: min(90%, 600px);
+  max-height: 80vh;
+
+  padding: 32px;
+  border-radius: 16px;
+
+  overflow-y: auto;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: modalIn 0.25s ease-out;
+}
+.delete-account-button {
+  width: clamp(180px, 40vw, 240px);
+  background-color: #0353a4;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.cancel-button {
+  width: clamp(240px, 40vw, 280px);
+  background-color: #0353a4;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.account-delete-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }

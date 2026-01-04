@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { getAllUserAlerts } from "../../api/alertApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tooltip";
 
 const AlertBox = () => {
   const [count, setCount] = useState(0);
@@ -50,6 +53,8 @@ const AlertBox = () => {
         boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
         transition: "all 0.2s",
         position: "relative",
+        color: "#0353a4",
+        backgroundColor: "white",
       }}
       onMouseEnter={(e) =>
         (e.currentTarget.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)")
@@ -62,17 +67,19 @@ const AlertBox = () => {
         <div
           style={{
             position: "absolute",
-            top: "10px",
-            right: "10px",
-            width: "14px",
-            height: "14px",
-            backgroundColor: "red",
+            top: "2px",
+            right: "2px",
+            fontSize: "42px",
+            width:"60px",
+            backgroundColor: "#c4daf0",
             borderRadius: "50%",
-            border: "2px solid white",
           }}
-        ></div>
+        >
+          {" "}
+          <FontAwesomeIcon icon={faBell} />
+        </div>
       )}
-      <h3>Notifications</h3>
+      <h3 style={{ fontSize: "1.5rem" }}>Notifications</h3>
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>{count}</p>
       <small>Cliquer pour voir les Notifications</small>
     </div>

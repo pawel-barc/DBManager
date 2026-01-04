@@ -1,0 +1,54 @@
+.dashboard-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 16px auto;
+  position: relative;
+  top: -2vw;
+}
+
+.welcome-text {
+  position: relative;
+  left: -25vw;
+  font-size: 44px;
+  color: white;
+  margin-top: 8vw;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 100;
+}
+
+.add-db-div {
+  position: relative;
+  top: -4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 280px;
+  text-align: center;
+}
+.add-db-div > p {
+  color: white;
+  font-size: 20px;
+}
+.add-db-btn {
+  display: flex;
+  align-items: center;
+  background-color: #254b9e;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.add-db-btn__icon {
+  width: 100px;
+  height: 100px;
+}
+
+.add-db-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}

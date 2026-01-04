@@ -13,7 +13,7 @@ import (
 )
 
 // Créer une nouvelle tâche planifiée
-func CreateScheduledTask (w http.ResponseWriter, r *http.Request) {
+func CreateScheduledTask(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value(middleware.UserIDKey).(int)
 
 	// Structure permettant de récupérer les données de la requête

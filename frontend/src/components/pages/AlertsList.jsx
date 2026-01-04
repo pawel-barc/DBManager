@@ -8,7 +8,11 @@ import {
   markAllAsRead,
   deleteAlert,
 } from "../../api/alertApi";
+import "../../styles/pages/Alerts.css";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "react-tooltip";
 
 const AlertListPage = () => {
   const [alerts, setAlerts] = useState([]);
@@ -75,9 +79,11 @@ const AlertListPage = () => {
   if (loading) return <p>Chargement...</p>;
 
   return (
-    <div>
+    <div className="alerts-container">
       <h2>Notifications</h2>
-      <button onClick={handleMarkAllRead}>Tout marquer comme lu</button>
+      <button className="mark-as-read-btn" onClick={handleMarkAllRead}>
+        Tout marquer comme lu
+      </button>
 
       {alerts.length === 0 ? (
         <p>Aucune notification.</p>
@@ -88,37 +94,34 @@ const AlertListPage = () => {
               key={a.id}
               onClick={() => handleClickAlert(a.id)}
               style={{
-                marginBottom: "10px",
-                padding: "10px",
-                borderRadius: "6px",
-                cursor: "pointer",
-                backgroundColor: a.is_read ? "#fff" : "#e9f3ff",
-                border: "1px solid #ddd",
-                position: "relative",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
               }}
             >
-              <strong>{a.alert_type}</strong> — {a.message}
-              <br />
-              <small style={{ color: "#666" }}>{a.created_at}</small>
+              <div
+                className="alerts-div"
+                style={{
+                  position: "relative",
+                  backgroundColor: a.is_read ? "#fff" : "#c4d9f7ff",
+                  border: "1px solid #ddd",
+                  width: "58vw",
+                }}
+              >
+                <strong>{a.alert_type}</strong> — {a.message}
+                <small style={{ color: "#666" }}>{a.created_at}</small>
+              </div>
+
               <button
+                className="delete-alert-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleDeleteAlert(a.id);
                 }}
-                style={{
-                  position: "absolute",
-                  border: "2px solid black",
-                  borderRadius: "4px ",
-                  bottom: "2px",
-                  right: "-80px",
-                  background: "transparent",
-                  cursor: "pointer",
-                  fontSize: "26px",
-                  color: "#900",
-                  fontWeight: "bold",
-                }}
+                data-tooltip-id="delete-tooltip"
+                aria-label="Delete"
               >
-                x
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </li>
           ))}

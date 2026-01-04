@@ -1,0 +1,50 @@
+.alerts-container {
+  margin-top: 6vw;
+}
+.alerts-container > h2 {
+  position: relative;
+  margin: 3vw 0;
+  font-size: 44px;
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 100;
+}
+
+.mark-as-read-btn {
+  position: relative;
+  left: 43vw;
+  width: clamp(148px, 40vw, 320px);
+  background-color: #0353a4;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 1vw auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.mark-as-read-btn:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.delete-alert-btn {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+  background-color: red;
+  border-radius: 10px;
+  width: 4vw;
+  font-size: 22px;
+}
+
+.alerts-div {
+  position: relative;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 20px;
+}

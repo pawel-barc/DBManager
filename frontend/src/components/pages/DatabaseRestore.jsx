@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import restoreBackup from "../../api/restoreApi";
 import { getDatabaseBackups } from "../../api/backupApi";
 import { toast } from "react-toastify";
-
+import "../../styles/pages/DatabaseRestore.css";
 const DatabaseRestore = () => {
   const { id } = useParams();
   const databaseId = Number(id);
@@ -57,8 +57,8 @@ const DatabaseRestore = () => {
         <ul>
           {backups.map((b) => (
             <li key={b.id} style={{ marginBottom: "10px" }}>
-              <strong>{b.name}</strong> —{" "}
-              {new Date(b.backup_date).toLocaleString()} —{" "}
+              <strong>{b.name}</strong> {" "}
+              {new Date(b.backup_date).toLocaleString()} {"--- "}
               {b.file_size?.toFixed(2)} MB
               <button
                 onClick={() => handleRestore(b.id)}

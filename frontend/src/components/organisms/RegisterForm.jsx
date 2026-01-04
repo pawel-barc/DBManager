@@ -4,8 +4,7 @@ const RegisterForm = ({ formik, errorMessage }) => (
   //Ce fragment de code crée des champs du formulaire permettant à l'utilisateur de saisir ses données d'inscription
   //Formik suit l'utilisateur et gère les éventuelles erreurs
   <form onSubmit={formik.handleSubmit} className="user-form">
-    <h1>Bienvenue sur DataSafe !</h1>
-    <h2>Veuillez créer vos identifiants</h2>
+    <h1>Créer un compte</h1>
     {/* htmlFor associe un label à un champ de formulaire */}
     <label htmlFor="username">
       <h2>Nom:</h2>
@@ -72,7 +71,7 @@ const RegisterForm = ({ formik, errorMessage }) => (
     {formik.errors.api && <div>{formik.errors.api}</div>}
     {errorMessage && <div className="error-message">{errorMessage}</div>}
     <button className="user-btn" type="submit" disabled={formik.isSubmitting}>
-      S'inscrire
+      Valider
     </button>
   </form>
 );

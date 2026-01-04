@@ -7,13 +7,14 @@ import Login from "../components/pages/Login";
 import Profile from "../components/pages/Profile";
 import Dashboard from "../components/pages/DashBoard";
 import Logout from "../components/organisms/Logout";
-import Header from "../components/organisms/Header";
 import Databases from "../components/pages/Databases";
 import DBDetails from "../components/pages/DBDetails";
 import BackupsList from "../components/pages/BackupsList";
 import BackupsManagement from "../components/pages/BackupsManagement";
 import DatabaseRestore from "../components/pages/DatabaseRestore";
 import AlertListPage from "../components/pages/AlertsList";
+import PublicLayout from "../layout/PublicLayout";
+import PrivateLayout from "../layout/PrivateLayout"
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -28,100 +29,43 @@ const PublicRoute = ({ children }) => {
 const Router = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
-        {/* Public routes */}
+        {/* PUBLIC */}
         <Route
-          path="/login"
           element={
             <PublicRoute>
-              <Login />
+              <PublicLayout />
             </PublicRoute>
           }
-        />
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-          }
-        />
+        >
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
 
-        {/* Private routes */}
+        {/* PRIVATE */}
         <Route
-          path="/"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <PrivateLayout />
             </PrivateRoute>
           }
-        />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/databases"
-          element={
-            <PrivateRoute>
-              <Databases />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/backups"
-          element={
-            <PrivateRoute>
-              <BackupsList />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/databases/:id"
-          element={
-            <PrivateRoute>
-              <DBDetails />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/databases/:id/backups"
-          element={
-            <PrivateRoute>
-              <BackupsManagement />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/databases/:id/restauration"
-          element={
-            <PrivateRoute>
-              <DatabaseRestore />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/alerts"
-          element={
-            <PrivateRoute>
-              <AlertListPage />
-            </PrivateRoute>
-          }
-        />
-
-        <Route
-          path="/logout"
-          element={
-            <PrivateRoute>
-              <Logout />
-            </PrivateRoute>
-          }
-        />
+          >
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/databases" element={<Databases />} />
+          <Route path="/backups" element={<BackupsList />} />
+          <Route path="/databases/:id" element={<DBDetails />} />
+          <Route
+            path="/databases/:id/backups"
+            element={<BackupsManagement />}
+          />
+          <Route
+            path="/databases/:id/restauration"
+            element={<DatabaseRestore />}
+          />
+          <Route path="/alerts" element={<AlertListPage />} />
+          <Route path="/logout" element={<Logout />} />
+        </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

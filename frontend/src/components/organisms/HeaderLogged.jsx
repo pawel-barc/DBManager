@@ -1,5 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import useAuthStore from "../../store/AuthStore";
+import { NavLink } from "react-router-dom";
 import Logout from "./Logout";
 
 import logo from "../../assets/img/logo.png";
@@ -11,14 +10,6 @@ import logoutIcon from "../../assets/img/logout.png";
 import "../../styles/organisms/HeaderLogged.css";
 
 const HeaderLogged = () => {
-  const logout = useAuthStore((state) => state.logout);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
   return (
     <aside className="sidebar-logged">
       {/* LOGO */}
@@ -57,14 +48,9 @@ const HeaderLogged = () => {
       </nav>
 
       {/* LOGOUT */}
-      <button
-        className="sidebar-logged__icon sidebar-logged__logout"
-        onClick={handleLogout}
-        aria-label="Logout"
-        title="Logout"
-      >
-        <img src={logoutIcon} alt="Logout" />
-      </button>
+      <div className="sidebar-logged__icon sidebar-logged__logout">
+        <Logout />
+      </div>
     </aside>
   );
 };

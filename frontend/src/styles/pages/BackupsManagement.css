@@ -126,7 +126,6 @@
   font-size: 24px;
   color: #0353a4;
 }
-
 /* INFO */
 .cron-info {
   font-size: clamp(14px, 2vw, 16px);

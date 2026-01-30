@@ -71,6 +71,7 @@
 .db-backup-info .status {
   font-size: 14px;
   color: #475569;
+  text-align: center;
 }
 
 /* ===================== */

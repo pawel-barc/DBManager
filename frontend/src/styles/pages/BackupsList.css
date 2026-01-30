@@ -67,6 +67,7 @@
 .backup-status.success {
   background-color: #468199;
   color: white;
+  text-align: center;
 }
 
 .backup-status.error {

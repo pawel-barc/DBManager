@@ -1,6 +1,5 @@
 import Router from "./router/Router";
 import "./App.css";
-import Header from "./components/organisms/Header";
 import { ToastContainer } from "react-toastify";
 function App() {
   return (

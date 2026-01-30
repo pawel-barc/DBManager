@@ -1,0 +1,8 @@
+// Fichiers à ignorer pour le build docker
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.env

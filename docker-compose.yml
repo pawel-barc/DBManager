@@ -1,0 +1,33 @@
+# Définitnion des services / conteneurs
+services:
+  # Base de données PostgreSQL
+  db:
+    image: postgres:16-alpine # Image officielle de PostgreSQL 16 sur Alpine
+    container_name: dbmanager-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: safebase
+    ports:
+      - "5432:5432"
+
+  # Backend en Go
+  backend:
+    build: ./backend # Construction de l'image depuis le dossier backend
+    container_name: dbmanager-backend-dev
+    ports:
+      - "8080:8080"
+    env_file: backend/.env
+    # Lancement du backend après la base de données
+    depends_on:
+      - db
+
+  # Frontend en React (Vite)
+  frontend:
+    build: ./frontend # Construction de l'image depuis le dossier frontend
+    container_name: dbmanager-frontend-dev
+    ports:
+      - "5173:5173"
+    # Lancement du frontend après le backup
+    depends_on:
+      - backend

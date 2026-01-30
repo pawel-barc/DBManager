@@ -1,4 +1,5 @@
 .sidebar-logged {
+  position: sticky;
   width: 15%;
   min-width: 90px;
   height: 100vh;
@@ -24,8 +25,8 @@
 }
 
 .sidebar-logged__icon {
-  width: 150px;
-  height: 150px;
+  width: 135px;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: center;

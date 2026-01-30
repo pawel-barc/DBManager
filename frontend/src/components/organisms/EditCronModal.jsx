@@ -26,7 +26,7 @@ const EditCronModal = ({ task, onClose, onUpdated }) => {
   return (
     <div className="modal" style={styles.overlay}>
       <div className="modal-content" style={styles.modal}>
-        <h3>Modifier la planification CRON</h3>
+        <h3 style={{ color: "black" }}>Modifier la planification CRON</h3>
 
         <p style={{ marginBottom: "10px", fontSize: "14px" }}>
           Tâche: <strong>{task.name || `#${task.id}`}</strong>

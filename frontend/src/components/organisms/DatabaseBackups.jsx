@@ -67,7 +67,9 @@ const DatabaseBackups = ({ databaseId }) => {
 
                 <div className="db-backup-info">
                   <strong>{b.name}</strong>
-                  <span className="status">Status: {b.status}</span>
+                  <span className={`backup-status ${b.status}`}>
+                    {b.status}
+                  </span>
                   <small>{new Date(b.backup_date).toLocaleString()}</small>
                 </div>
               </div>

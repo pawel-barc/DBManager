@@ -34,7 +34,7 @@ const ScheduleBackupModal = ({ databaseId, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        <h3>Planifier un backup automatique</h3>
+        <h3 style={{ color: "black" }}>Planifier un backup automatique</h3>
 
         <CronSelector onChange={(value) => setCronExpr(value)} />
 
@@ -47,7 +47,7 @@ const ScheduleBackupModal = ({ databaseId, onClose }) => {
             {loading ? "Enregistrement..." : "Enregistrer"}
           </button>
 
-          <button className="modal-btn secondary" onClick={onClose}>
+          <button className="modal-btn secondary" onClick={onClose}>0
             Annuler
           </button>
         </div>

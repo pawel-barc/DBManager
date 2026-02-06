@@ -415,3 +415,165 @@ pg_restore: warning: errors ignored on restore: 24
 2025/12/05 14:13:03 logs.go:9: INFO: Liste des backups récupérée pour la database_id=13, 1 items
 2025/12/05 14:16:50 logs.go:9: INFO: Backup #92 crée (PENDING)
 2025/12/05 14:16:55 logs.go:14: ERROR: mysqldump failed | exit status 2
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=30, expr:4 3 * * 4
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 1 * * *
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=28, expr:1 1 * * *
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=29, expr:2 1 * * *
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=27, expr:2 1 * * *
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=26, expr:2 2 * * 2
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=19, expr:5 7 * * 2
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=25, expr:29 12 * * 6
+2026/01/30 17:05:05 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2026/01/30 17:05:05 logs.go:9: INFO: Scheduler CRON démarré
+2026/01/30 17:06:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:06:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:06:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:06:51 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:10:47 logs.go:9: INFO: Restore backup #160 terminé avec succès
+2026/01/30 17:10:47 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=30, expr:4 3 * * 4
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=17, expr:6 16 * * *
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=22, expr:0 1 * * *
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=28, expr:1 1 * * *
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=29, expr:2 1 * * *
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=27, expr:2 1 * * *
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=26, expr:2 2 * * 2
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=19, expr:5 7 * * 2
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=2, expr:38 17 * * 2
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=25, expr:29 12 * * 6
+2026/01/30 17:21:52 logs.go:9: INFO: Tâche CRON enregistée: id=7, expr:2 0 * * 5
+2026/01/30 17:21:52 logs.go:9: INFO: Scheduler CRON démarré
+2026/01/30 17:22:04 logs.go:9: INFO: Restauration PostgreSQL réussie (restore_id: 83)
+2026/01/30 17:22:04 logs.go:9: INFO: Restore backup #162 terminé avec succès (restore_id: 83)
+2026/01/30 17:22:04 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:23:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:23:02 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:23:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:23:21 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 9 items
+2026/01/30 17:23:44 logs.go:9: INFO: Backup #165 crée (PENDING)
+2026/01/30 17:23:45 logs.go:9: INFO: Backup postgres réussi: backups\30.01.26 BEFORE_20260130_172344.sql, size=6.71 KB
+2026/01/30 17:24:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:24:19 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:26:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:26:44 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:27:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:27:06 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:27:32 logs.go:9: INFO: Restauration PostgreSQL réussie (restore_id: 84)
+2026/01/30 17:27:32 logs.go:9: INFO: Restore backup #144 terminé avec succès (restore_id: 84)
+2026/01/30 17:27:32 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:28:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:28:43 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 10 items
+2026/01/30 17:29:05 logs.go:9: INFO: Backup #166 crée (PENDING)
+2026/01/30 17:29:05 logs.go:9: INFO: Backup postgres réussi: backups\30.01.26 AFTER_20260130_172905.sql, size=8.37 KB
+2026/01/30 17:29:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 11 items
+2026/01/30 17:29:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 11 items
+2026/01/30 17:29:23 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 11 items
+2026/01/30 17:29:23 logs.go:9: INFO: Liste des backups récupérée pour la database_id=7, 11 items
+2026/01/31 01:00:37 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2026/01/31 01:00:37 logs.go:9: INFO: Backup #167 crée (PENDING)
+2026/01/31 01:00:37 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20260131_010037.sql, size=0.51 KB
+2026/01/31 01:00:37 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2026/01/31 01:01:00 logs.go:9: INFO: CRON: exécution tâche 28 (db = 7 user = 1)
+2026/01/31 01:01:00 logs.go:9: INFO: Backup #168 crée (PENDING)
+2026/01/31 01:01:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_28_20260131_010100.sql, size=8.37 KB
+2026/01/31 01:01:00 logs.go:9: INFO: CRON: tâche 28 exécuté avec succès
+2026/01/31 01:02:00 logs.go:9: INFO: CRON: exécution tâche 27 (db = 7 user = 1)
+2026/01/31 01:02:00 logs.go:9: INFO: CRON: exécution tâche 29 (db = 7 user = 1)
+2026/01/31 01:02:00 logs.go:9: INFO: Backup #169 crée (PENDING)
+2026/01/31 01:02:00 logs.go:9: INFO: Backup #170 crée (PENDING)
+2026/01/31 01:02:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_27_20260131_010200.sql, size=8.37 KB
+2026/01/31 01:02:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_29_20260131_010200.sql, size=8.37 KB
+2026/01/31 01:02:00 logs.go:9: INFO: CRON: tâche 27 exécuté avec succès
+2026/01/31 01:02:00 logs.go:9: INFO: CRON: tâche 29 exécuté avec succès
+2026/01/31 13:28:36 logs.go:9: INFO: CRON: exécution tâche 25 (db = 14 user = 1)
+2026/01/31 13:28:36 logs.go:9: INFO: Backup #171 crée (PENDING)
+2026/01/31 13:28:37 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_25_20260131_132836.sql, size=0.51 KB
+2026/01/31 13:28:37 logs.go:9: INFO: CRON: tâche 25 exécuté avec succès
+2026/01/31 18:57:46 logs.go:9: INFO: CRON: exécution tâche 17 (db = 1 user = 1)
+2026/01/31 18:57:46 logs.go:9: INFO: Backup #172 crée (PENDING)
+2026/01/31 18:57:48 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe �chou�e pour l'utilisateur  � safebase_user �
+ | exit status 1
+2026/01/31 18:57:48 logs.go:9: INFO: CRON: tâche 17 exécuté avec succès
+2026/02/01 03:36:02 logs.go:9: INFO: CRON: exécution tâche 27 (db = 7 user = 1)
+2026/02/01 03:36:02 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2026/02/01 03:36:02 logs.go:9: INFO: CRON: exécution tâche 29 (db = 7 user = 1)
+2026/02/01 03:36:02 logs.go:9: INFO: CRON: exécution tâche 28 (db = 7 user = 1)
+2026/02/01 03:36:02 logs.go:9: INFO: Backup #174 crée (PENDING)
+2026/02/01 03:36:02 logs.go:9: INFO: Backup #173 crée (PENDING)
+2026/02/01 03:36:02 logs.go:9: INFO: Backup #175 crée (PENDING)
+2026/02/01 03:36:03 logs.go:9: INFO: Backup #176 crée (PENDING)
+2026/02/01 03:36:03 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20260201_033602.sql, size=0.51 KB
+2026/02/01 03:36:03 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_29_20260201_033603.sql, size=8.37 KB
+2026/02/01 03:36:03 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2026/02/01 03:36:03 logs.go:9: INFO: CRON: tâche 29 exécuté avec succès
+2026/02/01 03:36:03 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_28_20260201_033602.sql, size=8.37 KB
+2026/02/01 03:36:03 logs.go:9: INFO: CRON: tâche 28 exécuté avec succès
+2026/02/01 03:36:03 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_27_20260201_033602.sql, size=8.37 KB
+2026/02/01 03:36:03 logs.go:9: INFO: CRON: tâche 27 exécuté avec succès
+2026/02/01 17:24:58 logs.go:9: INFO: CRON: exécution tâche 17 (db = 1 user = 1)
+2026/02/01 17:24:58 logs.go:9: INFO: Backup #177 crée (PENDING)
+2026/02/01 17:24:59 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe �chou�e pour l'utilisateur  � safebase_user �
+ | exit status 1
+2026/02/01 17:24:59 logs.go:9: INFO: CRON: tâche 17 exécuté avec succès
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: exécution tâche 27 (db = 7 user = 1)
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: exécution tâche 29 (db = 7 user = 1)
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: exécution tâche 28 (db = 7 user = 1)
+2026/02/02 01:35:08 logs.go:9: INFO: Backup #179 crée (PENDING)
+2026/02/02 01:35:08 logs.go:9: INFO: Backup #178 crée (PENDING)
+2026/02/02 01:35:08 logs.go:9: INFO: Backup #180 crée (PENDING)
+2026/02/02 01:35:08 logs.go:9: INFO: Backup #181 crée (PENDING)
+2026/02/02 01:35:08 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_29_20260202_013508.sql, size=8.37 KB
+2026/02/02 01:35:08 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_27_20260202_013508.sql, size=8.37 KB
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: tâche 29 exécuté avec succès
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: tâche 27 exécuté avec succès
+2026/02/02 01:35:08 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20260202_013508.sql, size=0.51 KB
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2026/02/02 01:35:08 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_28_20260202_013508.sql, size=8.37 KB
+2026/02/02 01:35:08 logs.go:9: INFO: CRON: tâche 28 exécuté avec succès
+2026/02/02 13:51:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 2 items
+2026/02/02 13:51:15 logs.go:9: INFO: Liste des backups récupérée pour la database_id=8, 2 items
+2026/02/02 16:06:00 logs.go:9: INFO: CRON: exécution tâche 17 (db = 1 user = 1)
+2026/02/02 16:06:00 logs.go:9: INFO: Backup #182 crée (PENDING)
+2026/02/02 16:06:00 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe �chou�e pour l'utilisateur  � safebase_user �
+ | exit status 1
+2026/02/02 16:06:00 logs.go:9: INFO: CRON: tâche 17 exécuté avec succès
+2026/02/03 01:00:00 logs.go:9: INFO: CRON: exécution tâche 22 (db = 14 user = 1)
+2026/02/03 01:00:00 logs.go:9: INFO: Backup #183 crée (PENDING)
+2026/02/03 01:00:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_14_task_22_20260203_010000.sql, size=0.51 KB
+2026/02/03 01:00:00 logs.go:9: INFO: CRON: tâche 22 exécuté avec succès
+2026/02/03 01:01:00 logs.go:9: INFO: CRON: exécution tâche 28 (db = 7 user = 1)
+2026/02/03 01:01:00 logs.go:9: INFO: Backup #184 crée (PENDING)
+2026/02/03 01:01:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_28_20260203_010100.sql, size=8.37 KB
+2026/02/03 01:01:00 logs.go:9: INFO: CRON: tâche 28 exécuté avec succès
+2026/02/03 01:02:00 logs.go:9: INFO: CRON: exécution tâche 27 (db = 7 user = 1)
+2026/02/03 01:02:00 logs.go:9: INFO: CRON: exécution tâche 29 (db = 7 user = 1)
+2026/02/03 01:02:00 logs.go:9: INFO: Backup #185 crée (PENDING)
+2026/02/03 01:02:00 logs.go:9: INFO: Backup #186 crée (PENDING)
+2026/02/03 01:02:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_27_20260203_010200.sql, size=8.37 KB
+2026/02/03 01:02:00 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_29_20260203_010200.sql, size=8.37 KB
+2026/02/03 01:02:00 logs.go:9: INFO: CRON: tâche 27 exécuté avec succès
+2026/02/03 01:02:00 logs.go:9: INFO: CRON: tâche 29 exécuté avec succès
+2026/02/03 04:17:14 logs.go:9: INFO: CRON: exécution tâche 26 (db = 7 user = 1)
+2026/02/03 04:17:15 logs.go:9: INFO: Backup #187 crée (PENDING)
+2026/02/03 04:17:15 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_26_20260203_041714.sql, size=8.37 KB
+2026/02/03 04:17:15 logs.go:9: INFO: CRON: tâche 26 exécuté avec succès
+2026/02/03 09:20:14 logs.go:9: INFO: CRON: exécution tâche 19 (db = 7 user = 1)
+2026/02/03 09:20:14 logs.go:9: INFO: Backup #188 crée (PENDING)
+2026/02/03 09:20:15 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_7_task_19_20260203_092014.sql, size=8.37 KB
+2026/02/03 09:20:15 logs.go:9: INFO: CRON: tâche 19 exécuté avec succès
+2026/02/03 16:06:00 logs.go:9: INFO: CRON: exécution tâche 17 (db = 1 user = 1)
+2026/02/03 16:06:00 logs.go:9: INFO: Backup #189 crée (PENDING)
+2026/02/03 16:06:01 logs.go:14: ERROR: pg_dump failed: exit status 1
+Output: pg_dump: error: connection to server at "localhost" (::1), port 5432 failed: FATAL:  authentification par mot de passe �chou�e pour l'utilisateur  � safebase_user �
+ | exit status 1
+2026/02/03 16:06:01 logs.go:9: INFO: CRON: tâche 17 exécuté avec succès
+2026/02/03 18:00:47 logs.go:9: INFO: CRON: exécution tâche 2 (db = 8 user = 1)
+2026/02/03 18:00:47 logs.go:9: INFO: Backup #190 crée (PENDING)
+2026/02/03 18:00:48 logs.go:9: INFO: Backup postgres réussi: backups\scheduled_db_8_task_2_20260203_180047.sql, size=4.28 KB
+2026/02/03 18:00:48 logs.go:9: INFO: CRON: tâche 2 exécuté avec succès

@@ -14,7 +14,7 @@ func ConnectDB() {
 	var err error
 
 	// Chaîne de connexion
-	connStr := "host=db port=5432 user=postgres password=root dbname=safebase sslmode=disable"
+	connStr := "host=localhost port=5432 user=postgres password=root dbname=safebase sslmode=disable"
 
 	// Initialisation de la connexion
 	DB, err = sql.Open("postgres", connStr)

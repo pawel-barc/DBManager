@@ -25,14 +25,12 @@ func RestoreBackup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	restoreID, dbName, err := services.RestoreBackup(backupID, userID)
+	restoreID, err := services.RestoreBackup(backupID, userID)
 	if err != nil {
 		utils.SendError(w, http.StatusInternalServerError, "Backup introuvable ou accès refusé ")
 		utils.LogError( "Backup introuvable ou accès refusé", err)
-		utils.RestoreError(userID, backupID, err.Error())
 		return
 	}
-	utils.RestoreSuccess(userID, backupID, dbName)
 	utils.SendSuccessWithData(w, http.StatusCreated, "Restauration créée avec succès", RestoreBackupResponse {
 		RestoreID: restoreID,
 		Message: "Restauration créée avec succès",

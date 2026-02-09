@@ -28,7 +28,7 @@ func RestoreBackup(backupID, userID int) (restoreID int, err error) {
 		msg := fmt.Sprintf("Backup introuvable ou accès refusé: %v", err)
 		db.DB.Exec(db.QueryUpdateRestoreError, msg, restoreID)
 		utils.LogError(msg, err)
-		return restoreID, fmt.Errorf(msg)
+		return restoreID, fmt.Errorf("%v", msg)
 	}
 
 	// Vérifier que le fichier de backup existe
@@ -36,7 +36,7 @@ func RestoreBackup(backupID, userID int) (restoreID int, err error) {
 		msg := fmt.Sprintf("Fichier de backup introuvable: %s", backupPath)
 		db.DB.Exec(db.QueryUpdateRestoreError, msg, restoreID)
 		utils.LogError(msg, err)
-		return restoreID, fmt.Errorf(msg)
+		return restoreID, fmt.Errorf("%v", msg)
 	}
 
 	// Exécuter la restauration selon le type de base de données
@@ -50,7 +50,7 @@ func RestoreBackup(backupID, userID int) (restoreID int, err error) {
 		errMsg := "Type de base non supporté: " + dbType
 		db.DB.Exec(db.QueryUpdateRestoreError, errMsg, restoreID)
 		utils.LogError(errMsg, nil)
-		return restoreID, fmt.Errorf(errMsg)
+		return restoreID, fmt.Errorf("%s", errMsg)
 	}
 
 	if restoreErr != nil {

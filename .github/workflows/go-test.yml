@@ -1,0 +1,46 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["app-tests"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with: 
+          go-version: 1.21
+
+      - name: Download dependencies
+        run: go mod download
+        working-directory: ./backend
+
+      - name: Run Go tests
+        run: go test -v ./...
+        working-directory: ./backend
+
+      - name: Notify Google Chat
+        if: always()
+        env:
+          STATUS: ${{ job.status }}
+          REPO: ${{ github.repository }}
+          COMMIT: ${{ github.sha }}
+          WEBHOOK: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
+        run: |
+          if [ "$STATUS" = "success" ]; then
+            MESSAGE="CI SUCCESS\nRepo: $REPO\nCommit: $COMMIT"
+          else
+            MESSAGE="CI FAILED\nRepo: $REPO\nCommit: $COMMIT\nVérifiez les logs Github Actions."
+          fi
+
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"text"\:\"$MESSAGE"\}" \
+          $WEBHOOK

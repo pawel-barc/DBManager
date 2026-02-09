@@ -11,6 +11,9 @@ import (
 )
 
 func main() {
+	if err := config.Load(); err != nil {
+		log.Fatal(err)
+	}
 	config.InitLogger()
 	// Connexiona à la base des données
 	db.ConnectDB()

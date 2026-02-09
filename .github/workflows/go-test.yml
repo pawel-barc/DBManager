@@ -50,5 +50,5 @@ jobs:
           fi
 
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"text"\:\"$MESSAGE"\}" \
+          -d "{\"text\":\"$MESSAGE\"}" \
           $WEBHOOK
